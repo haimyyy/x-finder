@@ -1,1 +1,1 @@
-wizer app
+xfinder app

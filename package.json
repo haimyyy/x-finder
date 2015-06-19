@@ -1,0 +1,32 @@
+{
+  "name": "x-finder",
+  "version": "0.0.1",
+  "description": "follow your x",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "cookie-parser": ">= 1.3.2",
+    "cors": "^2.7.1",
+    "ejs": ">= 0.0.0",
+    "express": "^4.12.3",
+    "express-session": ">= 1.6.1",
+    "fbgraph": "^0.3.0",
+    "fbgraphapi": "^0.5.0",
+    "fs-extra": "^0.18.2",
+    "html": "0.0.10",
+    "jsonwebtoken": "^5.0.1",
+    "method-override": ">= 2.0.2",
+    "mongodb": "^2.0.25",
+    "mongoose": "^3.8.23",
+    "mongoose-text-search": "0.0.2",
+    "nodemon": "^1.3.7",
+    "passport": ">= 0.0.0",
+    "passport-facebook": ">= 0.0.0",
+    "passport-http-bearer": "^1.0.1"
+  },
+  "author": "avishay and haim",
+  "license": "shenkar"
+}

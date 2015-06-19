@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>x-findex</title>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+        <!-- external jquery 
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+        <!-- internal jquery -->
+        <link rel="stylesheet" href="css/jquerymobile.css">
+        <script src="js/jquery.js"></script>
+        <script src="js/jquerymobile.js"></script>
+        <!-- help plugins -->
+        <link rel="stylesheet" type="text/css" href="css/html5reset-1.6.1.css" />
+        <script type="text/javascript" src="js/underscore.js"></script>
+        <!-- google maps -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=en"></script>
+        <script type="text/javascript" src="js/jsapi.js"></script>
+        <script type="text/javascript" src="js/googlespider.js"></script>
+        <!-- my files -->
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+        <script type="text/javascript" src="js/map.js"></script>
+        <script type="text/javascript" src="js/location.js"></script>
+        <script type="text/javascript" src="js/login.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </head>
+    <body>
+       
+        <div data-role="page" id="loginPage" >
+            <header data-role="header" data-position="fixed" data-tap-toggle="false">
+                <img src="img/menu_button.png" id="nav" />
+            </header>
+                
+            <div data-role="content" class="ui-content" id="content">
+                <img class="logo" src="img/logo.png">
+            </div>
+            <footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+                <button onclick="changePageTo('mapPage')"> map </button>
+                <button id="fbAction" onclick="fbLogin()"> fb login </button>
+            </footer>
+        </div>
+      
+	  <div data-role="page" id="mapPage" >
+            <header data-role="header" data-position="fixed" data-tap-toggle="false">
+                <img src="img/menu_button.png" id="nav" />
+            </header>
+            <div data-role="content" class="ui-content" id="content">
+               <div id="map"> </div>
+            </div>    
+        </div>
+                
+        <div data-role="panel" data-position="left" data-display="overlay" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
+            <ul data-role="listview" >
+                <!-- <li data-icon="delete">
+                    <a href="#" data-rel="close">סגור</a>
+                </li> -->
+                <li class="navTitle"> מעקבים </li>
+                <li id="userId" class="navUserRow">
+                    <span class="ui-btn ui-icon-custom"> </span>
+                    <p class="navUserName">אבישי חג'בי</p>
+                    <p class="navMethod">התחמקות</p>
+                </li>
+                <li id="userId" class="navUserRow">
+                    <span class="ui-btn ui-icon-custom"> </span>
+                    <p class="navUserName">חיים יעקוב</p>
+                    <p class="navMethod">מעקב</p>
+                </li>
+                <li id="userId" class="navUserRow">
+                    <span class="ui-btn ui-icon-custom"> </span>
+                    <p class="navUserName">תמר זנזורי</p>
+                    <p class="navMethod">סקרנות</p>
+                </li>
+                <li class="navAddFriend">
+                    <img src="img/plus.png">
+                </li>
+
+            </ul>
+
+        </div>
+
+    </body>
+</html>

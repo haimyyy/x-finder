@@ -114,11 +114,11 @@ User_schema.statics.findUserAndUpdate = function (req_user,callback) {
  	}); 
 }
 
-User_schema.methods.addFollowListActions = function (friend,callback) {
+User_schema.methods.removeFromFollowList = function (user,callback) {
  	var r = {msg:[],follow:[]};
  	var currUser = this;
- 	return this.model('users').findOne({ id : friend }, 
- 	function(err,foundedUser){
+ 	return this.model('users').findOne({ id : user.friend })
+ 	.exec(function(err,foundedUser){
  		if (err){
  			r.status= 0;
  			r.msg.push('failed while retriving user');
@@ -126,18 +126,7 @@ User_schema.methods.addFollowListActions = function (friend,callback) {
  		}
  		else if (foundedUser){
 			//update user details
-			var index = -1;
-			currUser.follow.some(function (friend,key) {
-			    if (friend._id.equals(foundedUser._id)) {
-			    	index = key;
-			    	return;
-			    }
-			});
-
-			if (index == -1)
-				currUser.follow.push(foundedUser._id)
-			else currUser.follow.splice(index,1)
-			
+			currUser.follow.pull({ "_id": foundedUser._id });
 			currUser.save();
  			r.status= 1;
  			r.length=currUser.follow.length;
@@ -153,11 +142,38 @@ User_schema.methods.addFollowListActions = function (friend,callback) {
  	}); 
 }
 
-User_schema.methods.getUsersData = function (friends,callback) {
+User_schema.methods.addToFollowList = function (user,callback) {
  	var r = {msg:[],follow:[]};
  	var currUser = this;
+ 	return this.model('users').findOne({ id : user.friend }) 
+ 	.exec(function(err,foundedUser){
+ 		if (err){
+ 			r.status= 0;
+ 			r.msg.push('failed while retriving user');
+ 			return callback(r);
+ 		}
+ 		else if (foundedUser){
+			//update user details
+			currUser.follow.push({ "_id": foundedUser._id, "method":user.method });
+			currUser.save();
+ 			r.status= 1;
+ 			r.length=currUser.follow.length;
+ 			r.follow=currUser.follow;
+			r.msg.push('user follow list updated');
+			return callback(r);
+ 		}
+ 		else{
+			r.status= 0;
+			r.msg.push('user does not exist');
+			return callback(r);
+ 		}
+ 	}); 
+}
+
+User_schema.methods.getUsersData = function (callback) {
+ 	var r = {msg:[],follow:[]};
  	//select populate match
-	return this.model('users').find({id:this.id}).populate('User')
+	return this.model('users').find({id:this.id},{follow:true})//.populate('User')
  	.exec(function(err,foundedUsers){
  		if (err){
  			r.status= 0;

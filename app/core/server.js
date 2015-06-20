@@ -25,8 +25,8 @@ app.locals.name = "x-finder";
 app.set('port', port);
 app.use(express.static(process.cwd() + '/app/public'));
 app.use(bodyParser());
-// app.use(bodyParser.urlencoded({extended: false}));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 
 app.use(function(req, res, next) {
@@ -37,7 +37,8 @@ app.use(function(req, res, next) {
 
 // user queries
 app.post("/user/updateUser", controllers.user.updateUser);
-app.post("/user/addOrRemoveFromFollowList", controllers.user.addOrRemoveFromFollowList);
+app.post("/user/addFollowList", controllers.user.addFollowList);
+app.post("/user/removeFollowList", controllers.user.removeFollowList);
 app.post("/user/getFollowedUsersData", controllers.user.getFollowedUsersData);
 
 app.get('/*', function(req, res) {
@@ -49,7 +50,7 @@ app.get('/*', function(req, res) {
 
 //uncaught exception will be caught here
 process.on("uncaughtException", function(err) { 
-  console.log(err);
+  console.log(err.stack);
 });
 
 app.listen(app.get('port'), function(err) {

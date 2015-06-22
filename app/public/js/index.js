@@ -1,6 +1,6 @@
 /* global vars */
 g_domainDev="http://localhost:8080/";
-g_domainPro="http://x-finder.herokuapp.com/";
+g_domainPro="http://x-find.herokuapp.com/";
 g_domain = g_domainPro;
 g_userInfo = null;
 g_loc = new GPSLocation();
@@ -48,8 +48,9 @@ $(window).resize(function() {
 function initPageCss() {
 	var footer = parseInt($('footer').height());
 	var header = parseInt($('header').height());
-	$("[data-role=content]").css({"height": window.innerHeight - footer +1 + "px"});
+	$("[data-role=content]").css({"height": window.innerHeight - footer - header + "px"});
 	$("#loginPage [data-role=content]").css("height", window.innerHeight +1 + "px");
+	$("#mapPage [data-role=content]").css({"height": window.innerHeight - footer +1 + "px"});
 }
 
 $(window).on('hashchange', function(e) {

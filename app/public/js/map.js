@@ -7,8 +7,8 @@ function Marker (id,location,title,type){
 	}
 }
 var icons_images = {
-	me : "img/mylocation.png",
-	map_location : "img/icon_location.png",
+	me : "img/Opening.png",
+	map_location : "img/Maps_MyPlace.png",
 }
 var MapSingelton = (function (){
     var _map;
@@ -116,7 +116,7 @@ var MapSingelton = (function (){
 		controlDiv.setAttribute("id", image.split(".")[0]);
 		controlDiv.innerHTML = '<img id='+image.split(".")[0]+' src='+image+' width="45" height="45" >';
 		if (controlDiv.getAttribute("id").indexOf(icons_images.map_location)) {
-				controlDiv.style.paddingBottom = '20px';
+				controlDiv.style.paddingBottom = '14px';
 				controlDiv.style.paddingRight = '20px';
 		}
 		// if (controlDiv.getAttribute("id")=="img/someNameToBePopup") {
@@ -145,7 +145,7 @@ var MapSingelton = (function (){
                 _map.setCenter(_my_location);
                 _oms = new OverlappingMarkerSpiderfier(_map, {markersWontMove: true, markersWontHide: true , keepSpiderfied:true});
                 _geocoder = new google.maps.Geocoder()
-                //_map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(new HomeControl(_map,icons_images.map_location));
+                _map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(new HomeControl(_map,icons_images.map_location));
                
                 init_map_events()
                

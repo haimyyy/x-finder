@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Orator';
+    src: url('Fonts/Orator - Text/OratorStd.otf'), 
+    url('Fonts/Orator - Text/OratorStd.otf') format('truetype'), 
+    url('Fonts/Orator - Text/OratorStd.otf') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lucky';
+    src: url('Fonts/Lucky - Headers/Lucky7.otf'), 
+    url('Fonts/Lucky - Headers/Lucky7.otf') format('truetype'), 
+    url('Fonts/Lucky - Headers/Lucky7.otf') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ds_digital - numbers';
+    src: url('Fonts/ds_digital - numbers/DS-DIGI.ttf'), 
+    url('Fonts/ds_digital - numbers/DS-DIGI.ttf') format('truetype'), 
+    url('Fonts/ds_digital - numbers/DS-DIGI.ttf') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

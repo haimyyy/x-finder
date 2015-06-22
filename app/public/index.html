@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>x-findex</title>
+        <title>x-find</title>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
@@ -22,7 +22,10 @@
         <script type="text/javascript" src="js/jsapi.js"></script>
         <script type="text/javascript" src="js/googlespider.js"></script>
         <!-- my files -->
+        <link rel="stylesheet" type="text/css" href="css/screens.css" />
+        <link rel="stylesheet" type="text/css" href="css/fonts.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+
 
         <script type="text/javascript" src="js/map.js"></script>
         <script type="text/javascript" src="js/location.js"></script>
@@ -32,51 +35,124 @@
     <body>
        
         <div data-role="page" id="loginPage" >
-            <header data-role="header" data-position="fixed" data-tap-toggle="false">
+            <!-- <header data-role="header" data-position="fixed" data-tap-toggle="false">
                 <img src="img/menu_button.png" id="nav" />
-            </header>
+            </header> -->
                 
             <div data-role="content" class="ui-content" id="content">
-                <img class="logo" src="img/logo.png">
+                
+                <section class="loginBox">
+                    <p class="loginFacebook" onclick="fbLogin()"> LOG-IN WITH <span class="loginFacebook"> FACEBOOK </span> </p>
+                    <p class="loginLicense"> WE DO NOT PUBLISH IN YOUR NAME </p>
+                </section>
             </div>
-            <footer data-role="footer" data-position="fixed" data-tap-toggle="false">
-                <button onclick="changePageTo('mapPage')"> map </button>
-                <button id="fbAction" onclick="fbLogin()"> fb login </button>
-            </footer>
+            
         </div>
       
+        <div data-role="page" id="findFriendPage" >
+            <header data-position="fixed" data-tap-toggle="false">
+                <a href="#" onclick="history.back()"> </a> 
+                <p class="headerTitle">EX DATA</p>
+                <p class="headerSubTitle">FACEBOOK ACCOUNT</p>
+            </header>
+            <div data-role="content" class="ui-content" id="content">
+                    
+            </div> 
+
+            <footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+                <div data-role="navbar">
+                        <ul>
+                            <li>
+                                <a href="#" data-inline="true">  </a>
+                            </li>
+                            <li>
+                                <a href="#targetPage" data-inline="true"> OK! FIND </a>
+                            </li>
+                            <li>
+                                <a href="#" data-inline="true">  </a>
+                            </li>
+                        </ul>
+                    </div>
+            </footer>   
+        </div>
+
+        <div data-role="page" id="targetPage" >
+            <header data-position="fixed" data-tap-toggle="false">
+                <a href="#" onclick="history.back()"> </a> 
+                <p class="headerTitle">THE TARGET</p>
+                <p class="headerSubTitle">MARK YOUR CAUSE</p>
+            </header>
+            <div data-role="content" class="ui-content" id="content">
+               
+            </div> 
+
+            <footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+                <div data-role="navbar">
+                        <ul>
+                            <li>
+                                <a href="#" data-inline="true">  </a>
+                            </li>
+                            <li>
+                                <a href="#mapPage" data-inline="true"> OK! Go </a>
+                            </li>
+                            <li>
+                                <a href="#" data-inline="true">  </a>
+                            </li>
+                        </ul>
+                    </div>
+            </footer>   
+        </div>
+
 	  <div data-role="page" id="mapPage" >
             <header data-role="header" data-position="fixed" data-tap-toggle="false">
-                <img src="img/menu_button.png" id="nav" />
+                <img src="img/Menu_Icon.png" id="nav" />
+                <p class="headerTitle">USER NAME</p>
+                <p class="headerSubTitle">GOAL: METHOD</p>
             </header>
             <div data-role="content" class="ui-content" id="content">
                <div id="map"> </div>
-            </div>    
+            </div> 
+
+            <footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+                 <div data-role="navbar">
+                        <ul>
+                            <li>
+                                <a href="#" data-inline="true"> 24 HOURS </a>
+                            </li>
+                            <li>
+                                <a href="#" data-inline="true"> LAST WEEK </a>
+                            </li>
+                            <li>
+                                <a href="#" data-inline="true"> FORECAST </a>
+                            </li>
+                        </ul>
+                    </div>
+            </footer>   
         </div>
                 
-        <div data-role="panel" data-position="left" data-display="overlay" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
+        <div data-role="panel" data-position="left" data-display="push" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
             <ul data-role="listview" >
                 <!-- <li data-icon="delete">
                     <a href="#" data-rel="close">סגור</a>
                 </li> -->
-                <li class="navTitle"> מעקבים </li>
+                <li class="navTitle"> Espionage </li>
                 <li id="userId" class="navUserRow">
                     <span class="ui-btn ui-icon-custom"> </span>
-                    <p class="navUserName">אבישי חג'בי</p>
-                    <p class="navMethod">התחמקות</p>
+                    <p class="navUserName">Avishay Hajbi</p>
+                    <p class="navMethod">GOAL: TRACKING</p>
                 </li>
                 <li id="userId" class="navUserRow">
                     <span class="ui-btn ui-icon-custom"> </span>
-                    <p class="navUserName">חיים יעקוב</p>
-                    <p class="navMethod">מעקב</p>
+                    <p class="navUserName">Haim Yaakov</p>
+                    <p class="navMethod">GOAL: TRACKING</p>
                 </li>
                 <li id="userId" class="navUserRow">
                     <span class="ui-btn ui-icon-custom"> </span>
-                    <p class="navUserName">תמר זנזורי</p>
-                    <p class="navMethod">סקרנות</p>
+                    <p class="navUserName">Tamar Bracha</p>
+                    <p class="navMethod">GOAL: TRACKING</p>
                 </li>
                 <li class="navAddFriend">
-                    <img src="img/plus.png">
+                   ADD MORE PEOPLE
                 </li>
 
             </ul>

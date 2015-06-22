@@ -25,12 +25,28 @@ var MapSingelton = (function (){
         var mapOptions = {
 			center : new google.maps.LatLng(_my_location),
 			zoom : 14,
-			// panControl: false,
-			// zoomControl: false,
-			// mapTypeControl: false,
-			// scaleControl: false,
-			// streetViewControl: false,
-			// overviewMapControl: false,
+			styles: [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":10},
+{"lightness":30},{"gamma":0.5},{"hue":"#435158"}]},
+{"featureType":"administrative.province","elementType":"labels.text","stylers":[{"visibility":"off"}]},
+{"featureType":"administrative.locality","elementType":"labels.text","stylers":[{"visibility":"off"}]},
+{"featureType":"administrative.neighborhood","elementType":"labels.text","stylers":
+[{"visibility":"off"}]},
+{"featureType":"administrative.land_parcel","elementType":"labels.text","stylers":
+[{"visibility":"simpliﬁed"}]},
+{"featureType":"landscape.man_made","elementType":"labels.text","stylers":[{"visibility":"off"}]},
+{"featureType":"landscape.natural","elementType":"labels.text","stylers":
+[{"visibility":"simpliﬁed"}]},
+{"featureType":"landscape.natural.landcover","elementType":"labels.text","stylers":
+[{"visibility":"off"}]},
+{"featureType":"landscape.natural.terrain","elementType":"labels.text","stylers":
+[{"visibility":"off"}]},
+{"featureType":"road.highway.controlled_access","elementType":"labels.text","stylers":
+[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"labels.text","stylers":
+[{"visibility":"simpliﬁed"},{"lightness":"-40"},{"gamma":"1.13"}]},
+{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"on"},
+{"lightness":"-78"},{"gamma":"1.62"},{"weight":"1"},{"hue":"#00ebff"},{"saturation":"-11"}]},
+{"featureType":"transit.station.bus","elementType":"all","stylers":[{"visibility":"on"}]}],
+		
 			disableDefaultUI: true
 		};
 		console.log("map is ready to use");
@@ -129,7 +145,7 @@ var MapSingelton = (function (){
                 _map.setCenter(_my_location);
                 _oms = new OverlappingMarkerSpiderfier(_map, {markersWontMove: true, markersWontHide: true , keepSpiderfied:true});
                 _geocoder = new google.maps.Geocoder()
-                _map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(new HomeControl(_map,icons_images.map_location));
+                //_map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(new HomeControl(_map,icons_images.map_location));
                
                 init_map_events()
                

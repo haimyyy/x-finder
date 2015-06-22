@@ -34,7 +34,10 @@ function handleNavBarClick(obj){
 	}
 	else if ($(obj).context.nodeName == 'SPAN'){
 		console.log('span')
-		$(obj).parent().remove();
+		//$(obj).parent().remove();
+		if ($(obj).hasClass('downPos'))
+			$(obj).removeClass('downPos')
+		else $(obj).addClass('downPos')
 	}
 }
 
@@ -43,7 +46,10 @@ $(window).resize(function() {
 });
 
 function initPageCss() {
-	$("[data-role=content]").css("height", window.innerHeight - $('[data-role=header]').height()-2 + "px");
+	var footer = parseInt($('footer').height());
+	var header = parseInt($('header').height());
+	$("[data-role=content]").css({"height": window.innerHeight - footer +1 + "px"});
+	$("#loginPage [data-role=content]").css("height", window.innerHeight +1 + "px");
 }
 
 $(window).on('hashchange', function(e) {

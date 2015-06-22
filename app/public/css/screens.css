@@ -1,0 +1,11 @@
+@media (min-width: 600px) {
+	.panel{
+		background-image: url('../img/Background_Menu X 2.png')  !important;
+	}
+	#loginPage #content{
+	 	background-image: url('../img/OPENING_GIF.gif');
+	}
+	#content {
+		background-image: url('../img/Background_Log In X 2.png');
+	}
+}

@@ -9,6 +9,8 @@
 }
 body{
 	overflow: hidden;
+	height: 100%;
+
 }
 html {
 	margin: 0;
@@ -23,40 +25,72 @@ html {
 	overflow: hidden;
 }
 /* header */
-[data-role=header] {
+header {
 	position: fixed;
-	z-index: 1000;
 	height: 50px;
-	background-color: white;
-	border-bottom: 1px solid gray !important;
+	background: transparent !important;
+	background-color: transparent !important;
 	width: 100%;
+	z-index: 1000;
+	font-family: 'Lucky';
 	text-align: center;
 	text-shadow: none;
 }
-.ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit {
+.ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, 
+html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit {
 	background-color: transparent;
 	border-color: transparent;
 	color: black;
 	text-shadow: none;
-	font-weight: 700;
+	font-weight: normal;
 }
-header div {
+
+header a {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background-image: url('../img/Menu_Arrow.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	float: left;
+	margin: 13px 0 0 13px;
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+	transform: rotate(-180deg);
+}
+[data-role=header] div{
 	display: inline-block;
 }
-[data-role=header] #nav {
+header  #nav {
 	position: relative;
 	display: inline;
 	/*top: 8px;*/
 	float: left;
-	margin: 8px 0px 0px 8px;
-	width: 35px;
-	height: 35px;
+	margin: 13px 0px 0px 13px;
+	width: 25px;
+	height: 25px;
 }
 
-[class*=ui-block-] > .ui-btn, [class*=ui-block-] > .ui-select, [class*=ui-block-] > .ui-checkbox, [class*=ui-block-] > .ui-radio, [class*=ui-block-] > button.ui-btn-inline, [class*=ui-block-] > button.ui-btn-icon-notext, .ui-header [class*=ui-block-] > button.ui-btn, .ui-footer [class*=ui-block-] > button.ui-btn {
+[class*=ui-block-] > .ui-btn, [class*=ui-block-] > .ui-select, [class*=ui-block-] > .ui-checkbox, 
+[class*=ui-block-] > .ui-radio, [class*=ui-block-] > button.ui-btn-inline, 
+[class*=ui-block-] > button.ui-btn-icon-notext, .ui-header [class*=ui-block-] > button.ui-btn, 
+.ui-footer [class*=ui-block-] > button.ui-btn {
 	margin-right: 0;
 }
-.ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, .ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active{
+.ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, 
+html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, 
+html head+body .ui-btn.ui-btn-a.ui-btn-active, .ui-page-theme-a .ui-checkbox-on:after, 
+html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, 
+html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after, 
+.ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, 
+html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, 
+html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active, .ui-page-theme-a .ui-slider-track .ui-btn-active, 
+html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, 
+html body .ui-group-theme-a .ui-slider-track .ui-btn-active, 
+html body div.ui-slider-track.ui-body-a .ui-btn-active{
 	text-shadow: none;
 	color:black;
 }
@@ -64,7 +98,9 @@ header div {
 	margin:0;
 }
 /* search */
-.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a {
+.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, 
+html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, 
+html .ui-panel-page-container-a {
 	position: relative;
 	height: 30px;
 	width: 60%;
@@ -79,15 +115,15 @@ header div {
 /* content css */
 #content {
 	position: relative;
-	padding: 0 15px 0 15px;
 	margin: 0;
 	height: 100%;
+	padding: 0;
 	text-align: center;
-	/*background-image: url('../img/background.jpg');*/
+	background-image: url('../img/Background_Log In X 1.png');
 	background-size: 100% 100%;
-	background-repeat: repeat;
-	font-family: Arial;
-	direction: rtl;
+	background-repeat: no-repeat;
+	background-position: center center;
+	/*direction: rtl;*/
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -117,21 +153,30 @@ header div {
 	background-color: transparent;
 }*/
 /* button visited*/
-.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited{
+.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, 
+html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, 
+html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, 
+html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited{
 	border-color: black;
 	text-shadow: none;
 	color:black;
 	background-color: transparent !important;
 }
 /*button hover*/
-.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:hover, html .ui-bar-a .ui-btn:hover, html .ui-body-a .ui-btn:hover, html body .ui-group-theme-a .ui-btn:hover, html head+body .ui-btn.ui-btn-a:hover{
+.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, 
+html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:hover, 
+html .ui-bar-a .ui-btn:hover, html .ui-body-a .ui-btn:hover, html body .ui-group-theme-a .ui-btn:hover, 
+html head+body .ui-btn.ui-btn-a:hover{
 	border-color: black;
 	text-shadow: none;
 	color:black;
 	background-color: transparent !important;
 }
 /*button after -- checkbox*/
-.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:after, html .ui-bar-a .ui-btn:after, html .ui-body-a .ui-btn:after, html body .ui-group-theme-a .ui-btn:after, html head+body .ui-btn.ui-btn-a:after{
+.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, 
+html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:after, 
+html .ui-bar-a .ui-btn:after, html .ui-body-a .ui-btn:after, html body .ui-group-theme-a .ui-btn:after, 
+html head+body .ui-btn.ui-btn-a:after{
 	border-color: black;
 	text-shadow: none;
 	color:black;
@@ -157,26 +202,92 @@ header div {
 	direction: rtl;
 	text-align: right;
 }
-.ui-input-search.ui-input-has-clear .ui-btn.ui-input-clear, .ui-input-text.ui-input-has-clear .ui-btn.ui-input-clear{
+.ui-input-search.ui-input-has-clear .ui-btn.ui-input-clear, 
+.ui-input-text.ui-input-has-clear .ui-btn.ui-input-clear{
 	margin: -15px .3125em 0;
-}
-/* top shadow */
-.topShadow{
-    -webkit-box-shadow: 0px -4px 3px rgba(48,48,48, 0.75);
-    -moz-box-shadow:    0px -4px 3px rgba(48,48,48, 0.75);
-    box-shadow:         0px -4px 3px rgba(48,48,48, 0.75);
-}
-/* bottom shadow */
-.bottomShadow{
-	box-shadow: 0px 0px 4px 3px rgba(48,48,48, 0.75) !important;
- 	-webkit-box-shadow: 0px 0px 4px 3px rgba(48,48,48, 0.75) !important;
-    -moz-box-shadow: 0px 0px 4px 3px #ffffff !important;
 }
 
 .ui-input-search .ui-body-inherit .ui-corner-all .ui-shadow-inset .ui-input-has-clear{
 	width: 50%;
 }
-/* map */
+
+/* google map -- prevent display copyright */
+/*a[href^="http://maps.google.com/maps"]{display:none !important}*/
+.gm-style-cc { display:none; }
+.gmnoprint a, .gmnoprint span {display:none;}
+.gmnoprint div {background:none !important;}
+
+/* footer */
+[data-role=footer]{
+	margin: 0;
+  	padding: 0;
+  	height: 50px;
+	background-color: black;
+}
+[data-role=navbar] li{
+	height: 49px;
+  	position: relative;
+  	top: 1px;
+}
+
+[data-role=navbar]{
+	height: 50px;
+	background-color: black;
+}
+
+[data-role=navbar] ul li:first-child a{
+	border:none;
+}
+.ui-navbar li a:hover,.ui-navbar li a:focus,.ui-navbar li a:active{
+	/*background-color: red;*/
+	color:green !important;
+}	
+.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, 
+html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, 
+html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, 
+html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited{
+	color: white;
+	opacity: 0.5;
+	top: 6px;
+  	height: 21px;
+  	line-height: 26px;
+	border-color: white;
+}
+
+/* login page */
+#loginPage #content{
+ background-image: url('../img/OPENING_GIF.gif');
+ background-size: 100% 100%;
+ background-repeat: no-repeat;
+ background-position: center center;
+}
+.loginBox{
+	position: relative;
+	top: 79.5%;
+	width: 56.5%;
+	right:3.5px;
+	min-width: 248px;
+	max-width: 252px;
+	font-family: 'Orator';
+}
+.loginFacebook{
+	width: 100%;
+	position: relative;
+	height:46px;
+	color:green;
+	background-color: black;
+	line-height: 53px;
+}
+.loginFacebook span{
+	font-weight: bold;
+}
+.loginLicense{
+	font-size: 10px;
+	color: white;
+	line-height: 31px;
+	opacity: 0.5;
+}
+/* map page*/
 #mapPage #content{
 	padding: 0;
 }
@@ -184,38 +295,25 @@ header div {
 	position: relative;
 	height: 100%;
 }
-/* google map -- prevent display copyright */
-/*a[href^="http://maps.google.com/maps"]{display:none !important}*/
-.gm-style-cc { display:none; }
-.gmnoprint a, .gmnoprint span {display:none;}
-.gmnoprint div {background:none !important;}
-
-/* login page */
-.logo{
-	position: relative;
-	width: 100%;
-	max-width: 350px;
-	top:15%;
-	height: auto;
-}
 /* panel */
 .panel{
-	direction: rtl;
-	background-color: #989898  !important;
+	/*direction: rtl;*/
+	background-image: url('../img/Background_Menu X 1.png')  !important;
+	background-size: cover;
+ 	background-repeat: no-repeat;
+ 	background-position: center center;
+
 }
 .panel .ui-listview>.ui-li-static, .panel .ui-listview>.ui-li-divider, .panel .ui-listview>li>a.ui-btn{
-	color: #D0D0D0 ;
-}
-.panel a{
-	text-align: right !important;
-}
-.panel li.navUserRow{
-	text-align: right !important;
+	color: green ;
+	width: 78%;
+  	margin-left: 13px;
 }
 
 .panel .ui-icon-custom {
-    background: url('../img/redX.png') 50% 50% no-repeat;
-    background-size: 30px 30px;
+    background-image: url('../img/Menu_Arrow.png');
+    background-repeat: no-repeat;
+      background-size: 15px 15px;
     background-position: 10px center;
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
@@ -226,23 +324,42 @@ header div {
 	border: none;
   	position: relative;
   	top:6px;
-  	float: left;
-  	width: 17px;
+  	float: right;
+  	width: 15px;
+  	height: auto;
 }
 .navTitle, .navMethod, .navUserName{
-	color: #F0F0F0  !important;
+	color: white  !important;
 	margin: 0 !important;
 }
+.navMethod, .navUserName{
+	font-family: 'Orator';
+}
 .navTitle{
+	font-family: 'Lucky';
 	text-align: center !important;
 	font-size: 20px !important;
 	font-weight: bold;
-	padding:10px !important;
+	height: 45px;
+  	line-height: 45px;
+	/*padding:10px !important;*/
 }
-.navAddFriend img{
-	margin:0 !important;
-	padding:0 !important;
+.downPos{
+	background-position-x: 15px !important;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+.navAddFriend {
+	background-image: url('../img/Avoidance_Icon 2.png');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 15px 18px;
 	position: relative !important;
+	text-align: center !important;
+  	line-height: 35px !important;
 }
 .navUserName{
 	font-size: 20px !important;

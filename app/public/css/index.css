@@ -23,18 +23,6 @@ html {
 	background: transparent;
 	overflow: hidden;
 }
-/* header */
-header {
-	position: fixed;
-	height: 50px;
-	background: transparent !important;
-	background-color: transparent !important;
-	width: 100%;
-	z-index: 1000;
-	font-family: 'Lucky';
-	text-align: center;
-	text-shadow: none;
-}
 .ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, 
 html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit {
 	background-color: transparent;
@@ -44,16 +32,29 @@ html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit {
 	font-weight: normal;
 }
 
-header a {
+/* header */
+header {
+	position: fixed;
+	height: 80px;
+	background: transparent !important;
+	background-color: transparent !important;
+	width: 100%;
+	z-index: 1000;
+	font-family: 'Lucky';
+	text-align: center;
+	text-shadow: none;
+}
+
+header .back {
 	display: inline-block;
-	/*width: 25px;
-	height: 25px;*/
 	background-image: url('../img/Menu_Arrow.png');
-	background-size: 25px;
+	background-size: 20px;
 	background-repeat: no-repeat;
 	background-position: center center;
 	float: left;
-	margin: 13px 0 0 13px;
+	opacity: 1 !important;
+	top: 28px !important;
+  	left: 22px !important;
 	-webkit-transform: rotate(180deg);
 	-moz-transform: rotate(-180deg);
 	-ms-transform: rotate(-180deg);
@@ -64,13 +65,33 @@ header a {
 	display: inline-block;
 }
 header #nav {
+	z-index: 2;
 	position: relative;
 	display: inline;
-	/*top: 8px;*/
 	float: left;
-	margin: 13px 0px 0px 13px;
+	top: 28px !important;
+  	left: 15px !important;
 	width: 25px;
 	height: 25px;
+}
+.headerTitle{
+	color: pink;
+  	font-size: 30px;
+  	top: 30px;
+  	position: relative;
+}
+.headerSubTitle{
+top: 35px;
+  position: relative;
+  width: 56%;
+  background-color: black;
+  color: white;
+  font-size: 17px;
+  font-weight: normal;
+  float: left;
+  text-align: right;
+  line-height: 10px;
+  padding: 0px 6px 5px 0;
 }
 
 [class*=ui-block-] > .ui-btn, [class*=ui-block-] > .ui-select, [class*=ui-block-] > .ui-checkbox, 
@@ -298,6 +319,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	line-height: 31px;
 	opacity: 0.5;
 }
+
 /* map page*/
 #mapPage #content{
 	padding: 0;

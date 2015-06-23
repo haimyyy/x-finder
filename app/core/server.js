@@ -20,7 +20,7 @@ fs.readdirSync(controllers_path).forEach(function (file) {
 
 var app = express();
 var port = process.env.PORT || 8080;
-app.locals.name = "x-finder";
+app.locals.name = "x-find";
 // configure Express
 app.set('port', port);
 app.use(express.static(process.cwd() + '/app/public'));
@@ -37,9 +37,9 @@ app.use(function(req, res, next) {
 
 // user queries
 app.post("/user/updateUser", controllers.user.updateUser);
-app.post("/user/addFollowList", controllers.user.addFollowList);
-app.post("/user/removeFollowList", controllers.user.removeFollowList);
-app.post("/user/getFollowedUsersData", controllers.user.getFollowedUsersData);
+app.post("/user/addFollowList",controllers.user.authenticateUser, controllers.user.addFollowList);
+app.post("/user/removeFollowList",controllers.user.authenticateUser, controllers.user.removeFollowList);
+app.post("/user/getFollowedUsersData",controllers.user.authenticateUser, controllers.user.getFollowedUsersData);
 
 app.get('/*', function(req, res) {
   r={};

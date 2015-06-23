@@ -154,13 +154,20 @@ User_schema.methods.addToFollowList = function (user,callback) {
  		}
  		else if (foundedUser){
 			//update user details
-			currUser.follow.push({ "_id": foundedUser._id, "method":user.method });
-			currUser.save();
- 			r.status= 1;
- 			r.length=currUser.follow.length;
- 			r.follow=currUser.follow;
-			r.msg.push('user follow list updated');
-			return callback(r);
+			//currUser.follow.push({ _id: foundedUser._id, method:user.method });
+			currUser.update({$addToSet:{follow:{ _id: foundedUser._id, method:user.method }}}).exec(function(err){
+				if (err){
+					r.status= 0;
+		 			r.msg.push('failed while updating user');
+		 			return callback(r);
+				}
+
+				r.status= 1;
+	 			r.length=currUser.follow.length;
+	 			r.follow=currUser.follow;
+				r.msg.push('user follow list updated');
+				return callback(r);
+			});
  		}
  		else{
 			r.status= 0;
@@ -173,7 +180,9 @@ User_schema.methods.addToFollowList = function (user,callback) {
 User_schema.methods.getUsersData = function (callback) {
  	var r = {msg:[],follow:[]};
  	//select populate match
-	return this.model('users').find({id:this.id},{follow:true})//.populate('User')
+	//populate({'path':'user_id',match:{'name':'kenan'}})
+	return this.model('users').find({id:this.id})
+	.populate('follow')//{path:this.id,match:{id:{$each:{$in:this.follow}}}}
  	.exec(function(err,foundedUsers){
  		if (err){
  			r.status= 0;
@@ -192,7 +201,7 @@ User_schema.methods.getUsersData = function (callback) {
 			r.msg.push('user does not exist');
 			return callback(r);
  		}
- 	}); 
+ 	});
 }
 
 User = mongoose.model('users', User_schema);

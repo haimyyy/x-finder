@@ -86,8 +86,8 @@ function getUserDetails(connection) {
 }
 function updateUserSuccess(data){
 	console.log(data)
-	//changePageTo("findFriendPage")
-	changePageTo("mapPage")
+	changePageTo("findFriendPage")
+	//changePageTo("mapPage")
 }
 function updateUserError(XMLHttpRequest, textStatus, errorThrown){
 	console.log(XMLHttpRequest, textStatus, errorThrown)

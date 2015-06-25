@@ -38,6 +38,8 @@ function handleNavBarClick(obj){
 		if ($(obj).hasClass('downPos'))
 			$(obj).removeClass('downPos')
 		else $(obj).addClass('downPos')
+
+		
 	}
 }
 

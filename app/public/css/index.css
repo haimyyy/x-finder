@@ -48,13 +48,13 @@ header {
 header .back {
 	display: inline-block;
 	background-image: url('../img/Menu_Arrow.png');
-	background-size: 20px;
+	  background-size: 16px !important;
 	background-repeat: no-repeat;
 	background-position: center center;
 	float: left;
 	opacity: 1 !important;
-	top: 28px !important;
-  	left: 22px !important;
+	top: 26px !important;
+  	left: 24px !important;
 	-webkit-transform: rotate(180deg);
 	-moz-transform: rotate(-180deg);
 	-ms-transform: rotate(-180deg);
@@ -75,23 +75,24 @@ header #nav {
 	height: 25px;
 }
 .headerTitle{
-	color: pink;
-  	font-size: 30px;
+	color: #FF7FD3;
+  	font-size: 28px;
   	top: 30px;
   	position: relative;
 }
 .headerSubTitle{
-top: 35px;
-  position: relative;
-  width: 56%;
-  background-color: black;
-  color: white;
-  font-size: 17px;
-  font-weight: normal;
-  float: left;
-  text-align: right;
-  line-height: 10px;
-  padding: 0px 6px 5px 0;
+	font-family: 'Orator';
+	top: 37px;
+  	position: relative;
+ 	width: 56%;
+ 	background-color: black;
+  	color: white;
+  	font-size: 17px;
+  	font-weight: normal;
+  	float: left;
+  	text-align: right;
+  	line-height: 10px;
+  	padding: 0px 6px 5px 0;
 }
 
 [class*=ui-block-] > .ui-btn, [class*=ui-block-] > .ui-select, [class*=ui-block-] > .ui-checkbox, 
@@ -260,8 +261,6 @@ html head+body .ui-btn.ui-btn-a:after{
 	background-color: black;
 }
 
-
-
 .ui-grid-b>.ui-block-a, .ui-grid-b>.ui-block-b, .ui-grid-b>.ui-block-c{
 	border-left: 1px solid white;
 	height: 39px;
@@ -287,8 +286,8 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 }
 
 /* login page */
-#loginPage #content{
- background-image: url('../img/OPENING_GIF.gif') !important;
+#loginPage{
+ background-image: url('../img/OPENING_GIF.gif');
  background-size: 100% 100% !important;
  background-repeat: no-repeat !important;
  background-position: center center !important;
@@ -373,7 +372,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	font-size: 20px !important;
 	font-weight: bold;
 	height: 45px;
-  	line-height: 45px;
+  	line-height: 49px;
 	/*padding:10px !important;*/
 }
 .downPos{
@@ -383,6 +382,15 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);
+}
+.categories{
+	height: 0px !important;
+	visibility: hidden;
+}
+.categories label{
+	/*font-family: 'Orator';*/
+	color: white !important;
+	border:none !important;
 }
 .navAddFriend {
 	background-image: url('../img/Avoidance_Icon 2.png');

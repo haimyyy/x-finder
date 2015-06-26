@@ -317,7 +317,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
   	margin-left: 13px;
 }
 .ui-listview>li p{
-	overflow: none;
+	overflow: visible;
 }
 .panel .ui-icon-custom {
     background-image: url('../img/Menu_Arrow.png');
@@ -361,7 +361,6 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	transform: rotate(90deg);
 }
 .categories{
-	/*height: 0px !important;*/
 	display: none;
 	top: 7px;
   	position: relative;

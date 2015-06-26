@@ -153,31 +153,6 @@ html .ui-panel-page-container-a {
 	-webkit-overflow-scrolling: touch;
 }
 
-/* input type text TODO changed
-.ui-input-text input, .ui-input-search input{
-	text-align: right;
-	height: 0px;
-}
-.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a{
-	height: 35px;
-	width: 60%;
-	margin: 7px 0 0 0;
-}*/
-
-/* checkbox TODO changed
-.ui-controlgroup-horizontal .ui-controlgroup-controls>.ui-btn, .ui-controlgroup-horizontal .ui-controlgroup-controls li>.ui-btn, .ui-controlgroup-horizontal .ui-controlgroup-controls .ui-checkbox, .ui-controlgroup-horizontal .ui-controlgroup-controls .ui-radio, .ui-controlgroup-horizontal .ui-controlgroup-controls .ui-select{
-	float: none;
-	padding:5px 0 0 0;
-}
-.ui-icon-check:after, html .ui-btn.ui-checkbox-on.ui-checkbox-on:after{
-	background-image: none;
-}
-.ui-checkbox:last-child{
-	padding-bottom: 12px;
-}
-.ui-btn.ui-checkbox-off:after{
-	background-color: transparent;
-}*/
 /* button visited*/
 .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, 
 html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, 
@@ -341,7 +316,9 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	width: 78%;
   	margin-left: 13px;
 }
-
+.ui-listview>li p{
+	overflow: none;
+}
 .panel .ui-icon-custom {
     background-image: url('../img/Menu_Arrow.png');
     background-repeat: no-repeat;
@@ -376,7 +353,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	/*padding:10px !important;*/
 }
 .downPos{
-	background-position: 15px 19px !important;
+	background-position: 19px 19px !important;
 	-webkit-transform: rotate(90deg);
 	-moz-transform: rotate(90deg);
 	-ms-transform: rotate(90deg);
@@ -384,13 +361,37 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	transform: rotate(90deg);
 }
 .categories{
-	height: 0px !important;
-	visibility: hidden;
+	/*height: 0px !important;*/
+	display: none;
+	top: 7px;
+  	position: relative;
 }
 .categories label{
-	/*font-family: 'Orator';*/
+	font-family: 'Orator';
 	color: white !important;
 	border:none !important;
+}
+.css-checkbox{
+	left:0px !important;
+	top:8px !important;
+  	position: relative;
+}
+.css-label{
+	position: relative;
+	left: 42px;
+	top: 2px;
+}
+.navCont{
+	position: relative;
+	top:4px;
+}
+.navUserName{
+	position: relative;
+	font-size: 20px !important;
+}
+.navMethod{
+	position: relative;
+	font-size: 15px !important;
 }
 .navAddFriend {
 	background-image: url('../img/Avoidance_Icon 2.png');
@@ -401,9 +402,30 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	text-align: center !important;
   	line-height: 35px !important;
 }
-.navUserName{
-	font-size: 20px !important;
+
+
+/* input type text TODO changed
+.ui-input-text input, .ui-input-search input{
+	text-align: right;
+	height: 0px;
 }
-.navMethod{
-	font-size: 15px !important;
+.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a{
+	height: 35px;
+	width: 60%;
+	margin: 7px 0 0 0;
+}*/
+
+/* checkbox TODO changed
+.ui-controlgroup-horizontal .ui-controlgroup-controls>.ui-btn, .ui-controlgroup-horizontal .ui-controlgroup-controls li>.ui-btn, .ui-controlgroup-horizontal .ui-controlgroup-controls .ui-checkbox, .ui-controlgroup-horizontal .ui-controlgroup-controls .ui-radio, .ui-controlgroup-horizontal .ui-controlgroup-controls .ui-select{
+	float: none;
+	padding:5px 0 0 0;
 }
+.ui-icon-check:after, html .ui-btn.ui-checkbox-on.ui-checkbox-on:after{
+	background-image: none;
+}
+.ui-checkbox:last-child{
+	padding-bottom: 12px;
+}
+.ui-btn.ui-checkbox-off:after{
+	background-color: transparent;
+}*/

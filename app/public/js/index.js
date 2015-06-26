@@ -34,11 +34,19 @@ function handleNavBarClick(obj){
 	}
 	else if ($(obj).context.nodeName == 'SPAN'){
 		console.log('span')
-		//$(obj).parent().remove();
-		if ($(obj).hasClass('downPos'))
-			$(obj).removeClass('downPos')
-		else $(obj).addClass('downPos')
 
+		
+
+		if ($(obj).hasClass('downPos')){
+			$(obj).removeClass('downPos')
+			$(obj).parent().children().filter('section').css({'display':'none'})
+		}
+		else {
+			$('.categories').css('display','none')
+			$('.panel .navUserRow span').removeClass('downPos')
+			$(obj).addClass('downPos')
+			$(obj).parent().children().filter('section').css({'display':'block'})
+		}	
 		
 	}
 }

@@ -86,7 +86,9 @@ function getUserDetails(connection) {
 }
 function updateUserSuccess(data){
 	console.log(data)
-	changePageTo("findFriendPage")
+	//TODO remove
+	if (document.domain != "localhost")
+		changePageTo("findFriendPage")
 }
 function updateUserError(XMLHttpRequest, textStatus, errorThrown){
 	console.log(XMLHttpRequest, textStatus, errorThrown)

@@ -51,6 +51,8 @@ function handleNavBarClick(obj){
 	}
 }
 
+
+
 $(window).resize(function() {
 	initPageCss();
 });

@@ -352,34 +352,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
   	line-height: 49px;
 	/*padding:10px !important;*/
 }
-.downPos{
-	background-position: 19px 19px !important;
-	-webkit-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	transform: rotate(90deg);
-}
-.categories{
-	display: none;
-	top: 7px;
-  	position: relative;
-}
-.categories label{
-	font-family: 'Orator';
-	color: white !important;
-	border:none !important;
-}
-.css-checkbox{
-	left:0px !important;
-	top:8px !important;
-  	position: relative;
-}
-.css-label{
-	position: relative;
-	left: 42px;
-	top: 2px;
-}
+
 .navCont{
 	position: relative;
 	top:4px;
@@ -390,7 +363,69 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 }
 .navMethod{
 	position: relative;
-	font-size: 15px !important;
+	/*font-size: 15px !important;*/
+	font-size: small !important;
+	opacity: 0.5;
+}
+.downPos{
+	background-position: 19px 19px !important;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+.categories{
+	display: none;
+	top: 20px;
+  	position: relative;
+	height: 140px;
+}
+.categories label{
+	font-family: 'Orator';
+	color: white !important;
+	border:none !important;
+	height: 25px;
+}
+input[type=radio]{
+	/*display: none ;*/
+}
+.css-checkbox{
+	width: 12px !important;
+	top:8px !important;
+  	position: relative;
+}
+
+.css-label{
+	opacity: 0.5;
+	position: relative;
+	left: 42px;
+	top: 2px;
+}
+.radio{
+	background-color: red;
+}
+.radio-checked{
+	background-color: white;
+}
+
+.save, .cancel{
+	position: relative;
+  	color: white;
+  	font-family: Orator;
+  	padding: 5px;
+  	opacity: 0.5;
+}
+.save:hover, .cancel:hover,.save:focus, .cancel:focus,.save:active, .cancel:active{
+	color:green !important;
+	text-shadow:none;
+	opacity: 1;
+}	
+.save{
+	float: right;
+}
+.cancel{
+	float: left;
 }
 .navAddFriend {
 	background-image: url('../img/Avoidance_Icon 2.png');
@@ -401,7 +436,6 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	text-align: center !important;
   	line-height: 35px !important;
 }
-
 
 /* input type text TODO changed
 .ui-input-text input, .ui-input-search input{

@@ -333,7 +333,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
     margin: 0 !important;
     z-index: 1;
 }
-.panel span{
+.navUserRow > span{
 	border: none;
   	position: relative;
   	float: right;
@@ -407,20 +407,39 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	position: relative;
 
 }
+
 /*.css-label span{
 	float: left;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  left: -29px;
-  width: 18px;
-  height: 18px;
-  background-color: transparent;
-  border:1px solid white;
+  	margin: 0;
+  	padding: 0;
+  	position: relative;
+  	left: -29px;
+  	width: 18px;
+  	height: 18px;
+  	background-color: transparent;
+  	border:1px solid white;
 }*/
 .css-radio { display:none;}
-/*.css-radio:checked+label span{
-	background-color: white !important;
+.ui-radio .ui-btn.ui-radio-on:after{
+	background-image: none;
+    background-color:white;
+    opacity: 1;
+  	width: 8px;
+  	height: 8px;
+  	border-width: 2px;
+  	border-style: solid;
+}
+.ui-btn.ui-checkbox-off:after, .ui-btn.ui-checkbox-on:after, 
+.ui-btn.ui-radio-off:after, .ui-btn.ui-radio-on:after{
+	background-image: none;
+    background-color:transparent; 
+  	width: 8px;
+  	height: 8px;
+  	border-width: 2px;
+  	border-style: solid;
+}
+/*.css-radio:checked + .css-label span{
+	background-color: red !important;
 }*/
  
 

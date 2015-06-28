@@ -2,6 +2,7 @@
 g_domainDev="http://localhost:8080/";
 g_domainPro="http://x-find.herokuapp.com/";
 g_domain = g_domainPro;
+
 g_userInfo = null;
 g_loc = new GPSLocation();
 

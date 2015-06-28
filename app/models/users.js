@@ -22,7 +22,7 @@ User_schema = new Schema(
 			}
 		},
 		follow : [{
-			id: {type: Schema.ObjectId , ref:'User'},
+			user_id: {type: Schema.ObjectId , ref:'User'},
 			method: { type : String, default:''}
 		}],
 		location: {
@@ -127,12 +127,19 @@ User_schema.methods.removeFromFollowList = function (user,callback) {
  		else if (foundedUser){
 			//update user details
 			currUser.follow.pull({ "_id": foundedUser._id });
-			currUser.save();
- 			r.status= 1;
- 			r.length=currUser.follow.length;
- 			r.follow=currUser.follow;
-			r.msg.push('user follow list updated');
-			return callback(r);
+			currUser.save(function(err){
+				if (err){
+		 			r.status= 0;
+		 			r.msg.push('failed pulling user');
+		 			return callback(r);
+		 		}
+				r.status= 1;
+	 			r.length=currUser.follow.length;
+	 			r.follow=currUser.follow;
+				r.msg.push('user follow list updated');
+				return callback(r);
+			});
+ 			
  		}
  		else{
 			r.status= 0;
@@ -179,26 +186,29 @@ User_schema.methods.addToFollowList = function (user,callback) {
 
 User_schema.methods.getUsersData = function (callback) {
  	var r = {msg:[],follow:[]};
- 	//select populate match
-	//populate({'path':'user_id',match:{'name':'kenan'}})
-	return this.model('users').find({id:this.id})
-	.populate('follow')//{path:this.id,match:{id:{$each:{$in:this.follow}}}}
+ 	var follow = [];
+ 	
+	return this.model('users').find(this._id)
+ 	.populate('follow')
+ 	.populate('follow.user_id')
+ 	.select('name id')
  	.exec(function(err,foundedUsers){
  		if (err){
  			r.status= 0;
- 			r.msg.push('failed while retriving user');
+ 			r.msg.push('failed while db user searching');
  			return callback(r);
  		}
  		else if (foundedUsers){
 			//update user details
  			r.status= 1;
+ 			r.length = foundedUsers.length;
  			r.follow=foundedUsers;
-			r.msg.push('user follow list updated');
+			r.msg.push('user follow list');
 			return callback(r);
  		}
  		else{
 			r.status= 0;
-			r.msg.push('user does not exist');
+			r.msg.push('followed user does not exist');
 			return callback(r);
  		}
  	});

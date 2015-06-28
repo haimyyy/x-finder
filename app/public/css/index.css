@@ -234,12 +234,14 @@ html head+body .ui-btn.ui-btn-a:after{
 [data-role=navbar]{
 	height: 50px;
 	background-color: black;
+
 }
 
 .ui-grid-b>.ui-block-a, .ui-grid-b>.ui-block-b, .ui-grid-b>.ui-block-c{
 	border-left: 1px solid white;
 	height: 39px;
   	top: 6px;
+
 }
 [data-role=navbar] ul li:first-child{
 	border:none;
@@ -248,6 +250,7 @@ html head+body .ui-btn.ui-btn-a:after{
 	color:green !important;
 	text-shadow:none;
 	opacity: 1;
+
 }	
 .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, 
 html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, 
@@ -258,6 +261,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
   	height: 21px;
   	line-height: 26px;
 	border:none;
+	font-weight: lighter;
 }
 
 /* login page */
@@ -339,6 +343,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 .navTitle, .navMethod, .navUserName{
 	color: white  !important;
 	margin: 0 !important;
+	cursor: pointer;
 }
 .navMethod, .navUserName{
 	font-family: 'Orator';
@@ -377,7 +382,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 }
 .categories{
 	display: none;
-	top: 20px;
+	top: 10px;
   	position: relative;
 	height: 140px;
 }
@@ -385,29 +390,39 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	font-family: 'Orator';
 	color: white !important;
 	border:none !important;
-	height: 25px;
+	/*height: 25px;*/
 }
-input[type=radio]{
-	/*display: none ;*/
+
+.ui-btn, label.ui-btn{
+	font-weight: lighter;
 }
-.css-checkbox{
+.css-radio{
 	width: 12px !important;
-	top:8px !important;
+	/*top:8px !important;*/
   	position: relative;
 }
 
 .css-label{
 	opacity: 0.5;
 	position: relative;
-	left: 42px;
-	top: 2px;
+
 }
-.radio{
-	background-color: red;
-}
-.radio-checked{
-	background-color: white;
-}
+/*.css-label span{
+	float: left;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: -29px;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border:1px solid white;
+}*/
+.css-radio { display:none;}
+/*.css-radio:checked+label span{
+	background-color: white !important;
+}*/
+ 
 
 .save, .cancel{
 	position: relative;

@@ -19,6 +19,10 @@
         <link rel="stylesheet" type="text/css" href="css/html5reset-1.6.1.css" />
         <script type="text/javascript" src="js/underscore.js"></script>
         <!-- google maps -->
+        <script>
+            //caught the errors
+            window.onerror = function(e){alert("caught errors: "+JSON.stringify(e))}
+        </script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=en"></script>
         <script type="text/javascript" src="js/jsapi.js"></script>
         <script type="text/javascript" src="js/googlespider.js"></script>
@@ -84,7 +88,32 @@
                 <p class="headerSubTitle">MARK YOUR CAUSE</p>
             </header>
             <div data-role="content" class="ui-content" id="content">
-               
+                <ul class="targets">
+                    <li>
+                        <img class="targetImg" src="img/Curiosity_Icon 2.png">
+                        <div class="targetInfo">
+                            <p class="targetName"> goal: curiosity </p>
+                            <p class="targetNum"> 1 : </p>
+                            <p class="targetDesc">iterested but not to much.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img class="targetImg" src="img/Tracking_Icon 2.png">
+                        <div class="targetInfo">
+                            <p class="targetName"> goal: tracking </p>
+                            <p class="targetNum"> 2 : </p>
+                            <p class="targetDesc">need to know where he/she and that they're up to.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img class="targetImg" src="img/Avoidance_Icon 2.png">
+                        <div class="targetInfo">
+                            <p class="targetName"> goal: avoidance </p>
+                            <p class="targetNum"> 3 : </p>
+                            <p class="targetDesc">don't want to see or run into him or at no way.</p>
+                        </div>
+                    </li>
+                </ul>
             </div> 
 
             <footer data-role="footer" data-position="fixed" data-tap-toggle="false">

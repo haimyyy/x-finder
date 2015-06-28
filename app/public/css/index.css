@@ -47,14 +47,15 @@ header {
 
 header .back {
 	display: inline-block;
+	box-shadow: none !important;
 	background-image: url('../img/Menu_Arrow.png');
-	  background-size: 16px !important;
+	background-size: 16px !important;
 	background-repeat: no-repeat;
 	background-position: center center;
 	float: left;
 	opacity: 1 !important;
-	top: 26px !important;
-  	left: 24px !important;
+	top: 25px !important;
+  	left: 29px !important;
 	-webkit-transform: rotate(180deg);
 	-moz-transform: rotate(-180deg);
 	-ms-transform: rotate(-180deg);
@@ -83,6 +84,7 @@ header #nav {
 .headerSubTitle{
 	font-family: 'Orator';
 	top: 37px;
+	  text-shadow: -2px -2px black;
   	position: relative;
  	width: 56%;
  	background-color: black;
@@ -297,7 +299,43 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	line-height: 31px;
 	opacity: 0.5;
 }
-
+/* target page */
+.tragets{
+	position: relative;
+}
+.targets li{
+	margin-top:	40px; 
+	margin-bottom: 30px;
+}
+.targetImg{
+    width: 50px;
+    /*left: 20px;*/
+    top:5px;
+    position: relative;
+    display: inline-block;
+    /*float: left;*/
+}
+.targetInfo{
+	/*float: right;*/
+    /*top: 20px;*/
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    /*width: calc(100% - 121px);*/
+    left: 30px;
+}
+.targetNum{
+      width: 36px;
+  /* height: 20px; */
+  position: relative;
+  display: inline-block;
+  top: -5px;
+  font-size: 29px;
+}
+.targetDesc{
+    width: 150px;
+    display: inline-block;
+}
 /* map page*/
 #mapPage #content{
 	padding: 0;

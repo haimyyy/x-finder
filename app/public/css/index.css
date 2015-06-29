@@ -308,33 +308,61 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	margin-bottom: 30px;
 }
 .targetImg{
-    width: 50px;
-    /*left: 20px;*/
-    top:5px;
-    position: relative;
-    display: inline-block;
-    /*float: left;*/
+      width: 15%;
+  max-width: 70px;
+  /* left: 20px; */
+  /* top: 5px; */
+  position: relative;
+  display: inline-block;
+  /* float: left; */
 }
 .targetInfo{
-	/*float: right;*/
-    /*top: 20px;*/
-    display: inline-block;
-    text-align: left;
-    position: relative;
-    /*width: calc(100% - 121px);*/
-    left: 30px;
+	/*float: right; */
+  /* top: 20px; */
+  height: 80px;
+  display: inline-block;
+  text-align: left;
+  position: relative;
+   width: calc(100% - 121px); 
+   max-width: 250px;
+  left: 30px;
+  padding: 10px;
+  cursor: pointer;
 }
+
+.targetInfo:hover,.targetInfo:active{
+	background-color: black;
+}
+.targetName{
+	font-family: 'Orator';
+	color:green;
+	font-size: 20px;
+	border-bottom: 1px solid grey;
+	margin-bottom: 5px;
+}
+
+.targetDesc{
+	font-family: 'Orator';
+	color:white;
+	opacity: 0.5;
+	font-size: 15px;
+	font-weight: lighter;
+    width: 80%;
+    max-width: 200px;
+    display: inline-block;
+}
+
 .targetNum{
+	font-family: 'ds_digital - numbers';
       width: 36px;
-  /* height: 20px; */
+      color: white;
+      font-weight: bold;
+      opacity: 0.5;
+  float: left;
   position: relative;
   display: inline-block;
   top: -5px;
   font-size: 29px;
-}
-.targetDesc{
-    width: 150px;
-    display: inline-block;
 }
 /* map page*/
 #mapPage #content{

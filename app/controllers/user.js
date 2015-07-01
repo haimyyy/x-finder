@@ -50,7 +50,7 @@ exports.removeFollowList = function(req, res, next) {
 exports.addFollowList = function(req, res, next) {
 	var r = {};
 	var req_user = req.body;
-	
+
 	req.user.addToFollowList(req_user,function(result){
 		return res.json(result);
 	});
@@ -63,8 +63,7 @@ exports.addFollowList = function(req, res, next) {
 */
 exports.getFollowedUsersData = function(req, res, next) {
 	var r = {};
-	var req_user = req.body;
-
+	// var req_user = req.body;
 	req.user.getUsersData(function(result){
 		return res.json(result);
 	});

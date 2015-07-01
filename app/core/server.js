@@ -5,11 +5,6 @@ var express = require('express')
   , bodyParser = require("body-parser")
   , fs = require('fs-extra');
 
-/*
-var mongoose = require('mongoose'),
-    User = mongoose.model("User")
-ObjectId = mongoose.Types.ObjectId
-*/
 
 var controllers = {} , controllers_path = process.cwd() + '/app/controllers'
 fs.readdirSync(controllers_path).forEach(function (file) {

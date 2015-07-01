@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = mongoose.Types.ObjectId; 
 
-User_schema = new Schema( 
+var User_schema = new Schema( 
 	{
 		id : { type : String ,  index : true, unique : true , required :true},
 		access_token : { type : String, default:''},
@@ -22,7 +22,7 @@ User_schema = new Schema(
 			}
 		},
 		follow : [{
-			user_id: {type: Schema.ObjectId , ref:'User'},
+			user_id: {type: Schema.ObjectId , ref:"User"},
 			method: { type : String, default:''}
 		}],
 		location: {
@@ -62,18 +62,21 @@ User_schema.statics.getUserById = function (req_user,callback) {
  	return this.model('users').findOne({ id : req_user },
  	function(err,foundedUser){
  		if (err){
+ 			console.log('getUserById:: failed while retriving user');
  			r.status= 0;
  			r.msg.push('failed while retriving user');
  			return callback(r);
  		}
  		else if (foundedUser){
 			//update user details
+			console.log('getUserById:: user founded');
  			r.status= 1;
  			r.user=foundedUser;
 			r.msg.push('user founded');
 			return callback(r);
  		}
  		else{
+ 			console.log('getUserById:: user did not found');
 			r.status= 0;
 			r.msg.push('user did not found');
 			return callback(r);
@@ -126,7 +129,7 @@ User_schema.methods.removeFromFollowList = function (user,callback) {
  		}
  		else if (foundedUser){
 			//update user details
-			currUser.follow.pull({ "_id": foundedUser._id });
+			currUser.follow.pull({ _id: '5583d4c9b9fb2203001edb93' });
 			currUser.save(function(err){
 				if (err){
 		 			r.status= 0;
@@ -161,7 +164,6 @@ User_schema.methods.addToFollowList = function (user,callback) {
  		}
  		else if (foundedUser){
 			//update user details
-			//currUser.follow.push({ _id: foundedUser._id, method:user.method });
 			currUser.update({$addToSet:{follow:{ _id: foundedUser._id, method:user.method }}}).exec(function(err){
 				if (err){
 					r.status= 0;
@@ -186,27 +188,30 @@ User_schema.methods.addToFollowList = function (user,callback) {
 
 User_schema.methods.getUsersData = function (callback) {
  	var r = {msg:[],follow:[]};
- 	var follow = [];
- 	
-	return this.model('users').find(this._id)
- 	.populate('follow')
- 	.populate('follow.user_id')
- 	.select('name id')
+
+	return this.model('users').findOne(this._id)
+ 	// .populate('follow')
+ 	.populate('follow._id')
+ 	// .populate(this.follow,'user_id')
+ 	.select('name id follow')
  	.exec(function(err,foundedUsers){
  		if (err){
+ 			console.log('getUsersData:: failed while db user searching');
  			r.status= 0;
  			r.msg.push('failed while db user searching');
  			return callback(r);
  		}
  		else if (foundedUsers){
 			//update user details
+			console.log('getUsersData:: user follow list');
  			r.status= 1;
  			r.length = foundedUsers.length;
  			r.follow=foundedUsers;
 			r.msg.push('user follow list');
-			return callback(r);
+			return callback(foundedUsers);
  		}
  		else{
+ 			console.log('getUsersData:: followed user does not exist');
 			r.status= 0;
 			r.msg.push('followed user does not exist');
 			return callback(r);

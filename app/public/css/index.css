@@ -305,29 +305,32 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 }
 .targets li{
 	margin-top:	40px; 
-	margin-bottom: 30px;
+	width: calc(100% - 30px);
 }
 .targetImg{
-      width: 15%;
-  max-width: 70px;
-  /* left: 20px; */
-  /* top: 5px; */
-  position: relative;
-  display: inline-block;
-  /* float: left; */
+	width: 15%; /*all the icons should be 342 X 346 */
+	max-width: 70px;
+
+	position: relative;
+	display: inline-block;
+	/* left: 20px; */
+	/* top: 5px; */
+	/* float: left; */
 }
 .targetInfo{
 	/*float: right; */
-  /* top: 20px; */
-  height: 80px;
-  display: inline-block;
-  text-align: left;
-  position: relative;
-   width: calc(100% - 121px); 
-   max-width: 250px;
-  left: 30px;
-  padding: 10px;
-  cursor: pointer;
+	/* top: 20px; */
+	/*height: 80px;*/
+	min-height: 80px;
+	display: inline-block;
+	text-align: left;
+	position: relative;
+	width: calc(100% - 121px); 
+	max-width: 250px;
+	left: 30px;
+	padding: 10px;
+	cursor: pointer;
+
 }
 
 .targetInfo:hover,.targetInfo:active{

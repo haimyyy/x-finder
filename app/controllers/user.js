@@ -18,6 +18,7 @@ exports.authenticateUser = function(req, res, next) {
 }
 /*
 	insert or update the user
+	user - data
 */
 exports.updateUser = function(req, res, next) {
 	var r = {};
@@ -28,6 +29,16 @@ exports.updateUser = function(req, res, next) {
 	});
 }
 
+/*
+	get app users
+	user - id
+*/
+exports.getAppUsers = function(req, res, next) {
+	var r = {};
+	User.getAllUsers(function(result){
+		return res.json(result);
+	});
+}
 /*
 	update user's follow list (remove)
 	user - id

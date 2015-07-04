@@ -32,6 +32,7 @@ app.use(function(req, res, next) {
 
 // user queries
 app.post("/user/updateUser", controllers.user.updateUser);
+app.post("/user/getAppUsers", controllers.user.getAppUsers);
 app.post("/user/addFollowList",controllers.user.authenticateUser, controllers.user.addFollowList);
 app.post("/user/removeFollowList",controllers.user.authenticateUser, controllers.user.removeFollowList);
 app.post("/user/getFollowedUsersData",controllers.user.authenticateUser, controllers.user.getFollowedUsersData);

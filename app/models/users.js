@@ -84,6 +84,35 @@ User_schema.statics.getUserById = function (req_user,callback) {
  	}); 
 }
 
+User_schema.statics.getAllUsers = function (callback) {
+ 	var r = {msg:[]};
+ 	return this.model('users').find()
+ 	.select('name id picture')
+ 	.exec(function(err,foundedUsers){
+ 		if (err){
+ 			console.log('getAllUsers:: failed while retriving user');
+ 			r.status= 0;
+ 			r.msg.push('failed while retriving user');
+ 			return callback(r);
+ 		}
+ 		else if (foundedUsers){
+			//update user details
+			console.log('getAllUsers:: user founded');
+ 			r.status= 1;
+ 			r.users=foundedUsers;
+ 			r.length=foundedUsers.length;
+			r.msg.push('user founded');
+			return callback(r);
+ 		}
+ 		else{
+ 			console.log('getAllUsers:: user did not found');
+			r.status= 0;
+			r.msg.push('user did not found');
+			return callback(r);
+ 		}
+ 	}); 
+}
+
 User_schema.statics.findUserAndUpdate = function (req_user,callback) {
  	var r = {msg:[],follow:[]};
  	return this.model('users').findOneAndUpdate({ id : req_user.id }, {$set : req_user },

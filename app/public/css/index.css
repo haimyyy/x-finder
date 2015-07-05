@@ -299,6 +299,63 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	line-height: 31px;
 	opacity: 0.5;
 }
+/* find friend page */
+.ui-input-text input, .ui-input-search input {
+  border: 2px solid green;
+  position: relative;
+  color: black;
+  top: -2px;
+  height: 0px;
+  width: 102%;
+  left: -2px;
+  text-shadow: none;
+  /*background-color: rgba(0,0,0,0.1);*/
+  background-color:	transparent; 
+}
+.input-container{
+	position: relative;
+	top:5px;
+}
+input[type=search] { 
+	position: relative;
+	top:2px;	
+	background-color: rgba(0,0,0,0.1);
+}
+
+.friendList{
+	position: relative;
+  	top: 35px;
+  	text-align: left;
+}
+.friendRow{
+	background-color: white;
+	padding: 10px;
+  border-bottom: 1px solid gray;
+}
+.friendRow img{
+	width: 45px;
+}
+.friendRow .addFriendIcon{
+	float: right;
+}
+.friendRow .userName{
+	top: -27px;
+  	position: relative;
+  	font-weight: bold;
+}
+.friendRow .userRelationship{
+	top: -7px;
+  	position: relative;
+  	/* text-align: left; */
+  	left: -109px;
+  	opacity: 0.7;
+}
+.friendHover{
+	background-color: #C8C8C8 ;
+}
+.friendSelected{
+	background-color: #C8C8C8 ;
+}
 /* target page */
 .tragets{
 	position: relative;
@@ -335,6 +392,12 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 
 .targetInfo:hover,.targetInfo:active{
 	background-color: black;
+}
+.targetHover{
+	background-color: black ;
+}
+.targetSelected{
+	background-color: black ;
 }
 .targetName{
 	font-family: 'Orator';

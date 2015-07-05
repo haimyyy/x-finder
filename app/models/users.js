@@ -84,10 +84,10 @@ User_schema.statics.getUserById = function (req_user,callback) {
  	}); 
 }
 
-User_schema.statics.getAllUsers = function (callback) {
+User_schema.statics.getAllUsers = function (user,callback) {
  	var r = {msg:[]};
  	return this.model('users').find()
- 	.select('name id picture')
+ 	.select('name id picture relationship_status')
  	.exec(function(err,foundedUsers){
  		if (err){
  			console.log('getAllUsers:: failed while retriving user');
@@ -97,6 +97,11 @@ User_schema.statics.getAllUsers = function (callback) {
  		}
  		else if (foundedUsers){
 			//update user details
+			var index = foundedUsers.map(function(user){
+            	return user['id'];
+          	}).indexOf(user);
+
+			foundedUsers.splice(index,1)
 			console.log('getAllUsers:: user founded');
  			r.status= 1;
  			r.users=foundedUsers;
@@ -125,8 +130,7 @@ User_schema.statics.findUserAndUpdate = function (req_user,callback) {
  		else if (foundedUser){
 			//update user details
  			r.status= 1;
- 			r.length=foundedUser.follow.length;
- 			r.follow=foundedUser.follow;
+ 			r.user=foundedUser;
 			r.msg.push('user updated');
 			return callback(r);
  		}

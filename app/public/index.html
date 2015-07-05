@@ -57,8 +57,19 @@
                 <p class="headerSubTitle">FACEBOOK ACCOUNT</p>
             </header>
             <div data-role="content" class="ui-content" id="content">
-                    <ul>
-                        <li> </li>
+                    <div class="input-container">
+                        <input ng-model="query" type="text"
+                        placeholder="Search..." autofocus>
+                    </div>
+                    <ul class="friendList" ng-repeat="user in users | filter:{name: query}">
+                        <li class="friendRow" ng-class="{friendHover: hover , 'friendSelected': $index == selectedIndex }" 
+                        ng-mouseenter="hover = true" ng-mouseleave="hover = false"
+                        ng-click="itemClicked($index)">
+                            <img src="{{ user.picture.data.url }}">
+                            <img class="addFriendIcon" src="../img/fb add friend.png">
+                            <span class="userName"> {{ user.name }} </span>
+                            <span class="userRelationship"> {{ user.relationship_status }} </span>
+                        </li>
                     </ul>
             </div> 
 
@@ -69,7 +80,7 @@
                                 <a href="#" data-inline="true">  </a>
                             </li>
                             <li>
-                                <a href="#targetPage" data-inline="true"> OK! FIND </a>
+                                <a href="#targetPage" ng-click="selectedUser()" data-inline="true"> OK! FIND </a>
                             </li>
                             <li>
                                 <a href="#" data-inline="true">  </a>
@@ -86,29 +97,15 @@
                 <p class="headerSubTitle">MARK YOUR CAUSE</p>
             </header>
             <div data-role="content" class="ui-content" id="content">
-                <ul class="targets">
-                    <li>
-                        <img class="targetImg" src="img/Curiosity_Icon 2.png">
-                        <div class="targetInfo">
-                            <p class="targetName"> goal: curiosity </p>
-                            <p class="targetNum"> 1 : </p>
-                            <p class="targetDesc">iterested but not to much.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <img class="targetImg" src="img/Tracking_Icon 2.png">
-                        <div class="targetInfo">
-                            <p class="targetName"> goal: tracking </p>
-                            <p class="targetNum"> 2 : </p>
-                            <p class="targetDesc">need to know where he/she and that they're up to.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <img class="targetImg" src="img/Avoidance_Icon 2.png">
-                        <div class="targetInfo">
-                            <p class="targetName"> goal: avoidance </p>
-                            <p class="targetNum"> 3 : </p>
-                            <p class="targetDesc">don't want to see or run into him or at no way.</p>
+                <ul class="targets" ng-repeat="target in targets" >
+                    <li >
+                        <img class="targetImg" src="{{ target.image }}">
+                        <div class="targetInfo" ng-class="{targetHover: hover , 'targetSelected': $index == selectedIndex }" 
+                        ng-mouseenter="hover = true" ng-mouseleave="hover = false"
+                        ng-click="itemClicked($index)">
+                            <p class="targetName"> {{ target.goal }} </p>
+                            <p class="targetNum"> {{ target.number }} </p>
+                            <p class="targetDesc"> {{ target.text }}</p>
                         </div>
                     </li>
                 </ul>
@@ -121,7 +118,7 @@
                                 <a href="#" data-inline="true">  </a>
                             </li>
                             <li>
-                                <a href="#mapPage" data-inline="true"> OK! Go </a>
+                                <a href="#mapPage" ng-click="selectedTarget()" data-inline="true"> OK! Go </a>
                             </li>
                             <li>
                                 <a href="#" data-inline="true">  </a>

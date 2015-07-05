@@ -35,7 +35,8 @@ exports.updateUser = function(req, res, next) {
 */
 exports.getAppUsers = function(req, res, next) {
 	var r = {};
-	User.getAllUsers(function(result){
+	var req_user = req.query.id;
+	User.getAllUsers(req_user,function(result){
 		return res.json(result);
 	});
 }
@@ -43,6 +44,7 @@ exports.getAppUsers = function(req, res, next) {
 	update user's follow list (remove)
 	user - id
 	friend -id
+	method - ''
 */
 exports.removeFollowList = function(req, res, next) {
 	var r = {};

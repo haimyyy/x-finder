@@ -93,8 +93,8 @@ xfind.controller('loginCtrl',['$rootScope','$scope', '$http','Facebook','sharedP
   }
 ]);
 
-xfind.controller('findFriendCtrl',['$scope','$route', '$http','sharedProperties',
-  function($scope,$route, $http, sharedProperties){
+xfind.controller('findFriendCtrl',['$scope', '$http','sharedProperties',
+  function($scope, $http, sharedProperties){
     
     $scope.$on('getUsers', function(event,userid) {
       console.log('get users broadcast',userid)

@@ -6,32 +6,35 @@ var model = {
   // domain: "http://localhost:8080/",
   domain: "http://x-find.herokuapp.com/",
   user_target:{
-    name: "user name",
-    method: "method",
+    name: "USER NAME",
+    method: "METHOD",
     index :-1
   },
   follow:[],
   targets:[
     {
-      image:'img/Curiosity_Icon 2.png',
-      goal:'curiosity',
+      image:'img/TargetPage_Curiosity.png',
+      goal:'CURIOSITY',
       number :'1 :',
+      width : "15%",
       text: 'iterested but not to much.',
-      method:'curiosity'
+      method:'CURIOSITY'
     },
     {
-      image:'img/Tracking_Icon 2.png',
-      goal:'tracking',
+      image:'img/TargetPage_Tracking.png',
+      goal:'TRACKING',
       number :'2 :',
+      width : "10%",
       text: "need to know where he/she and that they're up to.",
-      method:'tracking'
+      method:'TRACKING'
     },
     {
-      image:'img/Avoidance_Icon 2.png',
-      goal:'avoidance',
+      image:'img/TargetPage_Avoidance.png',
+      goal:'AVOIDANCE',
       number :'3 :',
+      width : "15%",
       text: "don't want to see or run into him or at no way.",
-      method:'avoidance'
+      method:'AVOIDANCE'
     }
   ]
 }

@@ -169,7 +169,7 @@ var MapSingelton = (function (){
 						    new google.maps.Size(71, 71),
 						    new google.maps.Point(0, 0),
 						    new google.maps.Point(17, 34),
-						    new google.maps.Size(25, 25));
+						    new google.maps.Size(20, 25));
 				 	var map_marker = new google.maps.Marker({
 				        position: marker.location,
 				        map: _map,

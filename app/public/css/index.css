@@ -604,15 +604,16 @@ input[type=search] {
   	background-color: transparent;
   	border:1px solid white;
 }*/
-/*.css-radio { display:none;}*/
+.css-radio { display:none;}
 .ui-radio .ui-btn.ui-radio-on:after{
 	background-image: none;
-    background-color:white;
+    background-color:white !important;
     opacity: 1;
   	width: 8px;
   	height: 8px;
   	border-width: 2px;
   	border-style: solid;
+
 }
 
 .ui-btn.ui-checkbox-off:after, .ui-btn.ui-checkbox-on:after, 
@@ -623,11 +624,10 @@ input[type=search] {
   	height: 8px;
   	border-width: 2px;
   	border-style: solid;
+  	border-radius: 0;
 }
-input[type="radio"]:checked~label{
-    background-color: red !important;
-}
- 
+
+
 
 .save, .cancel{
 	position: relative;

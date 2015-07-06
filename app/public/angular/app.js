@@ -186,12 +186,15 @@ xfind.controller('mapCtrl',['$scope', '$http',
 
     $scope.hours = function(){
       console.log(model.follow[$scope.user_target.index])
+      var temp_obj = model.follow[$scope.user_target.index];
     }
     $scope.lastWeek = function(){
       console.log(model.follow[$scope.user_target.index])
+      var temp_obj = model.follow[$scope.user_target.index];
     }
     $scope.forecast = function(){
       console.log(model.follow[$scope.user_target.index])
+      var temp_obj = model.follow[$scope.user_target.index];
     }
   }
 ]);
@@ -201,8 +204,6 @@ xfind.controller('panelCtrl',['$scope', '$http',
     $scope.follow = model.follow;
     $scope.targets = model.targets;
     $scope.selectedoption = '';
-
-    
     
     $scope.$on('updateNav', function(event,userid) {
       console.log('update nav broadcast',userid)

@@ -9,6 +9,9 @@ function Marker (id,location,title,type){
 var icons_images = {
 	me : "img/Opening.png",
 	map_location : "img/Maps_MyPlace.png",
+	avoidance: '',
+	tracking: '',
+	curiosity: ''
 }
 var MapSingelton = (function (){
     var _map;

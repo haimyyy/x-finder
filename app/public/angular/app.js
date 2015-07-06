@@ -164,11 +164,12 @@ xfind.controller('targetCtrl',['$scope', '$http','sharedProperties',
               return val['id']
           }).indexOf(data.followed_user.id)
           if (index != -1)
-            model.follow.splice(index,1)
-          model.follow.unshift(data.followed_user);
+            model.follow[index]=data.followed_user;
+          else model.follow.push(data.followed_user);
+          
           model.user_target.name = data.followed_user.name;
           model.user_target.method = data.followed_user.method;
-          model.user_target.index = 0;
+          model.user_target.index = index;
           console.log(data)
         })
         .error = errHandler;

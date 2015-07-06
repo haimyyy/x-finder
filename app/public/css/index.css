@@ -562,7 +562,7 @@ input[type=search] {
   	background-color: transparent;
   	border:1px solid white;
 }*/
-.css-radio { display:none;}
+/*.css-radio { display:none;}*/
 .ui-radio .ui-btn.ui-radio-on:after{
 	background-image: none;
     background-color:white;
@@ -572,6 +572,7 @@ input[type=search] {
   	border-width: 2px;
   	border-style: solid;
 }
+
 .ui-btn.ui-checkbox-off:after, .ui-btn.ui-checkbox-on:after, 
 .ui-btn.ui-radio-off:after, .ui-btn.ui-radio-on:after{
 	background-image: none;
@@ -581,9 +582,9 @@ input[type=search] {
   	border-width: 2px;
   	border-style: solid;
 }
-/*.css-radio:checked + .css-label span{
-	background-color: red !important;
-}*/
+input[type="radio"]:checked~label{
+    background-color: red !important;
+}
  
 
 .save, .cancel{

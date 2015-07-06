@@ -9,8 +9,8 @@ fs.readdirSync(models_path).forEach(function (file) {
 });
 
 var dbConfig = {
-  mongoUrl:(process.env.PORT)?'mongodb://xfinder:xfinder@ds043168.mongolab.com:43168/heroku_app37431073':'mongodb://localhost:27017/xfinder',
-  //mongoUrl:'mongodb://xfinder:xfinder@ds043168.mongolab.com:43168/heroku_app37431073',
+  //mongoUrl:(process.env.PORT)?'mongodb://xfinder:xfinder@ds043168.mongolab.com:43168/heroku_app37431073':'mongodb://localhost:27017/xfinder',
+  mongoUrl:'mongodb://xfinder:xfinder@ds043168.mongolab.com:43168/heroku_app37431073',
   options : {
     db: { native_parser : true },
     server: {

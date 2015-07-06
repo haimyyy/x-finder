@@ -3,8 +3,8 @@ var userPermissions = ["email","public_profile","user_friends", //"user_checkins
 var tempPermissions = ["email","public_profile","user_friends"];
 var model = {
   user : {},
-  //domain: "http://localhost:8080/",
-  domain: "http://x-find.herokuapp.com/",
+  domain: "http://localhost:8080/",
+  //domain: "http://x-find.herokuapp.com/",
   user_target:{
     name: "user name",
     method: "method",
@@ -196,6 +196,10 @@ xfind.controller('mapCtrl',['$scope', '$http',
 xfind.controller('panelCtrl',['$scope', '$http',
   function($scope, $http){
     $scope.follow = model.follow;
+    $scope.targets = model.targets;
+    $scope.selectedoption = '';
+
+    
     
     $scope.$on('updateNav', function(event,userid) {
       console.log('update nav broadcast',userid)
@@ -215,12 +219,6 @@ xfind.controller('panelCtrl',['$scope', '$http',
         .error = errHandler;
     }
 
-     $scope.insertNavHeader = function () {
-        //$('[data-role=panel] [data-role=listview]').prepend('<li class="navTitle" data-rel="close" ng-click="closeNav()"> Espionage </li>')
-     }
-     $scope.closeNav = function(){
-        $('[data-role=panel]').panel( "close" );
-     }
 
     $scope.itemClicked = function ($index) {
       if ($scope.selectedIndex == $index)

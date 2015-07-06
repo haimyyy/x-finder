@@ -98,13 +98,13 @@
                 <p class="headerSubTitle">MARK YOUR CAUSE</p>
             </header>
             <div data-role="content" class="ui-content" id="content">
-                <ul class="targets" ng-repeat="target in targets" >
-                    <li >
+                <ul class="targets" >
+                    <li ng-repeat="target in targets" >
                         <img class="targetImg" src="{{ target.image }}">
                         <div class="targetInfo" ng-class="{targetHover: hover , 'targetSelected': $index == selectedIndex }" 
                         ng-mouseenter="hover = true" ng-mouseleave="hover = false"
                         ng-click="itemClicked($index)">
-                            <p class="targetName"> goal: {{ target.goal }} </p>
+                            <p class="targetName"> GOAL: {{ target.method }} </p>
                             <p class="targetNum"> {{ target.number }} </p>
                             <p class="targetDesc"> {{ target.text }}</p>
                         </div>
@@ -159,26 +159,24 @@
         <div ng-controller="panelCtrl" data-role="panel" data-position="left" data-display="overlay" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
             <ul data-role="listview" repeat-complete="insertNavHeader()">
                 <li class="navTitle" data-rel="close"> Espionage </li>
-                <li id="userId" ng-repeat="user in follow" class="navUserRow" ng-click="showData($index)"  >
+                <li id="userId" ng-repeat="user in follow" class="navUserRow" >
                     <span class="ui-btn ui-icon-custom" ng-click="itemClicked($index)" ng-class="{downPos :$index == selectedIndex }" > </span>
-                    <div class="navCont">
+                    <div class="navCont" ng-click="showData($index)">
                         <p class="navUserName">{{ user.name }}</p>
                         <p class="navMethod">GOAL: {{ user.method }}</p>
                     </div>
                     <section class="categories" ng-class="{showCatedories: $index == selectedIndex, hideCatedories: $index != selectedIndex}">
-                    
-                        <label for="radio1" class="css-label radGroup1">
-                        <input type="radio" name="radiog_lite1" id="radio1" class="css-radio" />
-                        <span></span>curiosity</label>
-                        
-                        <label for="radio2" class="css-label radGroup1">  
-                        <input type="radio" name="radiog_lite1" id="radio2" class="css-radio" />
-                         <span></span>tracking</label>
-                        
-                        <label for="radio3" class="css-label radGroup1"> 
-                        <input type="radio" name="radiog_lite1" id="radio3" class="css-radio" />
-                        <span></span>avoidance</label> 
-
+                        <div ng-repeat="target in targets" >
+                            <!-- <label class="css-label">
+                            <input type="radio" class="css-radio" name="{{user.id}}" ng-value="target"  ng-model="$parent.selectedoption"/>
+                            <span></span>{{target.method}}</label> -->
+                            <label for="{{$parent.$index}}{{target.number}}" class="css-label" >
+                            <input type="radio" class="css-radio" name="user{{$parent.$index}}" 
+                            id="{{$parent.$index}}{{target.number}}"
+                            value="{{target.method}}{{$parent.$index}}" 
+                            ng-model="user.method" 
+                            ng-value="{{target.method}}"/><span></span>{{target.method}}</label>
+                        </div>
                         <a class="cancel" href="#">cancel</a>
                         <a class="save" href="#">save</a>
                     </section>

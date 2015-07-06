@@ -35,7 +35,7 @@ html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit {
 /* header */
 header {
 	position: fixed;
-	height: 80px;
+	height: 84px;
 	background: transparent !important;
 	background-color: transparent !important;
 	width: 100%;
@@ -395,8 +395,11 @@ input[type=search] {
 	margin-top:	40px; 
 	width: calc(100% - 30px);
 }
+.targets li:nth-child(2) .targetInfo{
+	left: 40px;
+}
 .targetImg{
-	width: 15%; /*all the icons should be 342 X 346 */
+	/*width: 15%; all the icons should be 342 X 346 */
 	max-width: 70px;
 	  bottom: 15px;
 	position: relative;

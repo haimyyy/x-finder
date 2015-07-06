@@ -71,7 +71,8 @@ $(window).resize(function() {
 function initPageCss() {
 	var footer = parseInt($('footer').height());
 	var header = parseInt($('header').height());
-	$("[data-role=content]").css({"height": window.innerHeight - footer - header + "px"});
+	$("[data-role=content]").css({"height": window.innerHeight  - header + "px"});
+	$("#findFriendPage [data-role=content]").css({"height": window.innerHeight  -footer - header + "px"});
 	$("#loginPage [data-role=content]").css("height", window.innerHeight +1 + "px");
 	$("#mapPage [data-role=content]").css({"height": window.innerHeight - footer +1 + "px"});
 }

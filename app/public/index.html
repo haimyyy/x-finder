@@ -6,7 +6,7 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
-        <link rel="icon" href="img/FAVICON_BIG.png">
+        <link rel="icon" href="img/FAVICON_16X16.png">
         <!-- external jquery 
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
         <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
@@ -100,7 +100,7 @@
             <div data-role="content" class="ui-content" id="content">
                 <ul class="targets" >
                     <li ng-repeat="target in targets" >
-                        <img class="targetImg" src="{{ target.image }}">
+                        <img class="targetImg" src="{{ target.image }}" width="{{ target.width }}">
                         <div class="targetInfo" ng-class="{targetHover: hover , 'targetSelected': $index == selectedIndex }" 
                         ng-mouseenter="hover = true" ng-mouseleave="hover = false"
                         ng-click="itemClicked($index)">
@@ -170,7 +170,7 @@
                             <label for="{{$parent.$index}}{{target.number}}" class="css-label" >
                             <input type="radio" class="css-radio" name="user{{$parent.$index}}" 
                             id="{{$parent.$index}}{{target.number}}"
-                            value="{{target.method}}{{$parent.$index}}" 
+                            value="{{target.method}}" 
                             ng-model="user.method" 
                             ng-value="true"/><span></span>{{target.method}}</label>
                         </div>

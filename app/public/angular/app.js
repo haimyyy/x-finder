@@ -1,3 +1,6 @@
+var userPermissions = ["email","public_profile","user_friends", //"user_checkins", "friends_checkins",
+  "user_tagged_places","user_posts", "user_relationships","user_events","user_hometown", "user_work_history", "user_location"];
+var tempPermissions = ["email","public_profile","user_friends"];
 var model = {
   user : {},
   //domain: "http://localhost:8080/",
@@ -76,7 +79,7 @@ xfind.controller('loginCtrl',['$rootScope','$scope', '$http','Facebook','sharedP
     $scope.fbLogin = function(){
       Facebook.login(function(response) {
         $scope.$emit('updateUser', response);
-      });
+      },tempPermissions);
     }
 
     $scope.$on('updateUser', function(event, args) {
@@ -157,7 +160,15 @@ xfind.controller('targetCtrl',['$scope', '$http','sharedProperties',
         $http.post(model.domain+"user/addFollowList",args).success(function(data){
           if (data.status != 1) return;
           data.followed_user.method = data.method;
-          model.follow.push(data.followed_user);
+          var index = model.follow.map(function(val,key){
+              return val['id']
+          }).indexOf(data.followed_user.id)
+          if (index != -1)
+            model.follow.splice(index,1)
+          model.follow.unshift(data.followed_user);
+          model.user_target.name = data.followed_user.name;
+          model.user_target.method = data.followed_user.method;
+          model.user_target.index = 0;
           console.log(data)
         })
         .error = errHandler;

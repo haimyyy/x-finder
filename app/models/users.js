@@ -186,7 +186,7 @@ User_schema.methods.removeFromFollowList = function (user,callback) {
 }
 
 User_schema.methods.addToFollowList = function (req_user,callback) {
- 	var r = {msg:[],follow:[]};
+ 	var r = {msg:[]};
  	var currUser = this;
  	return this.model('users').findOne({ id : req_user.friend }) 
  	.exec(function(err,foundedUser){

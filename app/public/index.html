@@ -167,15 +167,12 @@
                     </div>
                     <section class="categories" ng-class="{showCatedories: $index == selectedIndex, hideCatedories: $index != selectedIndex}">
                         <div ng-repeat="target in targets" >
-                            <!-- <label class="css-label">
-                            <input type="radio" class="css-radio" name="{{user.id}}" ng-value="target"  ng-model="$parent.selectedoption"/>
-                            <span></span>{{target.method}}</label> -->
                             <label for="{{$parent.$index}}{{target.number}}" class="css-label" >
                             <input type="radio" class="css-radio" name="user{{$parent.$index}}" 
                             id="{{$parent.$index}}{{target.number}}"
                             value="{{target.method}}{{$parent.$index}}" 
                             ng-model="user.method" 
-                            ng-value="{{target.method}}"/><span></span>{{target.method}}</label>
+                            ng-value="true"/><span></span>{{target.method}}</label>
                         </div>
                         <a class="cancel" href="#">cancel</a>
                         <a class="save" href="#">save</a>

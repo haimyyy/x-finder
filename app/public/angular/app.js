@@ -106,7 +106,6 @@ xfind.controller('loginCtrl',['$rootScope','$scope', '$http','Facebook','sharedP
 
 xfind.controller('findFriendCtrl',['$scope', '$http','sharedProperties',
   function($scope, $http, sharedProperties){
-    
     $scope.$on('getUsers', function(event,userid) {
       console.log('get users broadcast',userid)
       $scope.getUsers(userid);
@@ -185,16 +184,52 @@ xfind.controller('mapCtrl',['$scope', '$http',
     $scope.user_target = model.user_target;
 
     $scope.hours = function(){
+      MapSingelton.getMap().removeMarkers()
       console.log(model.follow[$scope.user_target.index])
       var temp_obj = model.follow[$scope.user_target.index];
+
+      if ($scope.user_target.method == 'TRACKING') {
+
+          MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(31.7963186,35.175359),"avishay",'avoidance_green'))
+      }
+      else if ($scope.user_target.method == 'CURIOSITY') {
+
+      }
+      else if ($scope.user_target.method == 'AVOIDANCE') {
+
+      }
+
     }
     $scope.lastWeek = function(){
+      MapSingelton.getMap().removeMarkers()
       console.log(model.follow[$scope.user_target.index])
       var temp_obj = model.follow[$scope.user_target.index];
+
+      if ($scope.user_target.method == 'TRACKING') {
+
+      }
+      else if ($scope.user_target.method == 'CURIOSITY') {
+
+      }
+      else if ($scope.user_target.method == 'AVOIDANCE') {
+
+      }
     }
     $scope.forecast = function(){
+      MapSingelton.getMap().removeMarkers()
       console.log(model.follow[$scope.user_target.index])
       var temp_obj = model.follow[$scope.user_target.index];
+
+      if ($scope.user_target.method == 'TRACKING') {
+
+      }
+      else if ($scope.user_target.method == 'CURIOSITY') {
+
+      }
+      else if ($scope.user_target.method == 'AVOIDANCE') {
+
+      }
     }
   }
 ]);
@@ -235,6 +270,36 @@ xfind.controller('panelCtrl',['$scope', '$http',
         model.user_target.method = $scope.follow[$index].method;
         model.user_target.index = $index;
      }
+     /*$scope.delete = function($index){
+       var data= {
+        user: model.user.id,
+        friend: model.follow[$index].id
+       }
+       console.log(data);
+       console.log($index);
+        $http.post(model.domain+"user/removeFollowList",data).success(function(data){
+            if (data.status != 1) return;
+            console.log(data);
+            model.follow=data.follow;
+
+            $scope.follow = model.follow;
+            
+            // model.user_target.name = 'USER NAME';
+            // model.user_target.method = 'METHOD';
+            // model.user_target.index = -1;
+        }).error = errHandler;
+     }*/
+     /*$scope.save = function($index){
+      var data= {
+        user: model.user.id,
+        friend: model.follow[model.user_target.index].id,
+        method : model.user_target.method
+       }
+        $http.post(model.domain+"user/addFollowList",data).success(function(data){
+          
+        }).error = errHandler;
+     }*/
+
      
   }
 ]);

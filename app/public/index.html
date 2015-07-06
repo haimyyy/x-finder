@@ -57,7 +57,7 @@
                 <p class="headerSubTitle">FACEBOOK ACCOUNT</p>
                 <div class="input-container">
                     <input ng-model="query" type="text"
-                    placeholder="Search friend..."  autofocus>
+                    placeholder="SEARCH FRIENDS..."  autofocus>
                 </div>  
             </header>
             <div data-role="content" class="ui-content" id="content">
@@ -174,8 +174,8 @@
                             ng-model="user.method" 
                             ng-value="true"/><span></span>{{target.method}}</label>
                         </div>
-                        <a class="cancel" href="#">DELETE</a>
-                        <a class="save" href="#">SAVE</a>
+                        <a class="cancel" href="#" ng-click="delete($index)">DELETE</a>
+                        <a class="save" href="#" ng-click="save($index)">SAVE</a>
                     </section>
                 </li>
                 <li class="navAddFriend" onclick="changePageTo('findFriendPage')">

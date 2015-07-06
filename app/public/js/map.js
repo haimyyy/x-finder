@@ -9,9 +9,12 @@ function Marker (id,location,title,type){
 var icons_images = {
 	me : "img/Opening.png",
 	map_location : "img/Maps_MyPlace.png",
-	avoidance: '',
-	tracking: '',
-	curiosity: ''
+	avoidance_green: 'img/Avoidance_Icon 2.png',
+	tracking_green: 'img/Tracking_Icon 2.png',
+	curiosity_green: 'img/Curiosity_Icon 2.png',
+	avoidance_red: 'img/Avoidance_Icon 3.png',
+	tracking_red: 'img/Tracking_Icon 3.png',
+	curiosity_red: 'img/Curiosity_Icon 3.png'
 }
 var MapSingelton = (function (){
     var _map;
@@ -109,7 +112,8 @@ var MapSingelton = (function (){
 				break;
 			}
 		}
-		
+		if (this.type == "me") return;
+		showInfoDialog(this);
 	}
 	
     function HomeControl(map,image) {
@@ -159,7 +163,21 @@ var MapSingelton = (function (){
 					// if the marker is't exist in marker list.
 					// else new google.maps.Marker({position: new google.maps.LatLng(m[0].position.k, m[0].position.D),map: MapSingelton.getMap().map,title: m[0].title,});
 					var image;
-					if (marker.type.indexOf("user") != -1) 
+					if (marker.type.indexOf("avoidance_green") != -1 || marker.type.indexOf("avoidance_red") != -1) 
+						image = new google.maps.MarkerImage(
+					    	icons_images[marker.type],
+						    new google.maps.Size(71, 71),
+						    new google.maps.Point(0, 0),
+						    new google.maps.Point(17, 34),
+						    new google.maps.Size(35, 55));
+					else if (marker.type.indexOf("curiosity_green") != -1 || marker.type.indexOf("curiosity_red") != -1) 
+						image = new google.maps.MarkerImage(
+					    	icons_images[marker.type],
+						    new google.maps.Size(71, 71),
+						    new google.maps.Point(0, 0),
+						    new google.maps.Point(17, 34),
+						    new google.maps.Size(35, 55));
+					else if (marker.type.indexOf("tracking_green") != -1 || marker.type.indexOf("tracking_red") != -1) 
 						image = new google.maps.MarkerImage(
 					    	icons_images[marker.type],
 						    new google.maps.Size(71, 71),
@@ -189,7 +207,7 @@ var MapSingelton = (function (){
 			    		return;
 			    	}
 			    	// if (marker.type.indexOf("user") != -1){
-			    		// return;
+			    	// 	return;
 			    	// }
 			    	_marker_list.push(map_marker);
 			    	_oms.addMarker(map_marker);
@@ -205,8 +223,12 @@ var MapSingelton = (function (){
 				getOms : function (){
 					return _oms;
 				},
-				removeMarker : function (marker){
-					// remove from map , markerlist and oms
+				removeMarkers : function (){
+					for (var i = 0; i < _marker_list.length; i++) {
+					    _marker_list[i].setMap(null);
+					}
+					_marker_list=[];
+					_oms = new OverlappingMarkerSpiderfier(_map, {markersWontMove: true, markersWontHide: true , keepSpiderfied:true});
 				},
 				getGeocoder : function (){ // receive callback
 					 var address =_geocoder.geocode({'location': _my_location}, function(results, status) {

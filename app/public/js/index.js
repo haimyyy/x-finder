@@ -22,14 +22,14 @@ $(document).ready(function() {
 	g_loc.initialize();
 });
 
+/*
+$(document).on('click','.panel li',function(){
+	handleNavBarClick(this)
+})
 
-// $(document).on('click','.panel li',function(){
-// 	handleNavBarClick(this)
-// })
-
-// $(document).on('click','.panel li span',function(){
-// 	handleNavBarClick(this)
-// })
+$(document).on('click','.panel li span',function(){
+	handleNavBarClick(this)
+})
 function handleNavBarClick(obj){
 	//console.log($(obj).context.nodeName)
 	if ($(obj).context.nodeName == 'LI'){
@@ -53,7 +53,7 @@ function handleNavBarClick(obj){
 		
 	}
 }
-
+*/
 
 
 $(window).resize(function() {

@@ -55,12 +55,13 @@
                 <a href="#" class="back" onclick="history.back()"> </a> 
                 <p class="headerTitle">EX DATA</p>
                 <p class="headerSubTitle">FACEBOOK ACCOUNT</p>
+                <div class="input-container">
+                    <input ng-model="query" type="text"
+                    placeholder="Search..." autofocus>
+                </div>  
             </header>
             <div data-role="content" class="ui-content" id="content">
-                    <div class="input-container">
-                        <input ng-model="query" type="text"
-                        placeholder="Search..." autofocus>
-                    </div>
+                    
                     <ul class="friendList" ng-repeat="user in users | filter:{name: query}">
                         <li class="friendRow" ng-class="{friendHover: hover , 'friendSelected': $index == selectedIndex }" 
                         ng-mouseenter="hover = true" ng-mouseleave="hover = false"
@@ -131,7 +132,7 @@
 	  <div ng-controller="mapCtrl" data-role="page" id="mapPage" >
             <header data-position="fixed" data-tap-toggle="false">
                 <img src="img/Menu_Icon.png" id="nav" />
-                <p class="headerTitle">{{ user_target.user }}</p>
+                <p class="headerTitle">{{ user_target.name }}</p>
                 <p class="headerSubTitle">GOAL: {{ user_target.method }}</p>
             </header>
             <div data-role="content" class="ui-content" id="content">
@@ -142,13 +143,13 @@
                  <div data-role="navbar">
                         <ul>
                             <li>
-                                <a href="#" data-inline="true"> 24 HOURS </a>
+                                <a href="#" data-inline="true" ng-click="hours()"> 24 HOURS </a>
                             </li>
                             <li>
-                                <a href="#" data-inline="true"> LAST WEEK </a>
+                                <a href="#" data-inline="true" ng-click="lastWeek()"> LAST WEEK </a>
                             </li>
                             <li>
-                                <a href="#" data-inline="true"> FORECAST </a>
+                                <a href="#" data-inline="true" ng-click="forecast()"> FORECAST </a>
                             </li>
                         </ul>
                     </div>
@@ -158,13 +159,13 @@
         <div ng-controller="panelCtrl" data-role="panel" data-position="left" data-display="overlay" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
             <ul data-role="listview" repeat-complete="insertNavHeader()">
                 <li class="navTitle" data-rel="close"> Espionage </li>
-                <li id="userId" ng-repeat="user in follow" class="navUserRow" ng-click-"showData($event)"  >
+                <li id="userId" ng-repeat="user in follow" class="navUserRow" ng-click="showData($index)"  >
                     <span class="ui-btn ui-icon-custom" ng-click="itemClicked($index)" ng-class="{downPos :$index == selectedIndex }" > </span>
                     <div class="navCont">
                         <p class="navUserName">{{ user.name }}</p>
                         <p class="navMethod">GOAL: {{ user.method }}</p>
                     </div>
-                    <section class="categories" ng-class="{showCatedories: $index == selectedIndex, hideCatedories: $index != selectedIndex}"">
+                    <section class="categories" ng-class="{showCatedories: $index == selectedIndex, hideCatedories: $index != selectedIndex}">
                     
                         <label for="radio1" class="css-label radGroup1">
                         <input type="radio" name="radiog_lite1" id="radio1" class="css-radio" />
@@ -182,55 +183,7 @@
                         <a class="save" href="#">save</a>
                     </section>
                 </li>
-                <!-- <li id="userId" class="navUserRow">
-                    <span class="ui-btn ui-icon-custom"> </span>
-                    <div class="navCont">
-                        <p class="navUserName">Haim Yaakov</p>
-                        <p class="navMethod">GOAL: TRACKING</p>
-                    </div>
-                      <section class="categories">
-                        
-                        <label for="radio11" class="css-label radGroup2">
-                        <input type="radio" name="radiog_lite2" id="radio11" class="css-radio" />
-                        <span></span>curiosity</label>
-                        
-                        <label for="radio22" class="css-label radGroup2">
-                        <input type="radio" name="radiog_lite2" id="radio22" class="css-radio" />
-                        <span></span>tracking</label>
-                        
-                        <label for="radio33" class="css-label radGroup2">
-                        <input type="radio" name="radiog_lite2" id="radio33" class="css-radio" />
-                        <span></span>avoidance</label>
-
-                        <a class="cancel" href="#">cancel</a>
-                        <a class="save" href="#">save</a>
-                    </section>
-                </li> -->
-               <!--  <li id="userId" class="navUserRow">
-                    <span class="ui-btn ui-icon-custom"> </span>
-                    <div class="navCont">
-                        <p class="navUserName">Tamar Bracha</p>
-                        <p class="navMethod">GOAL: TRACKING</p>
-                    </div>
-                      <section class="categories">
-                       
-                        <label for="radio111" class="css-label radGroup3">
-                        <input type="radio" name="radiog_lite3" id="radio111" class="css-radio" />
-                        <span></span>curiosity</label>
-                        
-                        <label for="radio222" class="css-label radGroup3">
-                        <input type="radio" name="radiog_lite3" id="radio222" class="css-radio" />
-                        <span></span>tracking</label>
-                       
-                        <label for="radio333" class="css-label radGroup3">
-                        <input type="radio" name="radiog_lite3" id="radio333" class="css-radio" />
-                        <span></span>avoidance</label>
-                        
-                        <a class="cancel" href="#">cancel</a>
-                        <a class="save" href="#">save</a>
-                    </section>
-                </li> -->
-                <li class="navAddFriend">
+                <li class="navAddFriend" onclick="changePageTo('findFriendPage')">
                    ADD MORE PEOPLE
                 </li>
 

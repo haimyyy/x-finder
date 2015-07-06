@@ -312,9 +312,12 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
   /*background-color: rgba(0,0,0,0.1);*/
   background-color:	transparent; 
 }
+#findFriendPage header{
+	height: 140px;
+}
 .input-container{
 	position: relative;
-	top:5px;
+	top:40px;
 }
 input[type=search] { 
 	position: relative;
@@ -324,7 +327,7 @@ input[type=search] {
 
 .friendList{
 	position: relative;
-  	top: 35px;
+  	/*top: 10px;*/
   	text-align: left;
 }
 .friendRow{

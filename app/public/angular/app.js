@@ -3,8 +3,8 @@ var userPermissions = ["email","public_profile","user_friends", //"user_checkins
 var tempPermissions = ["email","public_profile","user_friends"];
 var model = {
   user : {},
-  // domain: "http://localhost:8080/",
-  domain: "http://x-find.herokuapp.com/",
+  domain: "http://localhost:8080/",
+  //domain: "http://x-find.herokuapp.com/",
   user_target:{
     name: "USER NAME",
     method: "METHOD",

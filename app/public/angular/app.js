@@ -1,7 +1,7 @@
 var model = {
   user : {},
-  domain: "http://localhost:8080/",
-  //domain: "http://x-find.herokuapp.com/",
+  //domain: "http://localhost:8080/",
+  domain: "http://x-find.herokuapp.com/",
   user_target:{
     user: "user name",
     method: "method"

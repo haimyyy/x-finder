@@ -334,6 +334,7 @@ input[type=search] {
 }
 .friendRow img{
 	width: 45px;
+	height: 45px;
 }
 .friendRow .addFriendIcon{
 	float: right;
@@ -351,7 +352,7 @@ input[type=search] {
   	opacity: 0.7;
 }
 .friendHover{
-	background-color: #C8C8C8 ;
+	/*background-color: #C8C8C8 ;*/
 }
 .friendSelected{
 	background-color: #C8C8C8 ;
@@ -390,11 +391,11 @@ input[type=search] {
 
 }
 
-.targetInfo:hover,.targetInfo:active{
+/*.targetInfo:hover,.targetInfo:active{
 	background-color: black;
-}
+}*/
 .targetHover{
-	background-color: black ;
+	/*background-color: black ;*/
 }
 .targetSelected{
 	background-color: black ;
@@ -500,7 +501,7 @@ input[type=search] {
 }
 .navMethod{
 	position: relative;
-	/*font-size: 15px !important;*/
+	  top: 3px;
 	font-size: small !important;
 	opacity: 0.5;
 }
@@ -512,11 +513,18 @@ input[type=search] {
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);
 }
+
 .categories{
 	display: none;
 	top: 10px;
   	position: relative;
 	height: 140px;
+}
+.showCatedories{
+	display: block;
+}
+.hideCatedories{
+	display: none;
 }
 .categories label{
 	font-family: 'Orator';
@@ -601,6 +609,7 @@ input[type=search] {
 	position: relative !important;
 	text-align: center !important;
   	line-height: 35px !important;
+  	cursor: crosshair;
 }
 
 /* input type text TODO changed

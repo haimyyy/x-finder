@@ -23,13 +23,13 @@ $(document).ready(function() {
 });
 
 
-$(document).on('click','.panel li',function(){
-	handleNavBarClick(this)
-})
+// $(document).on('click','.panel li',function(){
+// 	handleNavBarClick(this)
+// })
 
-$(document).on('click','.panel li span',function(){
-	handleNavBarClick(this)
-})
+// $(document).on('click','.panel li span',function(){
+// 	handleNavBarClick(this)
+// })
 function handleNavBarClick(obj){
 	//console.log($(obj).context.nodeName)
 	if ($(obj).context.nodeName == 'LI'){

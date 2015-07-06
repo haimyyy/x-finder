@@ -185,10 +185,10 @@ User_schema.methods.removeFromFollowList = function (user,callback) {
  	}); 
 }
 
-User_schema.methods.addToFollowList = function (user,callback) {
+User_schema.methods.addToFollowList = function (req_user,callback) {
  	var r = {msg:[],follow:[]};
  	var currUser = this;
- 	return this.model('users').findOne({ id : user.friend }) 
+ 	return this.model('users').findOne({ id : req_user.friend }) 
  	.exec(function(err,foundedUser){
  		if (err){
  			r.status= 0;
@@ -197,19 +197,33 @@ User_schema.methods.addToFollowList = function (user,callback) {
  		}
  		else if (foundedUser){
 			//update user details
-			currUser.update({$addToSet:{follow:{ _id: foundedUser._id, method:user.method }}}).exec(function(err){
+			//var data = { _id: foundedUser._id, method:req_user.method };
+			var index = currUser.follow.map(function(user){
+					return user['_id'].toString();
+			}).indexOf(foundedUser._id.toString());
+			
+			if (index == -1){
+				currUser.follow.push({ _id: foundedUser._id, method:req_user.method })
+			}
+			else{
+				currUser.follow[index].method = req_user.method;
+			}
+			currUser.save(function(err){
 				if (err){
 					r.status= 0;
 		 			r.msg.push('failed while updating user');
 		 			return callback(r);
 				}
-
 				r.status= 1;
-	 			r.length=currUser.follow.length;
-	 			r.follow=currUser.follow;
+				r.method=req_user.method;
+	 			r.followed_user=foundedUser;
 				r.msg.push('user follow list updated');
 				return callback(r);
 			});
+			// currUser.update({$addToSet:{follow:data}}, {safe : true, fsync : true})
+			// .exec(function(err){
+				
+			// });
  		}
  		else{
 			r.status= 0;
@@ -239,9 +253,9 @@ User_schema.methods.getUsersData = function (callback) {
 			console.log('getUsersData:: user follow list');
  			r.status= 1;
  			r.length = foundedUsers.length;
- 			r.follow=foundedUsers;
+ 			r.follow=foundedUsers.follow;
 			r.msg.push('user follow list');
-			return callback(foundedUsers);
+			return callback(r);
  		}
  		else{
  			console.log('getUsersData:: followed user does not exist');

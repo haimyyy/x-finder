@@ -103,7 +103,7 @@
                         <div class="targetInfo" ng-class="{targetHover: hover , 'targetSelected': $index == selectedIndex }" 
                         ng-mouseenter="hover = true" ng-mouseleave="hover = false"
                         ng-click="itemClicked($index)">
-                            <p class="targetName"> {{ target.goal }} </p>
+                            <p class="targetName"> goal: {{ target.goal }} </p>
                             <p class="targetNum"> {{ target.number }} </p>
                             <p class="targetDesc"> {{ target.text }}</p>
                         </div>
@@ -131,8 +131,8 @@
 	  <div ng-controller="mapCtrl" data-role="page" id="mapPage" >
             <header data-position="fixed" data-tap-toggle="false">
                 <img src="img/Menu_Icon.png" id="nav" />
-                <p class="headerTitle">USER NAME</p>
-                <p class="headerSubTitle">GOAL: METHOD</p>
+                <p class="headerTitle">{{ user_target.user }}</p>
+                <p class="headerSubTitle">GOAL: {{ user_target.method }}</p>
             </header>
             <div data-role="content" class="ui-content" id="content">
                <div id="map"> </div>
@@ -156,15 +156,15 @@
         </div>
                 
         <div ng-controller="panelCtrl" data-role="panel" data-position="left" data-display="overlay" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
-            <ul data-role="listview" >
+            <ul data-role="listview" repeat-complete="insertNavHeader()">
                 <li class="navTitle" data-rel="close"> Espionage </li>
-                <li id="userId" class="navUserRow">
-                    <span class="ui-btn ui-icon-custom"> </span>
+                <li id="userId" ng-repeat="user in follow" class="navUserRow" ng-click-"showData($event)"  >
+                    <span class="ui-btn ui-icon-custom" ng-click="itemClicked($index)" ng-class="{downPos :$index == selectedIndex }" > </span>
                     <div class="navCont">
-                        <p class="navUserName">Avishay Hajbi</p>
-                        <p class="navMethod">GOAL: TRACKING</p>
+                        <p class="navUserName">{{ user.name }}</p>
+                        <p class="navMethod">GOAL: {{ user.method }}</p>
                     </div>
-                    <section class="categories">
+                    <section class="categories" ng-class="{showCatedories: $index == selectedIndex, hideCatedories: $index != selectedIndex}"">
                     
                         <label for="radio1" class="css-label radGroup1">
                         <input type="radio" name="radiog_lite1" id="radio1" class="css-radio" />
@@ -182,7 +182,7 @@
                         <a class="save" href="#">save</a>
                     </section>
                 </li>
-                <li id="userId" class="navUserRow">
+                <!-- <li id="userId" class="navUserRow">
                     <span class="ui-btn ui-icon-custom"> </span>
                     <div class="navCont">
                         <p class="navUserName">Haim Yaakov</p>
@@ -205,8 +205,8 @@
                         <a class="cancel" href="#">cancel</a>
                         <a class="save" href="#">save</a>
                     </section>
-                </li>
-                <li id="userId" class="navUserRow">
+                </li> -->
+               <!--  <li id="userId" class="navUserRow">
                     <span class="ui-btn ui-icon-custom"> </span>
                     <div class="navCont">
                         <p class="navUserName">Tamar Bracha</p>
@@ -229,7 +229,7 @@
                         <a class="cancel" href="#">cancel</a>
                         <a class="save" href="#">save</a>
                     </section>
-                </li>
+                </li> -->
                 <li class="navAddFriend">
                    ADD MORE PEOPLE
                 </li>

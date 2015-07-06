@@ -57,7 +57,7 @@
                 <p class="headerSubTitle">FACEBOOK ACCOUNT</p>
                 <div class="input-container">
                     <input ng-model="query" type="text"
-                    placeholder="Search..." autofocus>
+                    placeholder="Search friend..."  autofocus>
                 </div>  
             </header>
             <div data-role="content" class="ui-content" id="content">
@@ -98,8 +98,8 @@
                 <p class="headerSubTitle">MARK YOUR CAUSE</p>
             </header>
             <div data-role="content" class="ui-content" id="content">
-                <ul class="targets" ng-repeat="target in targets" >
-                    <li >
+                <ul class="targets"  >
+                    <li ng-repeat="target in targets" >
                         <img class="targetImg" src="{{ target.image }}">
                         <div class="targetInfo" ng-class="{targetHover: hover , 'targetSelected': $index == selectedIndex }" 
                         ng-mouseenter="hover = true" ng-mouseleave="hover = false"

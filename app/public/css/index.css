@@ -62,24 +62,25 @@ header .back {
 	-o-transform: rotate(-180deg);
 	transform: rotate(-180deg);
 }
-[data-role=header] div{
-	display: inline-block;
-}
+
 header #nav {
-	z-index: 2;
-	position: relative;
-	display: inline;
-	float: left;
-	top: 28px !important;
-  	left: 15px !important;
-	width: 25px;
-	height: 25px;
+  z-index: 2;
+  position: relative;
+  display: inline;
+  float: left;
+  top: 35px !important;
+  left: 15px !important;
+  width: 25px;
+  height: 21px;
 }
 .headerTitle{
 	color: #FF7FD3;
-  	font-size: 28px;
-  	top: 30px;
-  	position: relative;
+font-size: 34px;
+  top: 30px;
+  position: relative;
+}
+#mapPage .headerTitle {
+	color: #62ff38;
 }
 .headerSubTitle{
 	font-family: 'Orator';
@@ -249,7 +250,7 @@ html head+body .ui-btn.ui-btn-a:after{
 	border:none;
 }
 .ui-navbar li a:hover,.ui-navbar li a:focus,.ui-navbar li a:active{
-	color:green !important;
+	color:#62ff38 !important;
 	text-shadow:none;
 	opacity: 1;
 
@@ -259,7 +260,7 @@ html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-t
 html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, 
 html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited{
 	color: white;
-	opacity: 0.5;
+	  opacity: 0.6;
   	height: 21px;
   	line-height: 26px;
 	border:none;
@@ -282,13 +283,13 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	max-width: 252px;
 	font-family: 'Orator';
 }
-.loginFacebook{
-	width: 100%;
-	position: relative;
-	height:46px;
-	color:green;
-	background-color: black;
-	line-height: 53px;
+.loginFacebook {
+  width: 92%;
+  position: relative;
+  height: 46px;
+  color: #62ff38;
+  background-color: black;
+  line-height: 53px;
 }
 .loginFacebook span{
 	font-weight: bold;
@@ -301,23 +302,49 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 }
 /* find friend page */
 .ui-input-text input, .ui-input-search input {
-  border: 2px solid green;
-  position: relative;
-  color: black;
+position: relative;
+  color: #d7d5d5;
   top: -2px;
   height: 0px;
   width: 102%;
   left: -2px;
   text-shadow: none;
-  /*background-color: rgba(0,0,0,0.1);*/
-  background-color:	transparent; 
+  background-color: transparent;
+  background-image: url('../img/sreachRec.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 81%;
+  width: 100%;
+  direction: ltr;
+  text-align: left;
+  font-family: Orator;
+  padding: 0 0px 0 25px;
+  line-height: 42px;
+  font-size: 18px;
 }
+.ui-input-search.ui-input-has-clear .ui-btn.ui-input-clear, .ui-input-text.ui-input-has-clear .ui-btn.ui-input-clear{
+	  top: 68%;
+}
+/*.clearable{
+  background: #fff url(icoX.gif) no-repeat right -10px center;
+  border: 1px solid #999;
+  padding: 3px 18px 3px 4px;      Use the same right padding (18) in jQ! 
+  border-radius: 3px;
+  transition: background 0.4s;
+}
+.clearable.x  { background-position: right 5px center; } 
+.clearable.onX{ cursor: pointer; }*/
 #findFriendPage header{
 	height: 140px;
 }
 .input-container{
 	position: relative;
 	top:40px;
+	  width: 100%;
+}
+.input-container > div{
+	background-color: transparent !important;
+	border: 0;
 }
 input[type=search] { 
 	position: relative;
@@ -341,6 +368,7 @@ input[type=search] {
 }
 .friendRow .addFriendIcon{
 	float: right;
+	opacity: 0.3;
 }
 .friendRow .userName{
 	top: -27px;
@@ -348,17 +376,16 @@ input[type=search] {
   	font-weight: bold;
 }
 .friendRow .userRelationship{
-	top: -7px;
-  	position: relative;
-  	/* text-align: left; */
-  	left: -109px;
-  	opacity: 0.7;
+  top: -7px;
+  position: relative;
+  left: -109px;
+  opacity: 0.6;
 }
 .friendHover{
 	/*background-color: #C8C8C8 ;*/
 }
 .friendSelected{
-	background-color: #C8C8C8 ;
+	background-color: #d9d9d9;
 }
 /* target page */
 .tragets{
@@ -371,7 +398,7 @@ input[type=search] {
 .targetImg{
 	width: 15%; /*all the icons should be 342 X 346 */
 	max-width: 70px;
-
+	  bottom: 15px;
 	position: relative;
 	display: inline-block;
 	/* left: 20px; */
@@ -403,31 +430,42 @@ input[type=search] {
 .targetSelected{
 	background-color: black ;
 }
+.targetSelected > .targetName{
+	  color: #62ff38;
+}
+ .targetSelected > .targetDesc{
+ 	color: #fcfffc;
+ }
+ .targetSelected > .targetNum{
+ 	color: #fcfffc;
+ }
 .targetName{
-	font-family: 'Orator';
-	color:green;
-	font-size: 20px;
-	border-bottom: 1px solid grey;
-	margin-bottom: 5px;
+  font-family: 'Orator';
+  color: #51cd36;
+  font-size: 20px;
+  border-bottom: 1px solid #a3a9ac;
+  margin-bottom: 15px;
 }
 
 .targetDesc{
-	font-family: 'Orator';
-	color:white;
-	opacity: 0.5;
-	font-size: 15px;
-	font-weight: lighter;
-    width: 80%;
-    max-width: 200px;
-    display: inline-block;
+  font-family: 'Orator';
+  /* color: white; */
+  color: #a3a9ac;
+  /* opacity: 0.5; */
+  font-size: 15px;
+  font-weight: lighter;
+  width: 80%;
+  max-width: 200px;
+  display: inline-block;
 }
 
 .targetNum{
-	font-family: 'ds_digital - numbers';
-      width: 36px;
-      color: white;
-      font-weight: bold;
-      opacity: 0.5;
+  font-family: 'ds_digital - numbers';
+  width: 36px;
+  color: #a3a9ac;
+  /* color: white; */
+  font-weight: bold;
+  /* opacity: 0.5; */
   float: left;
   position: relative;
   display: inline-block;
@@ -452,7 +490,7 @@ input[type=search] {
 
 }
 .panel .ui-listview>.ui-li-static, .panel .ui-listview>.ui-li-divider, .panel .ui-listview>li>a.ui-btn{
-	color: green ;
+	  color: #62ff38;
 	width: 78%;
   	margin-left: 13px;
 }
@@ -477,8 +515,7 @@ input[type=search] {
   	height: 15px;
 }
 .navTitle, .navMethod, .navUserName{
-	color: white  !important;
-	margin: 0 !important;
+		margin: 0 !important;
 	cursor: pointer;
 }
 .navMethod, .navUserName{
@@ -491,6 +528,7 @@ input[type=search] {
 	font-weight: bold;
 	height: 45px;
   	line-height: 49px;
+  	  color: #ffffff !important;
 	/*padding:10px !important;*/
 }
 
@@ -499,6 +537,7 @@ input[type=search] {
 	top:4px;
 }
 .navUserName{
+	  color: #ffffff;
 	position: relative;
 	font-size: 20px !important;
 }
@@ -506,7 +545,7 @@ input[type=search] {
 	position: relative;
 	  top: 3px;
 	font-size: small !important;
-	opacity: 0.5;
+	  color: #c7c5c5;
 }
 .downPos{
 	background-position: 19px 19px !important;

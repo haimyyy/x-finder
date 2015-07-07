@@ -22,47 +22,6 @@ $(document).ready(function() {
 	g_loc.initialize();
 });
 
-/*
-$(document).on('click','.panel li',function(){
-	handleNavBarClick(this)
-})
-
-$(document).on('click','.panel li span',function(){
-	handleNavBarClick(this)
-})
-function handleNavBarClick(obj){
-	//console.log($(obj).context.nodeName)
-	if ($(obj).context.nodeName == 'LI'){
-		console.log('li')
-	}
-	else if ($(obj).context.nodeName == 'SPAN'){
-		console.log('span')
-
-		
-
-		if ($(obj).hasClass('downPos')){
-			$(obj).removeClass('downPos')
-			$(obj).parent().children().filter('section').css({'display':'none'})
-		}
-		else {
-			$('.categories').css('display','none')
-			$('.panel .navUserRow span').removeClass('downPos')
-			$(obj).addClass('downPos')
-			$(obj).parent().children().filter('section').css({'display':'block'})
-		}	
-		
-	}
-}
-*/
-// function tog(v){return v?'addClass':'removeClass';} 
-// 	$(document).on('input', '.clearable', function(){
-// 	    $(this)[tog(this.value)]('x');
-// 	}).on('mousemove', '.x', function( e ){
-// 	    $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');   
-// 	}).on('touchstart click', '.onX', function( ev ){
-// 	    ev.preventDefault();
-// 	    $(this).removeClass('x onX').val('').change();
-// });
 
 $(window).resize(function() {
 	initPageCss();
@@ -72,9 +31,9 @@ function initPageCss() {
 	var footer = parseInt($('footer').height());
 	var header = parseInt($('header').height());
 	$("[data-role=content]").css({"height": window.innerHeight  - header + "px"});
+	// $("#loginPage [data-role=content]").css("height", window.innerHeight - header + "px");
 	$("#findFriendPage [data-role=content]").css({"height": window.innerHeight  -footer - header + "px"});
-	$("#loginPage [data-role=content]").css("height", window.innerHeight +1 + "px");
-	$("#mapPage [data-role=content]").css({"height": window.innerHeight - footer +1 + "px"});
+	$("#mapPage [data-role=content]").css({"height": window.innerHeight - footer+1  + "px"});
 }
 
 $(window).on('hashchange', function(e) {
@@ -121,6 +80,14 @@ $(function() {
 		});
 	});
 });
+
+// $(document).on("panelbeforeopen",'#nav-panel',function(){
+//  	$('#nav-panel').css('left',$('.panel').width()+'px')
+// });
+
+// $(document).on("panelbeforeclose",'#nav-panel',function(){
+// 	$('#nav-panel').css('left',$('.panel').width()+'px')
+// });
 
 function insertInfo(title,data,status){
 	var p = $('<p>').html('').append(title+"<br/>")

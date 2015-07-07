@@ -36,14 +36,15 @@
     <body>
        
         <div ng-controller="loginCtrl" data-role="page" id="loginPage" >
-            <!-- <header data-role="header" data-position="fixed" data-tap-toggle="false">
-                <img src="img/menu_button.png" id="nav" />
-            </header> -->
+            <header data-role="header" data-position="fixed" data-tap-toggle="false">
+                <p class="headerTitle">X - FIND</p>
+                <p class="headerSubTitle">KEEP ON TRACK</p>
+            </header>
                 
             <div data-role="content" class="ui-content" id="content">
-                
+                <img src="../img/Opening.png">
                 <section class="loginBox">
-                    <p class="loginFacebook" ng-click="fbLogin()"> LOG-IN WITH <span class="loginFacebook"> FACEBOOK </span> </p> <!--  onclick="fbLogin()" -->
+                    <p class="loginFacebook" ng-click="fbLogin()"> LOG-IN WITH <span class="loginFacebook"> FACEBOOK </span> </p>
                     <p class="loginLicense"> WE DO NOT PUBLISH IN YOUR NAME </p>
                 </section>
             </div>
@@ -120,7 +121,7 @@
                                 <a href="#" data-inline="true">  </a>
                             </li>
                             <li>
-                                <a href="#mapPage" ng-click="selectedTarget()" data-inline="true"> OK! Go </a>
+                                <a href="#mapPage" ng-click="selectedTarget()" data-inline="true"> OK! GO </a>
                             </li>
                             <li>
                                 <a href="#" data-inline="true">  </a>
@@ -131,7 +132,7 @@
         </div>
 
 	  <div ng-controller="mapCtrl" data-role="page" id="mapPage" >
-            <header data-position="fixed" data-tap-toggle="false">
+            <header data-role="header" data-position="fixed" data-tap-toggle="false">
                 <img src="img/Menu_Icon.png" id="nav" />
                 <p class="headerTitle">{{ user_target.name }}</p>
                 <p class="headerSubTitle">GOAL: {{ user_target.method }}</p>
@@ -157,7 +158,7 @@
             </footer>   
         </div>
                 
-        <div ng-controller="panelCtrl" data-role="panel" data-position="left" data-display="overlay" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
+        <div ng-controller="panelCtrl" data-role="panel" data-position="left" data-display="reveal" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
             <ul data-role="listview" repeat-complete="insertNavHeader()">
                 <li class="navTitle" data-rel="close"> Espionage </li>
                 <li id="userId" ng-repeat="user in follow" class="navUserRow" >

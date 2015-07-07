@@ -135,7 +135,7 @@ html .ui-panel-page-container-a {
 	/*top: 2px;
 	text-decoration: none;*/
 }
-#findFriendPage, #targetPage { 
+#findFriendPage, #targetPage, #loginPage { 
 	background-image: url('../img/Background_Log In X 1.png');
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
@@ -268,11 +268,20 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 }
 
 /* login page */
-#loginPage{
- background-image: url('../img/OPENING_GIF.gif');
- background-size: 100% 100% !important;
- background-repeat: no-repeat !important;
- background-position: center center !important;
+#loginPage header{
+	margin-top:90px;	
+}
+#loginPage #content img{
+  width: 23px;
+  position: relative;
+  /* display: inline; */
+  float: left;
+  left: 45.5%;
+  top: 111px;
+
+}
+#loginPage .headerTitle{
+	color: #62ff38;
 }
 .loginBox{
 	position: relative;
@@ -325,15 +334,7 @@ position: relative;
 .ui-input-search.ui-input-has-clear .ui-btn.ui-input-clear, .ui-input-text.ui-input-has-clear .ui-btn.ui-input-clear{
 	  top: 68%;
 }
-/*.clearable{
-  background: #fff url(icoX.gif) no-repeat right -10px center;
-  border: 1px solid #999;
-  padding: 3px 18px 3px 4px;      Use the same right padding (18) in jQ! 
-  border-radius: 3px;
-  transition: background 0.4s;
-}
-.clearable.x  { background-position: right 5px center; } 
-.clearable.onX{ cursor: pointer; }*/
+
 #findFriendPage header{
 	height: 140px;
 }
@@ -483,6 +484,13 @@ input[type=search] {
   font-size: 29px;
 }
 /* map page*/
+#mapPage header{
+	overflow: hidden;
+	padding: 0;
+}
+#mapPage .ui-panel-wrapper{
+	top:-85px;
+}
 #mapPage #content{
 	padding: 0;
 }
@@ -491,7 +499,8 @@ input[type=search] {
 	height: 100%;
 }
 /* panel */
-.panel{
+#nav-panel{
+
 	/*direction: rtl;*/
 	background-image: url('../img/Background_Menu X 1.png')  !important;
 	background-size: cover;
@@ -500,7 +509,7 @@ input[type=search] {
 
 }
 .panel .ui-listview>.ui-li-static, .panel .ui-listview>.ui-li-divider, .panel .ui-listview>li>a.ui-btn{
-	  color: #62ff38;
+	color: #62ff38;
 	width: 78%;
   	margin-left: 13px;
 }

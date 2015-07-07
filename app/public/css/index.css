@@ -9,6 +9,7 @@
 }
 body{
 	overflow: hidden;
+	background-color: black;
 }
 
 html {
@@ -227,6 +228,7 @@ html head+body .ui-btn.ui-btn-a:after{
   	padding: 0;
   	height: 50px;
 	background-color: black;
+	border: none;
 }
 [data-role=navbar] li{
 	height: 49px;

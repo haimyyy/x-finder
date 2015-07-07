@@ -34,7 +34,7 @@ function initPageCss() {
 	// $("#loginPage [data-role=content]").css("height", window.innerHeight - header + "px");
 	$("#findFriendPage [data-role=content]").css({"height": window.innerHeight  -footer - $('#findFriendPage header').height() + "px"});
 	$("#targetPage [data-role=content]").css({"height": window.innerHeight  -footer - header + "px"});
-	$("#mapPage [data-role=content]").css({"height": window.innerHeight - footer  + "px"});
+	$("#mapPage [data-role=content]").css({"height": window.innerHeight - footer+1  + "px"});
 	
 	
 }

@@ -247,7 +247,7 @@ xfind.controller('panelCtrl',['$scope', '$http',
     $scope.follow = model.follow;
     $scope.targets = model.targets;
     $scope.selectedoption = '';
-    $scope.panelStyle = { 'height': window.innerHeight+1+"px" };
+    $scope.panelStyle = { 'height': window.innerHeight+"px" };
 
     $scope.$on('updateNav', function(event,userid) {
       console.log('update nav broadcast',userid)

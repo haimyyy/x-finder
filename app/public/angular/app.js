@@ -104,21 +104,27 @@ xfind.controller('loginCtrl',['$rootScope','$scope', '$http','Facebook','sharedP
   }
 ]);
 
-xfind.controller('findFriendCtrl',['$scope', '$http','sharedProperties',
-  function($scope, $http, sharedProperties){
+xfind.controller('findFriendCtrl',['$scope','$rootScope','$http','sharedProperties',
+  function($scope,$rootScope,$http,sharedProperties){
     $scope.$on('getUsers', function(event,userid) {
       console.log('get users broadcast',userid)
       $scope.getUsers(userid);
+      
     });
 
     $scope.getUsers = function(userid){
       $http.get(model.domain+"user/getAppUsers?id="+userid).success(function(data){
         model.users = data.users;
-        $scope.users = data.users;
-        //console.log($route)
+        $scope.users = model.users;
+        
       })
       .error  = errHandler;
     }
+
+    $scope.clearSearch = function () {
+        $scope.searchText = "";
+
+    };
 
     $scope.selectedIndex = -1; 
 

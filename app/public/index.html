@@ -56,13 +56,14 @@
                 <p class="headerTitle">EX DATA</p>
                 <p class="headerSubTitle">FACEBOOK ACCOUNT</p>
                 <div class="input-container">
-                    <input ng-model="query" type="text"
+                    <input ng-model="searchText.name" type="text" class="clearable"
                     placeholder="SEARCH FRIENDS..."  autofocus>
+                    <a class="clearText" href="" data-ng-click="clearSearch()">X</a>
                 </div>  
             </header>
             <div data-role="content" class="ui-content" id="content">
                     
-                    <ul class="friendList" ng-repeat="user in users | filter:{name: query}">
+                    <ul class="friendList" ng-repeat="user in users | filter:searchText">
                         <li class="friendRow" ng-class="{friendHover: hover , 'friendSelected': $index == selectedIndex }" 
                         ng-mouseenter="hover = true" ng-mouseleave="hover = false"
                         ng-click="itemClicked($index)">

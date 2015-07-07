@@ -318,7 +318,7 @@ position: relative;
   direction: ltr;
   text-align: left;
   font-family: Orator;
-  padding: 0 0px 0 25px;
+  padding: 0 30px 0 15px;
   line-height: 42px;
   font-size: 18px;
 }
@@ -339,8 +339,8 @@ position: relative;
 }
 .input-container{
 	position: relative;
-	top:40px;
-	  width: 100%;
+	top:37px;
+	width: 100%;
 }
 .input-container > div{
 	background-color: transparent !important;
@@ -350,6 +350,13 @@ input[type=search] {
 	position: relative;
 	top:2px;	
 	background-color: rgba(0,0,0,0.1);
+}
+.clearText{
+	color:#FF7FD3 !important;
+	font-weight: lighter !important;
+	position: relative;
+	top: 5px;
+  left: 26%;
 }
 
 .friendList{

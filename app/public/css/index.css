@@ -488,9 +488,7 @@ input[type=search] {
 	overflow: hidden;
 	padding: 0;
 }
-#mapPage .ui-panel-wrapper{
-	top:-85px;
-}
+
 #mapPage #content{
 	padding: 0;
 }
@@ -499,6 +497,10 @@ input[type=search] {
 	height: 100%;
 }
 /* panel */
+
+.ui-panel .ui-panel-inner{
+	border: none;
+}
 #nav-panel{
 
 	/*direction: rtl;*/

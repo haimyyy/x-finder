@@ -132,12 +132,15 @@
         </div>
 
 	  <div ng-controller="mapCtrl" data-role="page" id="mapPage" >
-            <header data-role="header" data-position="fixed" data-tap-toggle="false">
+            
+            <div data-role="content" class="ui-content" id="content">
+
+            <header  data-tap-toggle="false">
                 <img src="img/Menu_Icon.png" id="nav" />
                 <p class="headerTitle">{{ user_target.name }}</p>
                 <p class="headerSubTitle">GOAL: {{ user_target.method }}</p>
             </header>
-            <div data-role="content" class="ui-content" id="content">
+
                <div id="map"> </div>
             </div> 
 
@@ -158,7 +161,7 @@
             </footer>   
         </div>
                 
-        <div ng-controller="panelCtrl" data-role="panel" data-position="left" data-display="reveal" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
+        <div ng-controller="panelCtrl" ng-style="panelStyle" data-role="panel" data-position="left" data-display="reveal" data-swipe-close="true"  id="nav-panel" class="panel" class="ui-responsive-panel" >
             <ul data-role="listview" repeat-complete="insertNavHeader()">
                 <li class="navTitle" data-rel="close"> Espionage </li>
                 <li id="userId" ng-repeat="user in follow" class="navUserRow" >

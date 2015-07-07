@@ -34,6 +34,8 @@ function initPageCss() {
 	// $("#loginPage [data-role=content]").css("height", window.innerHeight - header + "px");
 	$("#findFriendPage [data-role=content]").css({"height": window.innerHeight  -footer - $('#findFriendPage header').height() + "px"});
 	$("#mapPage [data-role=content]").css({"height": window.innerHeight - footer+1  + "px"});
+	
+	
 }
 
 $(window).on('hashchange', function(e) {

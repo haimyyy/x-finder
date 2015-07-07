@@ -153,7 +153,7 @@ User_schema.statics.findUserAndUpdate = function (req_user,callback) {
 User_schema.methods.removeFromFollowList = function (user,callback) {
  	var r = {msg:[],follow:[]};
  	var currUser = this;
- 	return this.model('users').findOne({ id : user.friend })
+ 	return this.model('users').findOne({ id : parseInt(user.friend) })
  	.exec(function(err,foundedUser){
  		if (err){
  			r.status= 0;
@@ -162,7 +162,7 @@ User_schema.methods.removeFromFollowList = function (user,callback) {
  		}
  		else if (foundedUser){
 			//update user details
-			currUser.follow.pull({ _id: '5583d4c9b9fb2203001edb93' });
+			currUser.follow.pull({ _id: foundedUser._id });
 			currUser.save(function(err){
 				if (err){
 		 			r.status= 0;

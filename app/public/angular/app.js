@@ -3,11 +3,12 @@ var userPermissions = ["email","public_profile","user_friends", //"user_checkins
 var tempPermissions = ["email","public_profile","user_friends"];
 var model = {
   user : {},
-  // domain: "http://localhost:8080/",
-  domain: "http://x-find.herokuapp.com/",
+  domain: "http://localhost:8080/",
+  //domain: "http://x-find.herokuapp.com/",
   user_target:{
     name: "USER NAME",
     method: "METHOD",
+    id: 0,
     index :-1
   },
   follow:[],
@@ -177,6 +178,7 @@ xfind.controller('targetCtrl',['$scope', '$http','sharedProperties',
           
           model.user_target.name = data.followed_user.name;
           model.user_target.method = data.followed_user.method;
+          model.user_target.id = data.followed_user.id;
           model.user_target.index = index;
           console.log(data)
         })
@@ -274,37 +276,46 @@ xfind.controller('panelCtrl',['$scope', '$http',
         console.log($scope.follow[$index])
         model.user_target.name = $scope.follow[$index].name;
         model.user_target.method = $scope.follow[$index].method;
+        model.user_target.id = $scope.follow[$index].id;
         model.user_target.index = $index;
      }
-     /*$scope.delete = function($index){
-       var data= {
+     $scope.delete = function($index){
+       var args= {
         user: model.user.id,
         friend: model.follow[$index].id
        }
-       console.log(data);
-       console.log($index);
-        $http.post(model.domain+"user/removeFollowList",data).success(function(data){
+       
+        $http.post(model.domain+"user/removeFollowList",args).success(function(data){
+            console.log(data)
             if (data.status != 1) return;
-            console.log(data);
-            model.follow=data.follow;
+            var temp = model.follow[$index];
+            model.follow.splice($index,1);
+            if (temp.id == model.user_target.id){
+              model.user_target.name = 'USER NAME';
+              model.user_target.method = 'METHOD';
+              model.user_target.id = 0;
+              model.user_target.index = -1;
+            }
 
-            $scope.follow = model.follow;
-            
-            // model.user_target.name = 'USER NAME';
-            // model.user_target.method = 'METHOD';
-            // model.user_target.index = -1;
+            $( "#nav-panel" ).panel( "close" );
         }).error = errHandler;
-     }*/
-     /*$scope.save = function($index){
-      var data= {
+     }
+     $scope.save = function($index){
+      var args= {
         user: model.user.id,
-        friend: model.follow[model.user_target.index].id,
-        method : model.user_target.method
+        friend: model.follow[$index].id,
+        method : model.follow[$index].method
        }
-        $http.post(model.domain+"user/addFollowList",data).success(function(data){
-          
+        $http.post(model.domain+"user/addFollowList",args).success(function(data){
+            console.log(data)
+            if (data.status != 1) return;
+            if (model.follow[$index].id == model.user_target.id){
+              model.user_target.method = model.follow[$index].method;
+            }
+
+            $( "#nav-panel" ).panel( "close" );
         }).error = errHandler;
-     }*/
+     }
 
      
   }

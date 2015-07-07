@@ -611,29 +611,33 @@ input[type=search] {
   	background-color: transparent;
   	border:1px solid white;
 }*/
-.css-radio { display:none;}
+.css-radio { visibility:hidden;}
+.ui-checkbox input:checked, .ui-radio input:checked {
+	visibility: visible;
+  position: absolute;
+  left: .466em;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -13px 0 0 4px;
+  outline: 0!important;
+  z-index: 1;
+}
+
+
 .ui-radio .ui-btn.ui-radio-on:after{
-	background-image: none;
-    background-color:white !important;
-    opacity: 1;
-  	width: 8px;
-  	height: 8px;
-  	border-width: 2px;
-  	border-style: solid;
-
+   	background-color: transparent;
+  width: 7px;
+  height: 7px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 0;
+  top: 22px;
 }
-
-.ui-btn.ui-checkbox-off:after, .ui-btn.ui-checkbox-on:after, 
-.ui-btn.ui-radio-off:after, .ui-btn.ui-radio-on:after{
-	background-image: none;
-    background-color:transparent; 
-  	width: 8px;
-  	height: 8px;
-  	border-width: 2px;
-  	border-style: solid;
-  	border-radius: 0;
-}
-
+.ui-radio .ui-btn.ui-radio-on:after:checked{
+ 	background-color:red ;
+ 	opacity: 1;
+ }
 
 
 .save, .cancel{

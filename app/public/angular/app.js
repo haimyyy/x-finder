@@ -317,9 +317,15 @@ xfind.controller('panelCtrl',['$scope', '$http',
         }).error = errHandler;
      }
 
-     
   }
-]);
+])
+// .directive('myChange', function() {
+//   return function(scope, element) {
+//     element.bind('change', function(e) {
+//       console.log(e);
+//     });
+//   }
+// });
 
 function errHandler(err){
   console.log(err);

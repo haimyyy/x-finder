@@ -173,7 +173,8 @@
                             id="{{$parent.$index}}{{target.number}}"
                             value="{{target.method}}" 
                             ng-model="user.method" 
-                            ng-value="true"/><span></span>{{target.method}}</label>
+                            checked = "target.method == user.method"
+                            ng-value="target.method"/>{{target.method}}</label>
                         </div>
                         <a class="cancel" href="#" ng-click="delete($index)">DELETE</a>
                         <a class="save" href="#" ng-click="save($index)">SAVE</a>

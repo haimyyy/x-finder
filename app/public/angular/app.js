@@ -193,7 +193,7 @@ xfind.controller('targetCtrl',['$scope', '$http','sharedProperties',
 xfind.controller('mapCtrl',['$scope', '$http',
   function($scope, $http){
     $scope.user_target = model.user_target;
-
+    var DRN = new Date().getTime(); // Date Right Now
     $scope.hours = function(){
       MapSingelton.getMap().removeMarkers()
       console.log(model.follow[$scope.user_target.index])

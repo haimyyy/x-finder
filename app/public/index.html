@@ -102,7 +102,7 @@
             <div data-role="content" class="ui-content" id="content">
                 <ul class="targets" >
                     <li ng-repeat="target in targets" >
-                        <img class="targetImg" src="{{ target.image }}" width="{{ target.width }}">
+                        <img class="targetImg" src="{{ target.image }}" width="{{ target.width }}" style="max-width:{{target.max_width}}">
                         <div class="targetInfo" ng-class="{targetHover: hover , 'targetSelected': $index == selectedIndex }" 
                         ng-mouseenter="hover = true" ng-mouseleave="hover = false"
                         ng-click="itemClicked($index)">

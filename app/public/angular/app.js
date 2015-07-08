@@ -18,6 +18,7 @@ var model = {
       goal:'CURIOSITY',
       number :'1 :',
       width : "15%",
+      max_width:"70px",
       text: 'iterested but not to much.',
       method:'CURIOSITY'
     },
@@ -26,6 +27,7 @@ var model = {
       goal:'TRACKING',
       number :'2 :',
       width : "10%",
+      max_width:"50px",
       text: "need to know where he/she and that they're up to.",
       method:'TRACKING'
     },
@@ -34,6 +36,7 @@ var model = {
       goal:'AVOIDANCE',
       number :'3 :',
       width : "15%",
+      max_width:"70px",
       text: "don't want to see or run into him or at no way.",
       method:'AVOIDANCE'
     }

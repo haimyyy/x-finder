@@ -251,10 +251,10 @@ html head+body .ui-btn.ui-btn-a:after{
   	top: 1px;
 }
 
-/*#targetPage [data-role=navbar] li a:active, #findFriendPage [data-role=navbar] li a:active{
+#targetPage [data-role=navbar] li a:active, #findFriendPage [data-role=navbar] li a:active{
 	color: #62ff38 !important;
 	opacity: 1 !important;
-}*/
+}
 
 [data-role=navbar]{
 	height: 50px;

@@ -17,8 +17,7 @@ var model = {
       image:'img/TargetPage_Curiosity.png',
       goal:'CURIOSITY',
       number :'1 :',
-      width : "15%",
-      max_width:"70px",
+      style:"width : 15%; max-width:70px",
       text: 'interested but not too much.',
       method:'CURIOSITY'
     },
@@ -26,17 +25,15 @@ var model = {
       image:'img/TargetPage_Tracking.png',
       goal:'TRACKING',
       number :'2 :',
-      width : "10%",
-      max_width:"50px",
-      text: "need to know where he/she was and that they're up to.",
+      style:"width : 10%; max-width:50px",
+      text: "need to know where he/she was and what they're up to.",
       method:'TRACKING'
     },
     {
       image:'img/TargetPage_Avoidance.png',
       goal:'AVOIDANCE',
       number :'3 :',
-      width : "15%",
-      max_width:"70px",
+      style:"width : 15%; max-width:70px",
       text: "don't want to see or run into him or her at no way.",
       method:'AVOIDANCE'
     }
@@ -207,7 +204,7 @@ xfind.controller('mapCtrl',['$scope', '$http',
       MapSingelton.getMap().removeMarkers()
       console.log(model.follow[$scope.user_target.index])
       var temp_obj = model.follow[$scope.user_target.index];
-
+      console.log("temp_obj",temp_obj);
       if ($scope.user_target.method == 'TRACKING') {
 
           MapSingelton.getMap().setMarker(new Marker

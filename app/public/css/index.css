@@ -681,7 +681,24 @@ input[type=search] {
   	line-height: 35px !important;
   	cursor: crosshair;
 }
+#pop{
+	background:#19282f;
+	color:#ffffff;
+}
 
+#popTitle{
+	font-family: 'Orator';
+  color: #ffffff;
+  float: right;
+  font-size: 16px;
+  width: 50%;
+}
+#popTime{
+	font-family: 'ds_digital - numbers';
+  color: #ffffff;
+  float: left;
+  font-size: 30px;
+}
 /* input type text TODO changed
 .ui-input-text input, .ui-input-search input{
 	text-align: right;

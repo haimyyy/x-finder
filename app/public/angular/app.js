@@ -193,22 +193,52 @@ xfind.controller('targetCtrl',['$scope', '$http','sharedProperties',
 xfind.controller('mapCtrl',['$scope', '$http',
   function($scope, $http){
     $scope.user_target = model.user_target;
-    var DRN = new Date().getTime(); // Date Right Now
+      var DY = new Date(); // Date Yesterday
+      var DLW = new Date(); // Date Last Week
+      DY.setDate(DY.getDate() - 1);
+      DY=DY.getTime();
+      DLW.setDate(DLW.getDate() - 7);
+      DLW=DLW.getTime();
+      
+    // var user = model.follow[$scope.user_target.index];
     $scope.hours = function(){
       MapSingelton.getMap().removeMarkers()
-      console.log(model.follow[$scope.user_target.index])
+      console.log(model.user_target);
       var temp_obj = model.follow[$scope.user_target.index];
-
       if ($scope.user_target.method == 'TRACKING') {
-
-          MapSingelton.getMap().setMarker(new Marker
-            (new Date().getTime(),new google.maps.LatLng(31.7963186,35.175359),"avishay",'avoidance_green'))
+        displayCommonPlaces(temp_obj,'TRACKING');
+        $.each(temp_obj.tagged_places,function(i,val){
+           var tagTime = val.time;
+            if(DY<tagTime){
+               console.log("in time")
+            MapSingelton.getMap().setMarker(new Marker
+            (tagTime,new google.maps.LatLng(val.latitude,val.longitude),val.name,'tracking_green'))
+          } 
+        })
+          // MapSingelton.getMap().setMarker(new Marker
+          //   (new Date().getTime(),new google.maps.LatLng(31.7963186,35.175359),"avishay",'avoidance_green'))
       }
       else if ($scope.user_target.method == 'CURIOSITY') {
-
+        displayCommonPlaces(temp_obj,'CURIOSITY');
+        $.each(temp_obj.tagged_places,function(i,val){
+           var tagTime = val.time;
+            if(DY<tagTime){
+               console.log("in time")
+            MapSingelton.getMap().setMarker(new Marker
+            (tagTime,new google.maps.LatLng(val.latitude,val.longitude),val.name,'curiosity_green'))
+          } 
+        })
       }
       else if ($scope.user_target.method == 'AVOIDANCE') {
-
+        displayCommonPlaces(temp_obj,'AVOIDANCE');
+        $.each(temp_obj.tagged_places,function(i,val){
+           var tagTime = val.time;
+            if(DY<tagTime){
+              console.log("in time")
+            MapSingelton.getMap().setMarker(new Marker
+            (tagTime,new google.maps.LatLng(val.latitude,val.longitude),val.name,'avoidance_green'))
+          } 
+        })
       }
 
     }
@@ -218,13 +248,37 @@ xfind.controller('mapCtrl',['$scope', '$http',
       var temp_obj = model.follow[$scope.user_target.index];
 
       if ($scope.user_target.method == 'TRACKING') {
-
+        displayCommonPlaces(temp_obj,'TRACKING');
+        $.each(temp_obj.tagged_places,function(i,val){
+           var tagTime = val.time;
+            if(DLW<tagTime){
+              console.log("in time",val)
+            MapSingelton.getMap().setMarker(new Marker
+            (tagTime,new google.maps.LatLng(val.latitude,val.longitude),val.name,'tracking_green'))
+          } 
+        })
       }
       else if ($scope.user_target.method == 'CURIOSITY') {
-
+        displayCommonPlaces(temp_obj,'CURIOSITY');
+        $.each(temp_obj.tagged_places,function(i,val){
+           var tagTime = val.time;
+            if(DLW<tagTime){
+               console.log("in time",val)
+            MapSingelton.getMap().setMarker(new Marker
+            (tagTime,new google.maps.LatLng(val.latitude,val.longitude),val.name,'curiosity_green'))
+          } 
+        })
       }
       else if ($scope.user_target.method == 'AVOIDANCE') {
-
+        displayCommonPlaces(temp_obj,'AVOIDANCE');
+        $.each(temp_obj.tagged_places,function(i,val){
+           var tagTime = val.time;
+            if(DLW<tagTime){
+               console.log("in time",val)
+            MapSingelton.getMap().setMarker(new Marker
+            (tagTime,new google.maps.LatLng(val.latitude,val.longitude),val.name,'avoidance_green'))
+          } 
+        })
       }
     }
     $scope.forecast = function(){
@@ -233,18 +287,88 @@ xfind.controller('mapCtrl',['$scope', '$http',
       var temp_obj = model.follow[$scope.user_target.index];
 
       if ($scope.user_target.method == 'TRACKING') {
-
+        displayCommonPlacesForeCast(temp_obj,'TRACKING');
+              $.each(temp_obj.future_events,function(i,val){
+                 var tagTime = val.time;
+                  MapSingelton.getMap().setMarker(new Marker
+                  (tagTime,new google.maps.LatLng(val.latitude,val.longitude),val.name,'tracking_red'))
+                
+        })
       }
       else if ($scope.user_target.method == 'CURIOSITY') {
-
+          displayCommonPlacesForeCast(temp_obj,'CURIOSITY');
+        $.each(temp_obj.future_events,function(i,val){
+           var tagTime = val.time;
+            MapSingelton.getMap().setMarker(new Marker
+            (tagTime,new google.maps.LatLng(val.latitude,val.longitude),val.name,'curiosity_red'))
+          
+        })
       }
       else if ($scope.user_target.method == 'AVOIDANCE') {
-
+        displayCommonPlacesForeCast(temp_obj,'AVOIDANCE');
+        $.each(temp_obj.future_events,function(i,val){
+           var tagTime = val.time;
+            MapSingelton.getMap().setMarker(new Marker
+            (tagTime,new google.maps.LatLng(val.latitude,val.longitude),val.name,'avoidance_red'))
+          
+        })
       }
     }
   }
 ]);
 
+function displayCommonPlaces( user_obj, method){
+  switch (method) {
+      case 'TRACKING':{
+            MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.hometown.latitude,user_obj.hometown.longitude),user_obj.hometown.name,'tracking_green'))
+         MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.work_place.latitude,user_obj.work_place.longitude),user_obj.work_place.name,'tracking_green'))
+         
+          break;
+        }
+      case 'CURIOSITY':{
+           MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.hometown.latitude,user_obj.hometown.longitude),user_obj.hometown.name,'curiosity_green'))
+         MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.work_place.latitude,user_obj.work_place.longitude),user_obj.work_place.name,'curiosity_green'))
+          break;
+      }   
+      case 'AVOIDANCE':{
+           MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.hometown.latitude,user_obj.hometown.longitude),user_obj.hometown.name,'avoidance_green'))
+         MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.work_place.latitude,user_obj.work_place.longitude),user_obj.work_place.name,'avoidance_green'))
+          break;
+      }  
+    }
+}
+function displayCommonPlacesForeCast( user_obj, method){
+    switch (method) {
+      case 'TRACKING':{
+            MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.hometown.latitude,user_obj.hometown.longitude),user_obj.hometown.name,'tracking_red'))
+         MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.work_place.latitude,user_obj.work_place.longitude),user_obj.work_place.name,'tracking_red'))
+         
+          break;
+        }
+      case 'CURIOSITY':{
+           MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.hometown.latitude,user_obj.hometown.longitude),user_obj.hometown.name,'curiosity_red'))
+         MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.work_place.latitude,user_obj.work_place.longitude),user_obj.work_place.name,'curiosity_red'))
+          break;
+      }   
+      case 'AVOIDANCE':{
+           MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.hometown.latitude,user_obj.hometown.longitude),user_obj.hometown.name,'avoidance_red'))
+         MapSingelton.getMap().setMarker(new Marker
+            (new Date().getTime(),new google.maps.LatLng(user_obj.work_place.latitude,user_obj.work_place.longitude),user_obj.work_place.name,'avoidance_red'))
+          break;
+      }  
+    }
+}
 xfind.controller('panelCtrl',['$scope', '$http',
   function($scope, $http){
     $scope.follow = model.follow;

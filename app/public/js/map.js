@@ -26,7 +26,7 @@ var MapSingelton = (function (){
     var _marker_list = [];
    	var _max_zoom=17;
    	var _min_zoom=14;
-  
+  	var counter=0;
     function initializeMap() {
         var mapOptions = {
 			center : new google.maps.LatLng(_my_location),
@@ -69,27 +69,48 @@ var MapSingelton = (function (){
 	  	});
 	  	
 	  	google.maps.event.addListener(_map, 'click', function() {
-		    (_info_window)?_info_window.close():"";
+		   if (_info_window)_info_window.close();
 	    });
 	}
 	
 	function showInfoDialog(obj){
-		var contentString = 
-			'<div id="content" style="width:100%;height:auto">'+
-		    '<div id="siteNotice" style="width:100%;height:auto;">'+
-		    '</div>'+
-		    '<h1 id="firstHeading" class="firstHeading" width:100%;height:auto;">Info</h1>'+
-		    '<div id="bodyContent" style="width:100%;height:auto;">'+
-	        obj.title+" xfinder app"+
-	        //'<p onclick="(function(e, obj){ alert(obj.innerHTML); })(event, this)">click here to save</p>'
-		    '</div>'+
-		    '</div>';
-	   
-	    (_info_window)?_info_window.close():
-	    _info_window = new google.maps.InfoWindow({
-	      content: contentString
-	  	});
-	  	_info_window.open(_map,obj);
+		// console.log(obj)
+		// //debugger;
+		var time = new Date(obj.id);
+		var div = $('<div>').attr('id','pop')
+		var h4 = $('<h4>').attr('id','popTitle').html(obj.title);
+		var p = $('<p>').attr('id','popTime').html(time.getHours()+":"+time.getMinutes())
+			
+		div.append(h4.toString()).append(p.toString());
+		var contentString = '<div id="pop">'+
+		'<h4 id="popTitle">'+obj.title+'</h4>'+
+		'<p id="popTime">'+time.getHours()+":"+time.getMinutes()+'</p>'+
+		'</div>'; 
+		
+	 console.log(obj,"map")
+	  infoBubble = new InfoBubble({
+	      map: _map,
+	      content: contentString,
+	      position: new google.maps.LatLng(obj.position.A, obj.position.F),
+	      shadowStyle: 1,
+	      padding: 8,
+	      backgroundColor: '#19282f',
+	      borderRadius: 0,
+	      arrowSize: 10,
+	      borderWidth: 2,
+	      borderColor: '#ffffff',
+	      disableAutoPan: true,
+	      hideCloseButton: true,
+	      arrowPosition: 30,
+	      backgroundClassName: 'transparent',
+	      arrowStyle: 0,
+	      maxHeight:50,
+	      minWidth:150,
+	      maxWidth:250
+    });
+	if (_info_window)_info_window.close();
+    _info_window=infoBubble;
+    _info_window.open();
 	}
 	
 	function onMarkerPressed() {
@@ -107,7 +128,7 @@ var MapSingelton = (function (){
 				break;
 			}
 			default:{
-				_map.setZoom(_min_zoom);
+				//_map.setZoom(_min_zoom);
 				//_map.setCenter(new google.maps.LatLng(this.position.k, this.position.D));
 				break;
 			}
@@ -169,21 +190,21 @@ var MapSingelton = (function (){
 						    new google.maps.Size(71, 71),
 						    new google.maps.Point(0, 0),
 						    new google.maps.Point(17, 34),
-						    new google.maps.Size(35, 55));
+						    new google.maps.Size(50, 50));
 					else if (marker.type.indexOf("curiosity_green") != -1 || marker.type.indexOf("curiosity_red") != -1) 
 						image = new google.maps.MarkerImage(
 					    	icons_images[marker.type],
 						    new google.maps.Size(71, 71),
 						    new google.maps.Point(0, 0),
 						    new google.maps.Point(17, 34),
-						    new google.maps.Size(35, 55));
+						    new google.maps.Size(60,45));
 					else if (marker.type.indexOf("tracking_green") != -1 || marker.type.indexOf("tracking_red") != -1) 
 						image = new google.maps.MarkerImage(
 					    	icons_images[marker.type],
 						    new google.maps.Size(71, 71),
 						    new google.maps.Point(0, 0),
 						    new google.maps.Point(17, 34),
-						    new google.maps.Size(35, 55));
+						    new google.maps.Size(50, 50));
 					else 						
 						image = new google.maps.MarkerImage(
 					    	icons_images[marker.type],

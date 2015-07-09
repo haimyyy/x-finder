@@ -38,7 +38,7 @@
         <div ng-controller="loginCtrl" data-role="page" id="loginPage" >
             <header data-role="header" data-position="fixed" data-tap-toggle="false">
                 <p class="headerTitle">X - FIND</p>
-                <p class="headerSubTitle">KEEP ON TRACK</p>
+                <p class="headerSubTitle"><span>KEEP ON TRACK</span></p>
             </header>
                 
             <div data-role="content" class="ui-content" id="content">
@@ -55,7 +55,7 @@
             <header data-role="header" data-position="fixed" data-tap-toggle="false">
                 <a href="#" class="back" onclick="history.back()"> </a> 
                 <p class="headerTitle">EX DATA</p>
-                <p class="headerSubTitle">FACEBOOK ACCOUNT</p>
+                <p class="headerSubTitle"><span>FACEBOOK ACCOUNT</span></p>
                 <div class="input-container">
                     <input ng-model="searchText.name" type="text" class="clearable"
                     placeholder="SEARCH FRIENDS"  autofocus>
@@ -97,7 +97,7 @@
             <header data-role="header" data-position="fixed" data-tap-toggle="false">
                 <a href="#"  class="back" onclick="history.back()"> </a> 
                 <p class="headerTitle">THE TARGET</p>
-                <p class="headerSubTitle">MARK YOUR CAUSE</p>
+                <p class="headerSubTitle"><span>MARK YOUR CAUSE</span></p>
             </header>
             <div data-role="content" class="ui-content" id="content">
                 <ul class="targets" >
@@ -138,7 +138,7 @@
             <header  data-tap-toggle="false">
                 <img src="img/Menu_Icon.png" id="nav" />
                 <p class="headerTitle">{{ user_target.name }}</p>
-                <p class="headerSubTitle">GOAL: {{ user_target.method }}</p>
+                <p class="headerSubTitle"><span>GOAL: {{ user_target.method }}<span></p>
             </header>
 
                <div id="map"> </div>

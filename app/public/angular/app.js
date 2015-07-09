@@ -93,7 +93,7 @@ xfind.controller('loginCtrl',['$rootScope','$scope', '$http','Facebook','sharedP
       // if the user authenticated then brings all the other users 
       $rootScope.$broadcast("getUsers",args.authResponse.userID);
       $rootScope.$broadcast("updateNav",args.authResponse.userID);
-      //changePageTo('findFriendPage');
+      changePageTo('findFriendPage');
     });
 
     $scope.updateUser = function(response){

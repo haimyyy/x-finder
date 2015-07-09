@@ -83,20 +83,34 @@ font-size: 34px;
 #mapPage .headerTitle {
 	color: #62ff38;
 }
-.headerSubTitle{
-	font-family: 'Orator';
+.headerSubTitle {
 	top: 37px;
-	text-shadow: -2px -2px black;
   	position: relative;
- 	width: 56%;
- 	background-color: rgba(0,0,0,1);
+ 	/*width: 56%;*/
+ 	/*background-color: rgba(0,0,0,1);*/
+ 	/*background: linear-gradient(90deg, #000000 60%, transparent  20%);*/
   	color: white;
   	font-size: 17px;
   	font-weight: normal;
-  	float: left;
-  	text-align: right;
+  	/*float: left;*/
+  	text-align: center;
   	line-height: 10px;
-  	padding: 0px 10px 5px 0;
+  	/*padding: 0px 10px 5px 0;*/
+}
+.headerSubTitle span{
+	font-family: 'Orator';
+	text-shadow: -2px -2px black;
+  	position: relative;
+ 	/*width: 56%;*/
+ 	/*background-color: rgba(0,0,0,1);*/
+ 	/*background: linear-gradient(90deg, #000000 60%, transparent  20%);*/
+  	color: white;
+  	font-size: 17px;
+  	font-weight: normal;
+  	/*float: left;*/
+  	text-align: center;
+  	line-height: 10px;
+  	/*padding: 0px 10px 5px 0;*/
 }
 
 [class*=ui-block-] > .ui-btn, [class*=ui-block-] > .ui-select, [class*=ui-block-] > .ui-checkbox, 
@@ -370,7 +384,7 @@ input[type=search] {
 	color:#FF7FD3 !important;
 	font-weight: lighter !important;
 	position: relative;
-	top: 5px;
+	top: -10px;
   	left: 26%;
 }
 

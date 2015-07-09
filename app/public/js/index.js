@@ -30,13 +30,36 @@ $(window).resize(function() {
 function initPageCss() {
 	var footer = parseInt($('footer').height());
 	var header = parseInt($('header').height());
-	$("[data-role=content]").css({"height": window.innerHeight  - header + "px"});
-	// $("#loginPage [data-role=content]").css("height", window.innerHeight - header + "px");
-	$("#findFriendPage [data-role=content]").css({"height": window.innerHeight  -footer - $('#findFriendPage header').height() + "px"});
-	$("#targetPage [data-role=content]").css({"height": window.innerHeight  -footer - header + "px"});
-	$("#mapPage [data-role=content]").css({"height": window.innerHeight - footer+1  + "px"});
+	var innerHeight = window.innerHeight;
+	var innerWidth = window.innerWidth;
+
+	$("[data-role=content]").css({"height": innerHeight  - header + "px"});
+	$("#findFriendPage [data-role=content]").css({"height": innerHeight  -footer - $('#findFriendPage header').height() + "px"});
+	$("#targetPage [data-role=content]").css({"height": innerHeight  -footer - header + "px"});
+	$("#mapPage [data-role=content]").css({"height": innerHeight - footer+1  + "px"});
 	
 	
+	// manageHeaderSubTitle('#loginPage',$('#loginPage .headerSubTitle span'))
+	// manageHeaderSubTitle('#findFriendPage',$('#findFriendPage .headerSubTitle span'))
+	// manageHeaderSubTitle('#targetPage',$('#targetPage .headerSubTitle span'))
+	// manageHeaderSubTitle('#mapPage',$('#mapPage .headerSubTitle span'))
+
+	fixHeaderSubTitle();
+}
+
+function fixHeaderSubTitle(){
+	$.each($('[data-role=page]'),function(key, val){
+		var page = $(val).attr('id');
+		manageHeaderSubTitle('#'+page,$('#'+page+' .headerSubTitle span'))
+	});
+}
+
+function manageHeaderSubTitle (page,obj){
+	var headerSubTitle = obj.width();
+	var headerSubTitlePos = obj.position().left;
+	var pos = headerSubTitle+headerSubTitlePos+10;
+	var offset = innerWidth- pos;
+	$(page+' .headerSubTitle').css('background', 'linear-gradient(90deg, #000000 '+pos+'px, transparent '+offset+'px)')
 }
 
 $(window).on('hashchange', function(e) {
@@ -84,13 +107,6 @@ $(function() {
 	});
 });
 
-// $(document).on("panelbeforeopen",'#nav-panel',function(){
-//  	$('#nav-panel').css('left',$('.panel').width()+'px')
-// });
-
-// $(document).on("panelbeforeclose",'#nav-panel',function(){
-// 	$('#nav-panel').css('left',$('.panel').width()+'px')
-// });
 
 function insertInfo(title,data,status){
 	var p = $('<p>').html('').append(title+"<br/>")

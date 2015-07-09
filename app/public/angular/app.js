@@ -17,27 +17,24 @@ var model = {
       image:'img/TargetPage_Curiosity.png',
       goal:'CURIOSITY',
       number :'1 :',
-      width : "15%",
-      max_width:"70px",
-      text: 'iterested but not to much.',
+      style:"width : 15%; max-width:70px",
+      text: 'interested but not too much.',
       method:'CURIOSITY'
     },
     {
       image:'img/TargetPage_Tracking.png',
       goal:'TRACKING',
       number :'2 :',
-      width : "10%",
-      max_width:"50px",
-      text: "need to know where he/she and that they're up to.",
+      style:"width : 10%; max-width:50px",
+      text: "need to know where he/she was and what they're up to.",
       method:'TRACKING'
     },
     {
       image:'img/TargetPage_Avoidance.png',
       goal:'AVOIDANCE',
       number :'3 :',
-      width : "15%",
-      max_width:"70px",
-      text: "don't want to see or run into him or at no way.",
+      style:"width : 15%; max-width:70px",
+      text: "don't want to see or run into him or her at no way.",
       method:'AVOIDANCE'
     }
   ]
@@ -86,6 +83,7 @@ xfind.controller('loginCtrl',['$rootScope','$scope', '$http','Facebook','sharedP
     $scope.fbLogin = function(){
       Facebook.login(function(response) {
         $scope.$emit('updateUser', response);
+        changePageTo('findFriendPage')
       },tempPermissions);
     }
 
@@ -201,10 +199,20 @@ xfind.controller('mapCtrl',['$scope', '$http',
       DLW=DLW.getTime();
       
     // var user = model.follow[$scope.user_target.index];
+    
+    $scope.timeIndex=0;
+    $scope.timeClicked = function ($index) {
+      if ($scope.timeIndex == $index)
+        $scope.timeIndex = -1;
+      else $scope.timeIndex = $index;
+    };
+
+
     $scope.hours = function(){
       MapSingelton.getMap().removeMarkers()
       console.log(model.user_target);
       var temp_obj = model.follow[$scope.user_target.index];
+
       if ($scope.user_target.method == 'TRACKING') {
         displayCommonPlaces(temp_obj,'TRACKING');
         $.each(temp_obj.tagged_places,function(i,val){
@@ -406,13 +414,15 @@ xfind.controller('panelCtrl',['$scope', '$http',
         model.user_target.method = $scope.follow[$index].method;
         model.user_target.id = $scope.follow[$index].id;
         model.user_target.index = $index;
+
+        MapSingelton.getMap().changeMyImage(model.user_target.method);
      }
      $scope.delete = function($index){
        var args= {
         user: model.user.id,
         friend: model.follow[$index].id
        }
-       
+        if (window.confirm("Do you really want to Delete?"))
         $http.post(model.domain+"user/removeFollowList",args).success(function(data){
             console.log(data)
             if (data.status != 1) return;
@@ -424,7 +434,6 @@ xfind.controller('panelCtrl',['$scope', '$http',
               model.user_target.id = 0;
               model.user_target.index = -1;
             }
-
             $( "#nav-panel" ).panel( "close" );
         }).error = errHandler;
      }
@@ -443,6 +452,7 @@ xfind.controller('panelCtrl',['$scope', '$http',
 
             $( "#nav-panel" ).panel( "close" );
         }).error = errHandler;
+
      }
 
   }

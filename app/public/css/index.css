@@ -83,20 +83,34 @@ font-size: 34px;
 #mapPage .headerTitle {
 	color: #62ff38;
 }
-.headerSubTitle{
-	font-family: 'Orator';
+.headerSubTitle {
 	top: 37px;
-	  text-shadow: -2px -2px black;
   	position: relative;
- 	width: 56%;
- 	background-color: black;
+ 	/*width: 56%;*/
+ 	/*background-color: rgba(0,0,0,1);*/
+ 	/*background: linear-gradient(90deg, #000000 60%, transparent  20%);*/
   	color: white;
   	font-size: 17px;
   	font-weight: normal;
-  	float: left;
-  	text-align: right;
+  	/*float: left;*/
+  	text-align: center;
   	line-height: 10px;
-  	padding: 0px 6px 5px 0;
+  	/*padding: 0px 10px 5px 0;*/
+}
+.headerSubTitle span{
+	font-family: 'Orator';
+	text-shadow: -2px -2px black;
+  	position: relative;
+ 	/*width: 56%;*/
+ 	/*background-color: rgba(0,0,0,1);*/
+ 	/*background: linear-gradient(90deg, #000000 60%, transparent  20%);*/
+  	color: white;
+  	font-size: 17px;
+  	font-weight: normal;
+  	/*float: left;*/
+  	text-align: center;
+  	line-height: 10px;
+  	/*padding: 0px 10px 5px 0;*/
 }
 
 [class*=ui-block-] > .ui-btn, [class*=ui-block-] > .ui-select, [class*=ui-block-] > .ui-checkbox, 
@@ -226,6 +240,7 @@ html head+body .ui-btn.ui-btn-a:after{
 [data-role=footer]{
 	margin: 0;
   	padding: 0;
+  	text-shadow:none;
   	height: 50px;
 	background-color: black;
 	border: none;
@@ -234,6 +249,11 @@ html head+body .ui-btn.ui-btn-a:after{
 	height: 49px;
   	position: relative;
   	top: 1px;
+}
+
+#targetPage [data-role=navbar] li a:active, #findFriendPage [data-role=navbar] li a:active{
+	color: #62ff38 !important;
+	opacity: 1 !important;
 }
 
 [data-role=navbar]{
@@ -251,11 +271,11 @@ html head+body .ui-btn.ui-btn-a:after{
 [data-role=navbar] ul li:first-child{
 	border:none;
 }
-.ui-navbar li a:hover,.ui-navbar li a:focus,.ui-navbar li a:active{
-	color:#62ff38 !important;
-	text-shadow:none;
-	opacity: 1;
 
+.timeSelected{
+	color:#62ff38 !important;
+	
+	opacity: 1 !important;
 }	
 .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, 
 html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, 
@@ -274,12 +294,11 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	margin-top:90px;	
 }
 #loginPage #content img{
-  width: 23px;
+	width: 25px;
+  height: auto;
   position: relative;
   /* display: inline; */
-  float: left;
-  left: 45.5%;
-  top: 111px;
+  top: 110px;
 
 }
 #loginPage .headerTitle{
@@ -301,6 +320,7 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
   color: #62ff38;
   background-color: black;
   line-height: 53px;
+  cursor: pointer;
 }
 .loginFacebook span{
 	font-weight: bold;
@@ -340,13 +360,19 @@ position: relative;
 #findFriendPage header{
 	height: 140px;
 }
+
 .input-container{
 	position: relative;
-	top:37px;
-	width: 100%;
+  box-shadow: none;
+  max-width: 550px;
+  min-width: 200px;
+  padding: 0;
+  margin: auto;
+  top: 37px
 }
 .input-container > div{
 	background-color: transparent !important;
+	box-shadow:none !important;
 	border: 0;
 }
 input[type=search] { 
@@ -358,8 +384,8 @@ input[type=search] {
 	color:#FF7FD3 !important;
 	font-weight: lighter !important;
 	position: relative;
-	top: 5px;
-  left: 26%;
+	top: -10px;
+  	left: 26%;
 }
 
 .friendList{
@@ -477,7 +503,7 @@ input[type=search] {
   width: 36px;
   color: #a3a9ac;
   /* color: white; */
-  font-weight: bold;
+  /*font-weight: bold;*/
   /* opacity: 0.5; */
   float: left;
   position: relative;
@@ -601,11 +627,7 @@ input[type=search] {
 .ui-btn, label.ui-btn{
 	font-weight: lighter;
 }
-.css-radio{
-	width: 12px !important;
-	/*top:8px !important;*/
-  	position: relative;
-}
+
 
 .css-label{
 	opacity: 0.5;
@@ -624,8 +646,14 @@ input[type=search] {
   	background-color: transparent;
   	border:1px solid white;
 }*/
-.css-radio { visibility:hidden;}
-.ui-checkbox input:checked, .ui-radio input:checked {
+.css-radio { display:none;}
+/*.css-radio{
+	width: 12px !important;
+	top:8px !important;
+  	position: relative;
+}*/	
+
+/*.ui-radio input:checked {
 	visibility: visible;
   position: absolute;
   left: .466em;
@@ -635,21 +663,21 @@ input[type=search] {
   margin: -13px 0 0 4px;
   outline: 0!important;
   z-index: 1;
-}
-
+}*/
 
 .ui-radio .ui-btn.ui-radio-on:after{
-   	background-color: transparent;
-  width: 7px;
+	/*background-color: transparent;*/
+	width: 7px;
   height: 7px;
   border-width: 2px;
   border-style: solid;
-  border-radius: 0;
+  border-radius: 0 !important;
   top: 22px;
 }
-.ui-radio .ui-btn.ui-radio-on:after:checked{
- 	background-color:red ;
+
+.ui-radio .ui-btn.ui-radio-on:checked + label:after{
  	opacity: 1;
+ 	background-color: white !important;
  }
 
 

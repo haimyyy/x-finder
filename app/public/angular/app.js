@@ -144,8 +144,8 @@ xfind.controller('findFriendCtrl',['$scope','$rootScope','$http','sharedProperti
 ]);
 
 
-xfind.controller('targetCtrl',['$scope', '$http','sharedProperties',
-  function($scope, $http, sharedProperties){
+xfind.controller('targetCtrl',['$scope', '$http','$rootScope','sharedProperties',
+  function($scope, $http, $rootScope,sharedProperties){
     $scope.targets = model.targets;
 
     $scope.selectedIndex = -1; 
@@ -181,6 +181,9 @@ xfind.controller('targetCtrl',['$scope', '$http','sharedProperties',
           model.user_target.method = data.followed_user.method;
           model.user_target.id = data.followed_user.id;
           model.user_target.index = index;
+
+          $rootScope.$broadcast("displayData");
+          MapSingelton.getMap().changeMyImage(model.user_target.method);
           console.log(data)
         })
         .error = errHandler;
@@ -202,11 +205,18 @@ xfind.controller('mapCtrl',['$scope', '$http',
     
     $scope.timeIndex=0;
     $scope.timeClicked = function ($index) {
-      if ($scope.timeIndex == $index)
-        $scope.timeIndex = -1;
-      else $scope.timeIndex = $index;
+      $scope.timeIndex = $index;
     };
 
+    $scope.$on('displayData', function(event) {
+      console.log('displayData broadcast')
+      if ( $scope.timeIndex==0)
+          $scope.hours();
+      else if ( $scope.timeIndex==1)
+          $scope.lastWeek();
+      else if ( $scope.timeIndex==2)
+          $scope.forecast();
+    });
 
     $scope.hours = function(){
       MapSingelton.getMap().removeMarkers()
@@ -377,8 +387,8 @@ function displayCommonPlacesForeCast( user_obj, method){
       }  
     }
 }
-xfind.controller('panelCtrl',['$scope', '$http',
-  function($scope, $http){
+xfind.controller('panelCtrl',['$scope', '$http','$rootScope',
+  function($scope, $http,$rootScope){
     $scope.follow = model.follow;
     $scope.targets = model.targets;
     $scope.selectedoption = '';
@@ -415,6 +425,7 @@ xfind.controller('panelCtrl',['$scope', '$http',
         model.user_target.id = $scope.follow[$index].id;
         model.user_target.index = $index;
 
+        $rootScope.$broadcast("displayData");
         MapSingelton.getMap().changeMyImage(model.user_target.method);
      }
      $scope.delete = function($index){

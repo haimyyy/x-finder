@@ -280,10 +280,11 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 	margin-top:90px;	
 }
 #loginPage #content img{
-  width: 23px;
+	width: 25px;
+  height: auto;
   position: relative;
   /* display: inline; */
-  top: 111px;
+  top: 110px;
 
 }
 #loginPage .headerTitle{

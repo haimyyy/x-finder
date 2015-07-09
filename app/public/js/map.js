@@ -7,7 +7,10 @@ function Marker (id,location,title,type){
 	}
 }
 var icons_images = {
-	me : "img/Opening.png",
+	me : "",
+	CURIOSITY:'img/Curiosity_Icon 1.png',
+	TRACKING:'img/Tracking_Icon 1.png',
+	AVOIDANCE:'img/Avoidance_Icon 1.png',
 	map_location : "img/Maps_MyPlace.png",
 	avoidance_green: 'img/Avoidance_Icon 2.png',
 	tracking_green: 'img/Tracking_Icon 2.png',
@@ -215,7 +218,12 @@ var MapSingelton = (function (){
 				setMyLocation : function (location){
 					_my_location = location;
 					_my_marker.setPosition(_my_location);
-					//window.localStorage.setItem("_my_location",JSON.stringify(_my_location));
+				},
+				changeMyImage : function (icon){
+					if (icon == 'CURIOSITY')
+						_my_marker.setIcon({url:icons_images[icon] ,size: {width:71,height:71},scaledSize: {width:32,height:45},anchor: {x:17,y:34},origin: {x:0,y:0}})
+					else 
+						_my_marker.setIcon({url:icons_images[icon] ,size: {width:71,height:71},scaledSize: {width:35,height:37},anchor: {x:17,y:34},origin: {x:0,y:0}})
 				},
 				getMarkers : function (){
 					return _marker_list;

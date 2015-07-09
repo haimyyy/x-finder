@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="xfindApp">
     <head>
-        <title>x-find</title>
+        <title>X-FIND</title>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
@@ -42,7 +42,7 @@
             </header>
                 
             <div data-role="content" class="ui-content" id="content">
-                <img src="../img/Opening.png">
+                <img src="../img/OPENING_Heart_GIF_nonstop.gif">
                 <section class="loginBox">
                     <p class="loginFacebook" ng-click="fbLogin()"> LOG-IN WITH <span class="loginFacebook"> FACEBOOK </span> </p>
                     <p class="loginLicense"> WE DO NOT PUBLISH IN YOUR NAME </p>
@@ -58,8 +58,8 @@
                 <p class="headerSubTitle">FACEBOOK ACCOUNT</p>
                 <div class="input-container">
                     <input ng-model="searchText.name" type="text" class="clearable"
-                    placeholder="SEARCH FRIENDS..."  autofocus>
-                    <a class="clearText" href="" data-ng-click="clearSearch()">X</a>
+                    placeholder="SEARCH FRIENDS"  autofocus>
+                    <a class="clearText" href="#" data-ng-click="clearSearch()">X</a>
                 </div>  
             </header>
             <div data-role="content" class="ui-content" id="content">
@@ -148,13 +148,13 @@
                  <div data-role="navbar">
                         <ul>
                             <li>
-                                <a href="#" data-inline="true" ng-click="hours()"> 24 HOURS </a>
+                                <a href="#" data-inline="true" ng-class="{'timeSelected': 0 == timeIndex }"  ng-click="timeClicked(0);hours()" > 24 HOURS </a>
                             </li>
                             <li>
-                                <a href="#" data-inline="true" ng-click="lastWeek()"> LAST WEEK </a>
+                                <a href="#" data-inline="true" ng-class="{'timeSelected': 1 == timeIndex }" ng-click="timeClicked(1);lastWeek()" > LAST WEEK </a>
                             </li>
                             <li>
-                                <a href="#" data-inline="true" ng-click="forecast()"> FORECAST </a>
+                                <a href="#" data-inline="true"ng-class="{'timeSelected': 2 == timeIndex }"  ng-click="timeClicked(2);forecast()" > FORECAST </a>
                             </li>
                         </ul>
                     </div>
@@ -172,7 +172,8 @@
                     </div>
                     <section class="categories" ng-class="{showCatedories: $index == selectedIndex, hideCatedories: $index != selectedIndex}">
                         <div ng-repeat="target in targets" >
-                            <label for="{{$parent.$index}}{{target.number}}" class="css-label" >
+                            <label for="{{$parent.$index}}{{target.number}}" class="css-label" 
+                             ng-style="{true: {opacity: 1 }, false: { }}[target.method == user.method]">
                             <input type="radio" class="css-radio" name="user{{$parent.$index}}" 
                             id="{{$parent.$index}}{{target.number}}"
                             value="{{target.method}}" 

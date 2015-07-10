@@ -255,6 +255,13 @@ html head+body .ui-btn.ui-btn-a:after{
 	color: #62ff38 !important;
 	opacity: 1 !important;
 }
+/* wired case */
+#mapPage [data-role=navbar] li a:hover{
+	/*font-family: 'Orator';*/
+  	color: white;
+  	opacity: 0.6;
+  	/*font-size: 13px;*/
+}
 
 [data-role=navbar]{
 	height: 50px;
@@ -348,7 +355,7 @@ position: relative;
   width: 100%;
   direction: ltr;
   text-align: left;
-  font-family: Orator;
+  font-family: 'Orator';
   padding: 0 30px 0 15px;
   line-height: 42px;
   font-size: 18px;
@@ -684,7 +691,7 @@ input[type=search] {
 .save, .cancel{
 	position: relative;
   	color: white;
-  	font-family: Orator;
+  	font-family: 'Orator';
   	padding: 5px;
   	opacity: 0.5;
 }

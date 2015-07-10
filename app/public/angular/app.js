@@ -183,7 +183,7 @@ xfind.controller('targetCtrl',['$scope', '$http','$rootScope','sharedProperties'
           model.user_target.index = index;
 
           $rootScope.$broadcast("displayData");
-          MapSingelton.getMap().changeMyImage(model.user_target.method);
+          
           console.log(data)
         })
         .error = errHandler;
@@ -209,7 +209,8 @@ xfind.controller('mapCtrl',['$scope', '$http',
     };
 
     $scope.$on('displayData', function(event) {
-      console.log('displayData broadcast')
+      console.log('displayData and userIcon broadcast')
+      MapSingelton.getMap().changeMyImage(model.user_target.method);
       if ( $scope.timeIndex==0)
           $scope.hours();
       else if ( $scope.timeIndex==1)
@@ -426,7 +427,7 @@ xfind.controller('panelCtrl',['$scope', '$http','$rootScope',
         model.user_target.index = $index;
 
         $rootScope.$broadcast("displayData");
-        MapSingelton.getMap().changeMyImage(model.user_target.method);
+        //MapSingelton.getMap().changeMyImage(model.user_target.method);
      }
      $scope.delete = function($index){
        var args= {

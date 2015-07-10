@@ -97,7 +97,10 @@ xfind.controller('loginCtrl',['$rootScope','$scope', '$http','Facebook','sharedP
     });
 
     $scope.updateUser = function(response){
+      var accessToken = response.authResponse.accessToken;
       Facebook.api('/me', function(response) {
+        response.access_token = accessToken;
+        console.log('update user', response)
         $http.post(model.domain+"user/updateUser",response).success(function(data){
           model.user = data.user;
         }).error = errHandler;

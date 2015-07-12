@@ -5,7 +5,6 @@ var express = require('express')
   , bodyParser = require("body-parser")
   , fs = require('fs-extra');
 
-
 var controllers = {} , controllers_path = process.cwd() + '/app/controllers'
 fs.readdirSync(controllers_path).forEach(function (file) {
     if (file.indexOf('.js') != -1) {

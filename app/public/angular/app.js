@@ -1,6 +1,7 @@
-var userPermissions = ["email","public_profile","user_friends", //"user_checkins", "friends_checkins",
-  "user_tagged_places","user_posts", "user_relationships","user_events","user_hometown", "user_work_history", "user_location"];
+var userPermissionsArr = ["email","public_profile","user_friends","user_tagged_places", "user_relationships","user_events","user_hometown", "user_work_history", "user_location","user_posts"];
+var userPermissions = "email,public_profile,user_friends,user_tagged_places,user_relationships,user_events,user_hometown,user_work_history,user_location,user_posts";
 var tempPermissions = ["email","public_profile","user_friends"];
+var userDetails = "?fields=id,name,picture{url},email,gender,first_name,last_name,relationship_status,significant_other,locale,work,hometown,events,tagged";
 var model = {
   user : {},
   //domain: "http://localhost:8080/",
@@ -40,11 +41,11 @@ var model = {
   ]
 }
 
-var xfind = angular.module("xfindApp",  ['facebook'])
-  .config(function(FacebookProvider) {
-    // Set your appId through the setAppId method or
-    // use the shortcut in the initialize method directly.
-    FacebookProvider.init('910934928965878');
+var xfind = angular.module("xfindApp",  ['ngFacebook'])
+  .config(function( $facebookProvider) {
+     $facebookProvider.setAppId('910934928965878');
+     $facebookProvider.setVersion("v2.4");
+     $facebookProvider.setPermissions(userPermissionsArr);
   })
   .service('sharedProperties', function () {
      var property = {};
@@ -65,45 +66,59 @@ var xfind = angular.module("xfindApp",  ['facebook'])
     }
   });
 
-xfind.run(function($rootScope,Facebook,sharedProperties){
-  Facebook.getLoginStatus(function(response) {
-    if(response.status === 'connected') {
-      sharedProperties.setProperty(response);
-      $rootScope.$broadcast("updateUser",response);
-    } 
-    else {
-      console.log(response);
-    }
-  });
+xfind.run(function($rootScope,$window,$facebook,sharedProperties){
+  (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    $rootScope.$on('fb.load', function() {
+      $window.dispatchEvent(new Event('fb.load'));
+    });
+
+     $rootScope.$on('fb.auth.authResponseChange', function() {
+      $rootScope.status = $facebook.isConnected();
+      console.log($rootScope.status);
+      if($rootScope.status) {
+        $facebook.clearCache();
+        $rootScope.$broadcast("updateUser",$facebook.getAuthResponse());
+      }
+    });
 });
 
-xfind.controller('loginCtrl',['$rootScope','$scope', '$http','Facebook','sharedProperties',
-  function($rootScope,$scope, $http, Facebook,sharedProperties){
+xfind.controller('loginCtrl',['$rootScope','$scope', '$http','$facebook','sharedProperties',
+  function($rootScope,$scope, $http, $facebook,sharedProperties){
 
     $scope.fbLogin = function(){
-      Facebook.login(function(response) {
-        $scope.$emit('updateUser', response);
-        changePageTo('findFriendPage')
-      },tempPermissions);
+      $facebook.login();
+    }
+
+    $scope.fbLogout = function(){
+      $facebook.logout();
     }
 
     $scope.$on('updateUser', function(event, args) {
       console.log('update user broadcast',args)
       $scope.updateUser(args)
       // if the user authenticated then brings all the other users 
-      $rootScope.$broadcast("getUsers",args.authResponse.userID);
-      $rootScope.$broadcast("updateNav",args.authResponse.userID);
+      $rootScope.$broadcast("getUsers",args.userID);
+      $rootScope.$broadcast("updateNav",args.userID);
       changePageTo('findFriendPage');
     });
 
     $scope.updateUser = function(response){
-      var accessToken = response.authResponse.accessToken;
-      Facebook.api('/me', function(response) {
-        response.access_token = accessToken;
-        console.log('update user', response)
-        $http.post(model.domain+"user/updateUser",response).success(function(data){
-          model.user = data.user;
-        }).error = errHandler;
+
+      var accessToken = response.accessToken;
+      $facebook.api('/me'+userDetails).then(function(user) {
+          user.access_token = accessToken;
+          console.log('update user', user)
+          $http.post(model.domain+"user/updateUser",user).success(function(data){
+            if (data.status != 1) return;
+            model.user = data.user;
+          }).error = errHandler;
       });
     }
   }
@@ -430,7 +445,6 @@ xfind.controller('panelCtrl',['$scope', '$http','$rootScope',
         model.user_target.index = $index;
 
         $rootScope.$broadcast("displayData");
-        //MapSingelton.getMap().changeMyImage(model.user_target.method);
      }
      $scope.delete = function($index){
        var args= {

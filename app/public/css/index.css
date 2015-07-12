@@ -99,7 +99,7 @@ font-size: 34px;
 }
 .headerSubTitle span{
 	font-family: 'Orator';
-	text-shadow: -2px -2px black;
+	text-shadow: -1px -1px black;
   	position: relative;
  	/*width: 56%;*/
  	/*background-color: rgba(0,0,0,1);*/

@@ -9,6 +9,7 @@ var User_schema = new Schema(
 		email : { type : String, default:''},
 		gender: { type : String, default:''},
 		name : { type : String, default:''},
+		locale : { type : String, default:''},
 		first_name: { type : String, default:''},
 		last_name: { type : String, default:''},
 		relationship_status: { type : String, default:''},
@@ -30,6 +31,7 @@ var User_schema = new Schema(
 			latitude: { type : Number, default:0},
 			longitude: { type : Number, default:0}
 		},
+		//TODO remove
 		future_events: [{
 			time: { type : Number, default:0},
 			name: { type : String, default:''},
@@ -38,6 +40,7 @@ var User_schema = new Schema(
 			attending: { type : Boolean, default:true},
 			default:[]
 		}],
+		//TODO remove
 		tagged_places:[{
 			time: { type : Number, default:0},
 			name: { type : String, default:''},
@@ -45,6 +48,39 @@ var User_schema = new Schema(
 			longitude: { type : Number, default:0},
 			default:[]
 		}],
+		events: {data: [{
+				description: { type : String, default:''},
+				end_time: {type : String, default:''},
+				start_time: {type : String, default:''},
+				id: {type : String, default:''},
+				rsvp_status:{type : String, default:''},
+				name: { type : String, default:''},
+				place: { 
+					name: { type : String, default:''},
+					location: {
+			        	city: { type : String, default:''},
+			        	country: { type : String, default:''},
+			        	latitude: { type : Number, default:0},
+			        	longitude: { type : Number, default:0},
+			        	street: { type : String, default:''},
+			        	zip: { type : String, default:''}
+			        },
+			       id: {type : String, default:''}
+				},
+				//TODO remove
+				latitude: { type : Number, default:0},
+				//TODO remove
+				longitude: { type : Number, default:0},
+				default:[]
+				}]
+			},
+		tagged:{data:[{
+				message: { type : String, default:''},
+				created_time: { type : String, default:''},
+				id:  { type : String, default:''},
+				default:[]
+			}]
+		},
 		work_place:{
 			name: { type : String, default:''},
 			latitude: { type : Number, default:0},

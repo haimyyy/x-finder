@@ -44,9 +44,12 @@ function initPageCss() {
 	// manageHeaderSubTitle('#targetPage',$('#targetPage .headerSubTitle span'))
 	// manageHeaderSubTitle('#mapPage',$('#mapPage .headerSubTitle span'))
 
-	fixHeaderSubTitle();
+	
 }
 
+$(document).on("pageshow","[data-role=page]",function(){ // When entering pagetwo
+  fixHeaderSubTitle();
+});
 function fixHeaderSubTitle(){
 	$.each($('[data-role=page]'),function(key, val){
 		var page = $(val).attr('id');

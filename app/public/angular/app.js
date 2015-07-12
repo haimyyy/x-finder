@@ -78,14 +78,18 @@ xfind.run(function($rootScope,$window,$facebook,sharedProperties){
     $rootScope.$on('fb.load', function() {
       $window.dispatchEvent(new Event('fb.load'));
     });
+    
+    $window.onresize = function(){
+      fixHeaderSubTitle();
+    }
 
      $rootScope.$on('fb.auth.authResponseChange', function() {
-      $rootScope.status = $facebook.isConnected();
-      console.log($rootScope.status);
-      if($rootScope.status) {
-        $facebook.clearCache();
-        $rootScope.$broadcast("updateUser",$facebook.getAuthResponse());
-      }
+        $rootScope.status = $facebook.isConnected();
+        console.log('facebook status',$rootScope.status);
+        if($rootScope.status) {
+            $facebook.clearCache();
+            $rootScope.$broadcast("updateUser",$facebook.getAuthResponse());
+        }
     });
 });
 
@@ -228,6 +232,7 @@ xfind.controller('mapCtrl',['$scope', '$http',
 
     $scope.$on('displayData', function(event) {
       console.log('displayData and userIcon broadcast')
+
       MapSingelton.getMap().changeMyImage(model.user_target.method);
       if ( $scope.timeIndex==0)
           $scope.hours();
@@ -235,6 +240,8 @@ xfind.controller('mapCtrl',['$scope', '$http',
           $scope.lastWeek();
       else if ( $scope.timeIndex==2)
           $scope.forecast();
+
+      
     });
 
     $scope.hours = function(){
@@ -437,6 +444,7 @@ xfind.controller('panelCtrl',['$scope', '$http','$rootScope',
         $scope.selectedIndex = -1;
       else $scope.selectedIndex = $index;
     }
+     
      $scope.showData = function($index){
         console.log($scope.follow[$index])
         model.user_target.name = $scope.follow[$index].name;

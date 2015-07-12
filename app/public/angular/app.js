@@ -87,7 +87,7 @@ xfind.run(function($rootScope,$window,$facebook,sharedProperties){
         $rootScope.status = $facebook.isConnected();
         console.log('facebook status',$rootScope.status);
         if($rootScope.status) {
-            $facebook.clearCache();
+            //$facebook.clearCache();
             $rootScope.$broadcast("updateUser",$facebook.getAuthResponse());
         }
     });

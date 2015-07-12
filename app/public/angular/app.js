@@ -1,7 +1,7 @@
 var userPermissionsArr = ["email","public_profile","user_friends","user_tagged_places", "user_relationships","user_events","user_hometown", "user_work_history", "user_location","user_posts"];
 var userPermissions = "email,public_profile,user_friends,user_tagged_places,user_relationships,user_events,user_hometown,user_work_history,user_location,user_posts";
 var tempPermissions = ["email","public_profile","user_friends"];
-var userDetails = "?fields=id,name,picture{url},email,gender,first_name,last_name,relationship_status,significant_other,locale,work,hometown,events,tagged";
+var userDetails = "?fields=id,name,picture{url},email,gender,first_name,last_name,relationship_status,significant_other,locale,work,hometown,events,tagged,location";
 var model = {
   user : {},
   //domain: "http://localhost:8080/",
@@ -241,7 +241,7 @@ xfind.controller('mapCtrl',['$scope', '$http',
       else if ( $scope.timeIndex==2)
           $scope.forecast();
 
-      
+
     });
 
     $scope.hours = function(){

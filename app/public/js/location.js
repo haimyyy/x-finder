@@ -52,7 +52,7 @@ GPSLocation.prototype.handleLocationData = function (lat,lon){
 	    console.log("location clone map");
 		this._map = MapSingelton.getMap();
 		this._map.map.setCenter(my_location);
-		this._map.setMarker(Marker(new Date().getTime(),my_location,"title","me"));
+		this._map.setMarker(Marker(new Date().getTime(),my_location,"","me"));
 	}
 	this._map.setMyLocation(my_location);
 };

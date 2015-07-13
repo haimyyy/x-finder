@@ -67,10 +67,6 @@ var User_schema = new Schema(
 			        },
 			       id: {type : String, default:''}
 				},
-				//TODO remove
-				latitude: { type : Number, default:0},
-				//TODO remove
-				longitude: { type : Number, default:0},
 				default:[]
 				}]
 			},
@@ -156,34 +152,64 @@ User_schema.statics.getAllUsers = function (user,callback) {
 
 User_schema.statics.findUserAndUpdate = function (req_user,callback) {
  	var r = {msg:[],follow:[]};
- 	return this.model('users').findOneAndUpdate({ id : req_user.id }, {$set : req_user },
- 	function(err,foundedUser){
+ 	return this.model('users').findOne({ id : req_user.id })
+ 	.exec(function(err,foundedUser){
  		if (err){
  			r.status= 0;
  			r.msg.push('failed while retriving user');
  			return callback(r);
  		}
  		else if (foundedUser){
-			//update user details
- 			r.status= 1;
- 			r.user=foundedUser;
-			r.msg.push('user updated');
-			return callback(r);
- 		}
- 		else{
- 			// save the new user
- 			new User(req_user).save(function(err){
- 				if (err){
- 					r.status= 0;
- 					r.msg.push('failed while saving user');
- 					return callback(r)
- 				}
- 				r.status= 1;
+
+ 			foundedUser.events.data = req_user.events.data.concat(foundedUser.events.data);
+			foundedUser.tagged.data = req_user.tagged.data.concat(foundedUser.tagged.data);
+ 			
+ 			foundedUser.events.data = createUniqArray(foundedUser.events.data);
+ 			foundedUser.tagged.data = createUniqArray(foundedUser.tagged.data);
+
+			foundedUser.save(function(err,obj){
+				if (err){
+					r.status= 0;
+					r.msg.push('failed while saving user');
+					return callback(r)
+				}
+				r.status= 1;
 				r.msg.push('user saved');
 				return callback(r);
- 			});
+			});
  		}
+ 		else{
+ 			// save user
+			new User(req_user).save(function(err){
+				if (err){
+					r.status= 0;
+					r.msg.push('failed while saving user');
+					return callback(r)
+				}
+				r.status= 1;
+				r.msg.push('user saved');
+				return callback(r);
+			});
+ 		}
+		
  	}); 
+}
+
+function createUniqArray(arr){
+	var uniq = arr.reduce(function(a,b){
+      function indexOfProperty (a, b){
+          for (var i=0;i<a.length;i++){
+              if(a[i].id == b.id){
+                   return i;
+               }
+          }
+         return -1;
+      }
+
+      if (indexOfProperty(a,b) < 0 ) a.push(b);
+        return a;
+    },[]);
+	return uniq;
 }
 
 User_schema.methods.removeFromFollowList = function (user,callback) {

@@ -272,9 +272,9 @@ html head+body .ui-btn.ui-btn-a:after{
 }
 
 .ui-grid-b>.ui-block-a, .ui-grid-b>.ui-block-b, .ui-grid-b>.ui-block-c{
-	border-left: 1px solid white;
-	height: 39px;
-  	top: 6px;
+	border-left: 1px solid #a3a9ac;
+  height: 39px;
+  top: 6px;
 
 }
 [data-role=navbar] ul li:first-child{
@@ -300,14 +300,15 @@ html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:vis
 
 /* login page */
 #loginPage header{
-	margin-top:90px;	
+	margin-top:90px;
+	height: 135px;	
 }
-#loginPage #content img{
+#loginPage header img{
 	width: 25px;
   height: auto;
   position: relative;
   /* display: inline; */
-  top: 110px;
+  top: 58px;
 
 }
 #loginPage .headerTitle{
@@ -573,7 +574,7 @@ input[type=search] {
   	height: 15px;
 }
 .navTitle, .navMethod, .navUserName{
-		margin: 0 !important;
+	margin: 0 !important;
 	cursor: pointer;
 }
 .navMethod, .navUserName{
@@ -587,6 +588,7 @@ input[type=search] {
 	height: 45px;
   	line-height: 49px;
   	  color: #ffffff !important;
+  	  border-top: none !important;
 	/*padding:10px !important;*/
 }
 

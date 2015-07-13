@@ -5,7 +5,7 @@ var userDetails = "?fields=id,name,picture{url},email,gender,first_name,last_nam
 var model = {
   user : {},
   //domain: "http://localhost:8080/",
-  domain: "http://x-find.herokuapp.com/",
+  domain:(document.domain == 'localhost')?'http://localhost:8080/':"http://x-find.herokuapp.com/",
   user_target:{
     name: "USER NAME",
     method: "METHOD",
@@ -118,10 +118,11 @@ xfind.controller('loginCtrl',['$rootScope','$scope', '$http','$facebook','shared
       var accessToken = response.accessToken;
       $facebook.api('/me'+userDetails).then(function(user) {
           user.access_token = accessToken;
+          model.user = user;
           console.log('update user', user)
           $http.post(model.domain+"user/updateUser",user).success(function(data){
-            if (data.status != 1) return;
-            model.user = data.user;
+            // if (data.status != 1) return;
+            // model.user = data.user;
           }).error = errHandler;
       });
     }
@@ -180,34 +181,35 @@ xfind.controller('targetCtrl',['$scope', '$http','$rootScope','sharedProperties'
 
     $scope.selectedTarget = function () {
       console.log($scope.targets[$scope.selectedIndex]);
-     
+     //debugger
      if ($scope.selectedIndex== -1) return;
       var args = {
         user: model.user.id,
         friend: (sharedProperties.getSelectedUser())?sharedProperties.getSelectedUser().id:null,
         method:$scope.targets[$scope.selectedIndex].method
       }
-
+      
       if (args.user && args.friend && args.method)
-        $http.post(model.domain+"user/addFollowList",args).success(function(data){
-          if (data.status != 1) return;
-          data.followed_user.method = data.method;
-          var index = model.follow.map(function(val,key){
-              return val['id']
-          }).indexOf(data.followed_user.id)
-          if (index != -1)
-            model.follow[index]=data.followed_user;
-          else model.follow.push(data.followed_user);
-          
-          model.user_target.name = data.followed_user.name;
-          model.user_target.method = data.followed_user.method;
-          model.user_target.id = data.followed_user.id;
-          model.user_target.index = index;
+        $http.post(model.domain+"user/addFollowList",args)
+         .success(function(data){
+            if (data.status != 1) return;
+            data.followed_user.method = data.method;
+            var index = model.follow.map(function(val,key){
+                return val['id']
+            }).indexOf(data.followed_user.id)
+            if (index != -1)
+              model.follow[index]=data.followed_user;
+            else model.follow.push(data.followed_user);
+            
+            model.user_target.name = data.followed_user.name;
+            model.user_target.method = data.followed_user.method;
+            model.user_target.id = data.followed_user.id;
+            model.user_target.index = index;
 
-          $rootScope.$broadcast("displayData");
-          
-          console.log(data)
-        })
+            $rootScope.$broadcast("displayData");
+            
+            console.log(data)
+         })
         .error = errHandler;
     };
   }

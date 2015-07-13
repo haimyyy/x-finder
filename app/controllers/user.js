@@ -21,9 +21,10 @@ exports.authenticateUser = function(req, res, next) {
 	user - data
 */
 exports.updateUser = function(req, res, next) {
-	var r = {};
+	var r = {status:0,msg:[]};
 	var req_user = req.body;
-	console.log('user to update: ',req_user)
+	if (!req_user.id) return res.json(r);
+	console.log('user to update: ',req_user.id)
 	var user =  new User(req_user);
 	User.findUserAndUpdate(req_user,function(result){
 		return res.json(result);

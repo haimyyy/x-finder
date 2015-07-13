@@ -23,6 +23,7 @@ exports.authenticateUser = function(req, res, next) {
 exports.updateUser = function(req, res, next) {
 	var r = {};
 	var req_user = req.body;
+	console.log('user to update: ',req_user)
 	var user =  new User(req_user);
 	User.findUserAndUpdate(req_user,function(result){
 		return res.json(result);

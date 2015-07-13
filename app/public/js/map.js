@@ -192,21 +192,21 @@ var MapSingelton = (function (){
 					    	icons_images[marker.type],
 						    new google.maps.Size(71, 71),
 						    new google.maps.Point(0, 0),
-						    new google.maps.Point(17, 34),
+						    new google.maps.Point(25, 27),
 						    new google.maps.Size(50, 50));
 					else if (marker.type.indexOf("curiosity_green") != -1 || marker.type.indexOf("curiosity_red") != -1) 
 						image = new google.maps.MarkerImage(
 					    	icons_images[marker.type],
 						    new google.maps.Size(71, 71),
 						    new google.maps.Point(0, 0),
-						    new google.maps.Point(17, 34),
+						    new google.maps.Point(29, 25),
 						    new google.maps.Size(60,45));
 					else if (marker.type.indexOf("tracking_green") != -1 || marker.type.indexOf("tracking_red") != -1) 
 						image = new google.maps.MarkerImage(
 					    	icons_images[marker.type],
 						    new google.maps.Size(71, 71),
 						    new google.maps.Point(0, 0),
-						    new google.maps.Point(17, 34),
+						    new google.maps.Point(25, 25),
 						    new google.maps.Size(50, 50));
 					else 						
 						image = new google.maps.MarkerImage(

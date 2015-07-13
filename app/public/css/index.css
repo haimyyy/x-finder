@@ -170,7 +170,9 @@ html .ui-panel-page-container-a {
 	/*direction: rtl;*/
 	-webkit-overflow-scrolling: touch;
 }
-
+/*.ui-link .ui-btn .ui-btn-active:hover{
+	color:#ffffff;
+}*/
 /* button visited*/
 .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, 
 html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, 
@@ -467,7 +469,7 @@ input[type=search] {
 	/*background-color: black ;*/
 }
 .targetSelected{
-	background-color: black ;
+	background-color: #000000 ;
 }
 .targetSelected > .targetName{
 	  color: #62ff38;

@@ -230,11 +230,13 @@ xfind.controller('mapCtrl',['$scope', '$http',
     $scope.timeIndex=0;
     $scope.timeClicked = function ($index) {
       $scope.timeIndex = $index;
+      clearMap();
     };
 
     $scope.$on('displayData', function(event) {
       console.log('displayData and userIcon broadcast')
 
+      clearMap();
       MapSingelton.getMap().changeMyImage(model.user_target.method);
       if ( $scope.timeIndex==0)
           $scope.hours();
@@ -246,8 +248,13 @@ xfind.controller('mapCtrl',['$scope', '$http',
 
     });
 
+    function clearMap(){
+      MapSingelton.getMap().removeMarkers();
+      MapSingelton.getMap().clearPopup()
+    }
+
     $scope.hours = function(){
-      MapSingelton.getMap().removeMarkers()
+      //MapSingelton.getMap().removeMarkers()
       console.log(model.user_target);
       var temp_obj = model.follow[$scope.user_target.index];
 
@@ -289,7 +296,7 @@ xfind.controller('mapCtrl',['$scope', '$http',
 
     }
     $scope.lastWeek = function(){
-      MapSingelton.getMap().removeMarkers()
+      //MapSingelton.getMap().removeMarkers()
       console.log(model.follow[$scope.user_target.index])
       var temp_obj = model.follow[$scope.user_target.index];
 
@@ -328,7 +335,7 @@ xfind.controller('mapCtrl',['$scope', '$http',
       }
     }
     $scope.forecast = function(){
-      MapSingelton.getMap().removeMarkers()
+      //MapSingelton.getMap().removeMarkers()
       console.log(model.follow[$scope.user_target.index])
       var temp_obj = model.follow[$scope.user_target.index];
 
@@ -454,7 +461,7 @@ xfind.controller('panelCtrl',['$scope', '$http','$rootScope',
         model.user_target.id = $scope.follow[$index].id;
         model.user_target.index = $index;
 
-        $( "#nav-panel" ).panel( "close" );
+         closeNav();
         $rootScope.$broadcast("displayData");
      }
      $scope.delete = function($index){
@@ -474,10 +481,13 @@ xfind.controller('panelCtrl',['$scope', '$http','$rootScope',
               model.user_target.id = 0;
               model.user_target.index = -1;
             }
-            $( "#nav-panel" ).panel( "close" );
+            closeNav();
         }).error = errHandler;
      }
 
+     function closeNav(){
+         $( "#nav-panel" ).panel( "close" );
+     }
      $scope.save = function($index){
       var args= {
         user: model.user.id,

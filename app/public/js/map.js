@@ -278,6 +278,11 @@ var MapSingelton = (function (){
 				},
 				refreshMap : function (){ // receive callback
 					  google.maps.event.trigger(map, 'resize');
+				},
+				clearPopup : function (){ // receive callback
+					if (_info_window)
+						_info_window.close();
+					//google.maps.event.trigger(map,'click')
 				}
 			}
 		}

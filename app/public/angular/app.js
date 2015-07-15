@@ -4,8 +4,8 @@ var tempPermissions = ["email","public_profile","user_friends"];
 var userDetails = "?fields=id,name,picture{url},email,gender,first_name,last_name,relationship_status,significant_other,locale,work,hometown,events,tagged,location";
 var model = {
   user : {},
-  //domain: "http://localhost:8080/",
-  domain:(document.domain == 'localhost')?'http://localhost:8080/':"http://x-find.herokuapp.com/",
+  domain: "http://x-find.herokuapp.com/",
+  //domain:(document.domain == 'localhost')?'http://localhost:8080/':"http://x-find.herokuapp.com/",
   user_target:{
     name: "USER NAME",
     method: "METHOD",
@@ -26,7 +26,7 @@ var model = {
       image:'img/TargetPage_Tracking.png',
       goal:'TRACKING',
       number :'2 :',
-      style:"width : 10%; max-width:50px",
+      style:"width : 20%; max-width:90px",
       text: "need to know where he/she was and what they're up to.",
       method:'TRACKING'
     },
@@ -34,7 +34,7 @@ var model = {
       image:'img/TargetPage_Avoidance.png',
       goal:'AVOIDANCE',
       number :'3 :',
-      style:"width : 15%; max-width:70px",
+      style:"width : 20%; max-width:90px",
       text: "don't want to see or run into him or her at no way.",
       method:'AVOIDANCE'
     }

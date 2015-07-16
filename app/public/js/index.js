@@ -33,7 +33,7 @@ function initPageCss() {
 
 	$("[data-role=content]").css({"height": innerHeight  - header + "px"});
 	$("#findFriendPage [data-role=content]").css({"height": innerHeight  -footer - $('#findFriendPage header').height() + "px"});
-	$("#targetPage [data-role=content]").css({"height": innerHeight  -footer - header + "px"});
+	$("#targetPage [data-role=content]").css({"height": innerHeight - header + "px"});
 	$("#mapPage [data-role=content]").css({"height": innerHeight - footer+1  + "px"});
 	
 	

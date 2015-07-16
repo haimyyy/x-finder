@@ -260,8 +260,7 @@ html head+body .ui-btn.ui-btn-a:after{
 /* wired case */
 #mapPage [data-role=navbar] li a:hover{
 	/*font-family: 'Orator';*/
-  	color: white;
-  	opacity: 0.6;
+    color: #aab6a6;
   	/*font-size: 13px;*/
 }
 
@@ -272,7 +271,7 @@ html head+body .ui-btn.ui-btn-a:after{
 }
 
 .ui-grid-b>.ui-block-a, .ui-grid-b>.ui-block-b, .ui-grid-b>.ui-block-c{
-	border-left: 1px solid #a3a9ac;
+	  border-left: 1px solid #f1faff;
   height: 39px;
   top: 6px;
 
@@ -292,9 +291,11 @@ html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited,
 html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited{
 	  color: #aab6a6;
   	height: 21px;
-  	line-height: 26px;
+  	line-height: 23px;
 	border:none;
 	font-weight: lighter;
+	  font-size: 14px !important;
+
 }
 
 /* login page */

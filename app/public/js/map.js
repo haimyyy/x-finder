@@ -209,15 +209,27 @@ var MapSingelton = (function (){
 						    new google.maps.Point(25, 25),
 						    new google.maps.Size(50, 50));
 					else { 	
-						//if (marker.type == 'AVOIDANCE')
-						//if (marker.type == 'TRACKING')
-						//if (marker.type == 'CURIOSITY')					
-						image = new google.maps.MarkerImage(
-					    	icons_images[marker.type],
-						    new google.maps.Size(71, 71),
-						    new google.maps.Point(0, 0),
-						    new google.maps.Point(17, 36),
-						    new google.maps.Size(20, 25));
+						if (marker.type == 'AVOIDANCE')
+							image = new google.maps.MarkerImage(
+						    	icons_images[marker.type],
+							    new google.maps.Size(71, 71),
+							    new google.maps.Point(0, 0),
+							    new google.maps.Point(17, 36),
+							    new google.maps.Size(47, 60));
+						if (marker.type == 'TRACKING')
+							image = new google.maps.MarkerImage(
+						    	icons_images[marker.type],
+							    new google.maps.Size(71, 71),
+							    new google.maps.Point(0, 0),
+							    new google.maps.Point(17, 36),
+							    new google.maps.Size(47, 60));
+						if (marker.type == 'CURIOSITY')					
+							image = new google.maps.MarkerImage(
+						    	icons_images[marker.type],
+							    new google.maps.Size(71, 71),
+							    new google.maps.Point(0, 0),
+							    new google.maps.Point(17, 36),
+							    new google.maps.Size(47, 60));
 					}
 				 	var map_marker = new google.maps.Marker({
 				        position: marker.location,

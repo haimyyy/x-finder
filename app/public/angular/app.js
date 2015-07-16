@@ -26,7 +26,7 @@ var model = {
       image:'img/TargetPage_Tracking.png',
       goal:'TRACKING',
       number :'2 :',
-      style:"width : 20%; max-width:90px",
+      style:"width : 10%; max-width:60px",
       text: "need to know where he/she was and what they're up to.",
       method:'TRACKING'
     },
@@ -34,7 +34,7 @@ var model = {
       image:'img/TargetPage_Avoidance.png',
       goal:'AVOIDANCE',
       number :'3 :',
-      style:"width : 20%; max-width:90px",
+      style:"width : 15%; max-width:70px",
       text: "don't want to see or run into him or her at no way.",
       method:'AVOIDANCE'
     }
@@ -160,6 +160,7 @@ xfind.controller('findFriendCtrl',['$scope','$rootScope','$http','sharedProperti
     };
 
     $scope.selectedUser = function () {
+      if ($scope.selectedIndex == -1) return
       console.log($scope.users[$scope.selectedIndex]);
       sharedProperties.setSelectedUser($scope.users[$scope.selectedIndex])
     };

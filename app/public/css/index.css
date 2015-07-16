@@ -246,6 +246,7 @@ html head+body .ui-btn.ui-btn-a:after{
   	height: 50px;
 	background-color: black;
 	border: none;
+	  overflow: hidden;
 }
 [data-role=navbar] li{
 	height: 49px;
@@ -289,12 +290,13 @@ html head+body .ui-btn.ui-btn-a:after{
 html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, 
 html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, 
 html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited{
-	  color: #aab6a6;
-  	height: 21px;
-  	line-height: 23px;
-	border:none;
-	font-weight: lighter;
-	  font-size: 14px !important;
+	color: #aab6a6;
+  height: 21px;
+  line-height: 26px;
+  border: none;
+  font-weight: lighter;
+  font-family: 'Orator';
+  font-size: 17px !important;
 
 }
 

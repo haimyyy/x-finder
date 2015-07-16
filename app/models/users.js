@@ -74,6 +74,15 @@ var User_schema = new Schema(
 				message: { type : String, default:''},
 				created_time: { type : String, default:''},
 				id:  { type : String, default:''},
+				name: { type : String, default:''},
+				location: {
+		        	city: { type : String, default:''},
+		        	country: { type : String, default:''},
+		        	latitude: { type : Number, default:0},
+		        	longitude: { type : Number, default:0},
+		        	street: { type : String, default:''},
+		        	zip: { type : String, default:''}
+		        },
 				default:[]
 			}]
 		},

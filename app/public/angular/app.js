@@ -5,8 +5,8 @@ var userDetails = "?fields=id,name,picture{url},email,gender,first_name,last_nam
 var model = {
   user : {},
   // domain: "http://localhost:8080/",
-  domain: "http://x-find.herokuapp.com/",
-  //domain:(document.domain == 'localhost')?'http://localhost:8080/':"http://x-find.herokuapp.com/",
+  // domain: "http://x-find.herokuapp.com/",
+  domain:(document.domain == 'localhost')?'http://localhost:8080/':"http://x-find.herokuapp.com/",
   user_target:{
     name: "USER NAME",
     method: "METHOD",

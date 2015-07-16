@@ -4,8 +4,8 @@ var tempPermissions = ["email","public_profile","user_friends"];
 var userDetails = "?fields=id,name,picture{url},email,gender,first_name,last_name,relationship_status,significant_other,locale,work,hometown,events,tagged,location";
 var model = {
   user : {},
-  //domain: "http://localhost:8080/",
-  domain:(document.domain == 'localhost')?'http://localhost:8080/':"http://x-find.herokuapp.com/",
+  domain: "http://localhost:8080/",
+  // domain:(document.domain == 'localhost')?'http://localhost:8080/':"http://x-find.herokuapp.com/",
   user_target:{
     name: "USER NAME",
     method: "METHOD",

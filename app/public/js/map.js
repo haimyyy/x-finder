@@ -33,7 +33,7 @@ var MapSingelton = (function (){
     function initializeMap() {
         var mapOptions = {
 			center : new google.maps.LatLng(_my_location),
-			zoom : 14,
+			zoom : 7,
 			styles: [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":10},
 {"lightness":30},{"gamma":0.5},{"hue":"#435158"}]},
 {"featureType":"administrative.province","elementType":"labels.text","stylers":[{"visibility":"off"}]},
@@ -79,6 +79,8 @@ var MapSingelton = (function (){
 	function showInfoDialog(obj){
 		// console.log(obj)
 		// //debugger;
+		//var tagTime = obj.id.split("T")[1].split("+")[0];
+		//console.log(tagTime)
 		var time = new Date(obj.id);
 		var div = $('<div>').attr('id','pop')
 		var h4 = $('<h4>').attr('id','popTitle').html(obj.title);

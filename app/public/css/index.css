@@ -722,6 +722,7 @@ input[type=search] {
 	text-align: center !important;
   	line-height: 40px !important;
   	cursor: crosshair;
+  	  height: 30px;
 }
 #pop{
 	background:#19282f;

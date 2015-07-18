@@ -73,6 +73,7 @@ var MapSingelton = (function (){
 	  	
 	  	google.maps.event.addListener(_map, 'click', function() {
 		   if (_info_window)_info_window.close();
+		    _map.setOptions( {draggable:true} ); 
 	    });
 	}
 	
@@ -115,6 +116,7 @@ var MapSingelton = (function (){
     });
 	if (_info_window)_info_window.close();
     _info_window=infoBubble;
+    _map.setOptions( {draggable:false} ); 
     _info_window.open();
 	}
 	

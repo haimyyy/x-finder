@@ -109,7 +109,7 @@ font-size: 34px;
   	font-weight: normal;
   	/*float: left;*/
   	text-align: center;
-  	line-height: 10px;
+  	line-height: 14px;
   	/*padding: 0px 10px 5px 0;*/
 }
 
@@ -729,13 +729,15 @@ input[type=search] {
 }
 
 #popTitle{
-	font-family: 'Orator';
+	  font-family: 'Orator';
   color: #ffffff;
   float: right;
+  line-height: 20px;
   font-size: 16px;
   width: 50%;
   height: 40px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 #popTime{
 	font-family: 'ds_digital - numbers';

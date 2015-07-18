@@ -394,7 +394,7 @@ xfind.controller('panelCtrl',['$scope', '$http','$rootScope',
         model.user_target.id = $scope.follow[$index].id;
         model.user_target.index = $index;
 
-         closeNav();
+        closeNav();
         $rootScope.$broadcast("displayData");
      }
      $scope.delete = function($index){
@@ -420,6 +420,7 @@ xfind.controller('panelCtrl',['$scope', '$http','$rootScope',
 
      function closeNav(){
          $( "#nav-panel" ).panel( "close" );
+         fixHeaderSubTitle();
      }
      $scope.save = function($index){
       var args= {

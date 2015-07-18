@@ -45,6 +45,9 @@ function initPageCss() {
 	
 }
 
+window.onload = function (){
+	fixHeaderSubTitle();
+}
 $(document).on("pageshow","[data-role=page]",function(){ // When entering pagetwo
   fixHeaderSubTitle();
 });

@@ -260,9 +260,9 @@ var MapSingelton = (function (){
 				},
 				changeMyImage : function (icon){
 					if (icon == 'CURIOSITY')
-						_my_marker.setIcon({url:icons_images[icon] ,size: {width:71,height:71},scaledSize: {width:22,height:32},anchor: {x:17,y:34},origin: {x:0,y:0}})
+						_my_marker.setIcon({url:icons_images[icon] ,size: {width:71,height:71},scaledSize: {width:22,height:35},anchor: {x:17,y:34},origin: {x:0,y:0}})
 					else 
-						_my_marker.setIcon({url:icons_images[icon] ,size: {width:71,height:71},scaledSize: {width:25,height:27},anchor: {x:17,y:34},origin: {x:0,y:0}})
+						_my_marker.setIcon({url:icons_images[icon] ,size: {width:71,height:71},scaledSize: {width:25,height:32},anchor: {x:17,y:34},origin: {x:0,y:0}})
 				},
 				getMarkers : function (){
 					return _marker_list;

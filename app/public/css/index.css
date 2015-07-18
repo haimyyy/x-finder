@@ -713,13 +713,14 @@ input[type=search] {
 	float: left;
 }
 .navAddFriend {
+	font-family: 'Orator';
 	background-image: url('../img/Avoidance_Icon 2.png');
     background-repeat: no-repeat;
     background-size: 20px 20px;
     background-position: 15px 18px;
 	position: relative !important;
 	text-align: center !important;
-  	line-height: 35px !important;
+  	line-height: 40px !important;
   	cursor: crosshair;
 }
 #pop{

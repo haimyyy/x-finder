@@ -86,11 +86,11 @@ var MapSingelton = (function (){
 		var div = $('<div>').attr('id','pop')
 		var h4 = $('<h4>').attr('id','popTitle').html(obj.title);
 		var p = $('<p>').attr('id','popTime').html(time.getHours()+":"+time.getMinutes())
-			
+		var timeMin = (time.getMinutes()==0)?'00':time.getMinutes();
 		div.append(h4.toString()).append(p.toString());
 		var contentString = '<div id="pop">'+
 		'<h4 id="popTitle">'+obj.title+'</h4>'+
-		'<p id="popTime">'+time.getHours()+":"+time.getMinutes()+'</p>'+
+		'<p id="popTime">'+time.getHours()+":"+timeMin+'</p>'+
 		'</div>'; 
 		
 	 console.log(obj,"map")

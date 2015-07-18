@@ -262,7 +262,7 @@ xfind.controller('mapCtrl',['$scope', '$http',
       var time ="hours";
 
       displayCommonPlaces(temp_obj,$scope.user_target.method,'green');
-      displayFacebookEventsHours(temp_obj,$scope.user_target.method,'green');
+      displayFacebookEvents(temp_obj,$scope.user_target.method,'green',0);
 
     }
 
@@ -273,7 +273,7 @@ xfind.controller('mapCtrl',['$scope', '$http',
       var time ="lastWeek";
 
       displayCommonPlaces(temp_obj,$scope.user_target.method,'green');
-      displayFacebookEventsLastWeek(temp_obj,$scope.user_target.method,'green');
+      displayFacebookEvents(temp_obj,$scope.user_target.method,'green',1);
       
     }
     $scope.forecast = function(){
@@ -283,7 +283,7 @@ xfind.controller('mapCtrl',['$scope', '$http',
       var time ="forecast";
 
       displayCommonPlaces(temp_obj,$scope.user_target.method,'red');
-      displayFacebookEventsForecast(temp_obj,$scope.user_target.method,'red');
+      displayFacebookEvents(temp_obj,$scope.user_target.method,'red',2);
 
       
     }
@@ -312,12 +312,29 @@ switch (time){
       }
     }
     */
-//****** Display point on the Map according to Forecast *****//
-function displayFacebookEventsForecast(user_obj,method,color){
-    console.log(user_obj)
-    var date= new Date();
-    date.setDate(date.getDate() - 1);
-    date= date.getTime();
+function displayFacebookEvents(user_obj,method,color,time){
+    switch (time){
+      case 0:{
+        var date= new Date();
+        date.setDate(date.getDate() - 1);
+        date.setYear(date.getFullYear()-2);
+        date= date.getTime();
+        break;
+      }
+      case 1:{
+        var date= new Date();
+        date.setDate(date.getDate() - 7);
+        date.setYear(date.getFullYear()-3);
+        date= date.getTime();
+        break;
+      }
+      case 2:{
+        var date= new Date();
+        date.setDate(date.getDate());
+        date.setYear(date.getFullYear()-1);
+        date= date.getTime();
+      }
+    }
 
     switch (method) {
       case 'TRACKING':{
@@ -325,12 +342,21 @@ function displayFacebookEventsForecast(user_obj,method,color){
               //if(val.rsvp_status=="attending"){
               var t =new Date(val.start_time.toString())
               t=t.getTime();
-              console.log(t,date);
-              if(t > date ){
-                if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
-                  MapSingelton.getMap().setMarker(new Marker
-                      (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'tracking_'+color)) 
-                 }
+              if (time == 2){
+                if(t > date ){
+                  if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+                    MapSingelton.getMap().setMarker(new Marker
+                        (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'tracking_'+color)) 
+                   }
+                }
+              }
+              else {
+                if(t > date && t < new Date().getTime() ){
+                  if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+                    MapSingelton.getMap().setMarker(new Marker
+                        (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'tracking_'+color)) 
+                   }
+                }
               }
             //}
           });
@@ -341,13 +367,23 @@ function displayFacebookEventsForecast(user_obj,method,color){
               //if(val.rsvp_status=="attending"){
               var t =new Date(val.start_time.toString())
               t=t.getTime();
-              console.log(t,date);
-              if(t > date ){
-                if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
-                  MapSingelton.getMap().setMarker(new Marker
-                      (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'curiosity_'+color)) 
+               if (time == 2){
+                if(t > date ){
+                  if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+                    MapSingelton.getMap().setMarker(new Marker
+                        (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'curiosity_'+color)) 
+                   }
                 }
               }
+              else {
+                if(t > date && t < new Date().getTime() ){
+                  if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+                    MapSingelton.getMap().setMarker(new Marker
+                        (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'curiosity_'+color)) 
+                   }
+                }
+              }
+              
             //}
           });
           break;
@@ -357,159 +393,235 @@ function displayFacebookEventsForecast(user_obj,method,color){
               //if(val.rsvp_status=="attending"){
           var t =new Date(val.start_time.toString())
           t=t.getTime();
-          console.log(t,date);
-          if(t > date ){              
-              if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
-                MapSingelton.getMap().setMarker(new Marker
-                    (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'avoidance_'+color)) 
-              }
-            }
-            //}
-          });     break;
-      }  
-    }
-}
-//****** Display point on the Map according to hours *****//
-function displayFacebookEventsHours(user_obj,method,color){
-    console.log(user_obj)
-    var dateYesterday = new Date();
-    dateYesterday.setDate(dateYesterday.getDate() - 1);
-    dateYesterday= dateYesterday.getTime();
-    var date= new Date();
-    date.setDate(date.getDate());
-    date= date.getTime()
-    console.log("Yesterday",dateYesterday)
-    switch (method) {
-      case 'TRACKING':{
-          $.each(user_obj.events.data,function(i,val){
-              //if(val.rsvp_status=="attending"){
-              var t =new Date(val.start_time.toString())
-              t=t.getTime();
-              console.log(t,date);
-              if(t > dateYesterday && t < date){
-                if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
-                  MapSingelton.getMap().setMarker(new Marker
-                      (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'tracking_'+color)) 
-                 }
-              }
-            //}
-          });
-          break;
-        }
-      case 'CURIOSITY':{
-          $.each(user_obj.events.data,function(i,val){
-              //if(val.rsvp_status=="attending"){
-              var t =new Date(val.start_time.toString())
-              t=t.getTime();
-              console.log(t,date);
-              if(t > dateYesterday && t < date){
-                if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
-                  MapSingelton.getMap().setMarker(new Marker
-                      (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'curiosity_'+color)) 
+           if (time == 2){
+                if(t > date ){
+                  if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+                    MapSingelton.getMap().setMarker(new Marker
+                        (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'avoidance_'+color)) 
+                   }
                 }
               }
-            //}
-          });
-          break;
-      }   
-      case 'AVOIDANCE':{
-          $.each(user_obj.events.data,function(i,val){
-              //if(val.rsvp_status=="attending"){
-          var t =new Date(val.start_time.toString())
-          t=t.getTime();
-          console.log(t,date);
-          if(t > dateYesterday && t < date){              
-              if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
-                MapSingelton.getMap().setMarker(new Marker
-                    (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'avoidance_'+color)) 
+              else {
+                if(t > date && t < new Date().getTime() ){
+                  if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+                    MapSingelton.getMap().setMarker(new Marker
+                        (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'avoidance_'+color)) 
+                   }
+                }
               }
-            }
+         
             //}
           });     break;
       }  
     }
 }
-//****** Display point on the Map according to Last Week *****//
-function displayFacebookEventsLastWeek(user_obj,method,color){
-    console.log(user_obj)
-    var dateLastWeek = new Date();
-    dateLastWeek.setDate(dateLastWeek.getDate() - 7);
-    dateLastWeek= dateLastWeek.getTime();
-    var date= new Date();
-    date.setDate(date.getDate());
-    date= date.getTime()  
-    console.log("lastWeek",dateLastWeek);
 
-    switch (method) {
-      case 'TRACKING':{
-          $.each(user_obj.events.data,function(i,val){
-              //if(val.rsvp_status=="attending"){
-              var t =new Date(val.start_time.toString())
-              t=t.getTime();
-              console.log(t,date);
-              if(t > dateLastWeek && t < date){
-                if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
-                  MapSingelton.getMap().setMarker(new Marker
-                      (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'tracking_'+color)) 
-                 }
-              }
-            //}
-          });
-          break;
-        }
-      case 'CURIOSITY':{
-          $.each(user_obj.events.data,function(i,val){
-              //if(val.rsvp_status=="attending"){
-              var t =new Date(val.start_time.toString())
-              t=t.getTime();
-              console.log(t,date);
-              if(t > dateLastWeek && t < date){
-                if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
-                  MapSingelton.getMap().setMarker(new Marker
-                      (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'curiosity_'+color)) 
-                }
-              }
-            //}
-          });
-          break;
-      }   
-      case 'AVOIDANCE':{
-          $.each(user_obj.events.data,function(i,val){
-              //if(val.rsvp_status=="attending"){
-          var t =new Date(val.start_time.toString())
-          t=t.getTime();
-          console.log(t,date);
-          if(t > dateLastWeek && t < date){             
-              if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
-                MapSingelton.getMap().setMarker(new Marker
-                    (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'avoidance_'+color)) 
-              }
-            }
-            //}
-          });     break;
-      }  
-    }
-}
+
+
+// //****** Display point on the Map according to Forecast *****//
+// function displayFacebookEventsForecast(user_obj,method,color){
+//     console.log(user_obj)
+//     var date= new Date();
+//     date.setDate(date.getDate() - 1);
+//     date= date.getTime();
+
+//     switch (method) {
+//       case 'TRACKING':{
+//           $.each(user_obj.events.data,function(i,val){
+//               //if(val.rsvp_status=="attending"){
+//               var t =new Date(val.start_time.toString())
+//               t=t.getTime();
+//               console.log(t,date);
+//               if(t > date ){
+//                 if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+//                   MapSingelton.getMap().setMarker(new Marker
+//                       (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'tracking_'+color)) 
+//                  }
+//               }
+//             //}
+//           });
+//           break;
+//         }
+//       case 'CURIOSITY':{
+//           $.each(user_obj.events.data,function(i,val){
+//               //if(val.rsvp_status=="attending"){
+//               var t =new Date(val.start_time.toString())
+//               t=t.getTime();
+//               console.log(t,date);
+//               if(t > date ){
+//                 if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+//                   MapSingelton.getMap().setMarker(new Marker
+//                       (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'curiosity_'+color)) 
+//                 }
+//               }
+//             //}
+//           });
+//           break;
+//       }   
+//       case 'AVOIDANCE':{
+//           $.each(user_obj.events.data,function(i,val){
+//               //if(val.rsvp_status=="attending"){
+//           var t =new Date(val.start_time.toString())
+//           t=t.getTime();
+//           console.log(t,date);
+//           if(t > date ){              
+//               if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+//                 MapSingelton.getMap().setMarker(new Marker
+//                     (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'avoidance_'+color)) 
+//               }
+//             }
+//             //}
+//           });     break;
+//       }  
+//     }
+// }
+// //****** Display point on the Map according to hours *****//
+// function displayFacebookEventsHours(user_obj,method,color){
+//     console.log(user_obj)
+//     var dateYesterday = new Date();
+//     dateYesterday.setDate(dateYesterday.getDate() - 1);
+//     dateYesterday= dateYesterday.getTime();
+//     var date= new Date();
+//     date.setDate(date.getDate());
+//     date= date.getTime()
+//     console.log("Yesterday",dateYesterday)
+//     switch (method) {
+//       case 'TRACKING':{
+//           $.each(user_obj.events.data,function(i,val){
+//               //if(val.rsvp_status=="attending"){
+//               var t =new Date(val.start_time.toString())
+//               t=t.getTime();
+//               console.log(t,date);
+//               if(t > dateYesterday && t < date){
+//                 if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+//                   MapSingelton.getMap().setMarker(new Marker
+//                       (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'tracking_'+color)) 
+//                  }
+//               }
+//             //}
+//           });
+//           break;
+//         }
+//       case 'CURIOSITY':{
+//           $.each(user_obj.events.data,function(i,val){
+//               //if(val.rsvp_status=="attending"){
+//               var t =new Date(val.start_time.toString())
+//               t=t.getTime();
+//               console.log(t,date);
+//               if(t > dateYesterday && t < date){
+//                 if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+//                   MapSingelton.getMap().setMarker(new Marker
+//                       (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'curiosity_'+color)) 
+//                 }
+//               }
+//             //}
+//           });
+//           break;
+//       }   
+//       case 'AVOIDANCE':{
+//           $.each(user_obj.events.data,function(i,val){
+//               //if(val.rsvp_status=="attending"){
+//           var t =new Date(val.start_time.toString())
+//           t=t.getTime();
+//           console.log(t,date);
+//           if(t > dateYesterday && t < date){              
+//               if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+//                 MapSingelton.getMap().setMarker(new Marker
+//                     (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'avoidance_'+color)) 
+//               }
+//             }
+//             //}
+//           });     break;
+//       }  
+//     }
+// }
+// //****** Display point on the Map according to Last Week *****//
+// function displayFacebookEventsLastWeek(user_obj,method,color){
+//     console.log(user_obj)
+//     var dateLastWeek = new Date();
+//     dateLastWeek.setDate(dateLastWeek.getDate() - 7);
+//     dateLastWeek= dateLastWeek.getTime();
+//     var date= new Date();
+//     date.setDate(date.getDate());
+//     date= date.getTime()  
+//     console.log("lastWeek",dateLastWeek);
+
+//     switch (method) {
+//       case 'TRACKING':{
+//           $.each(user_obj.events.data,function(i,val){
+//               //if(val.rsvp_status=="attending"){
+//               var t =new Date(val.start_time.toString())
+//               t=t.getTime();
+//               console.log(t,date);
+//               if(t > dateLastWeek && t < date){
+//                 if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+//                   MapSingelton.getMap().setMarker(new Marker
+//                       (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'tracking_'+color)) 
+//                  }
+//               }
+//             //}
+//           });
+//           break;
+//         }
+//       case 'CURIOSITY':{
+//           $.each(user_obj.events.data,function(i,val){
+//               //if(val.rsvp_status=="attending"){
+//               var t =new Date(val.start_time.toString())
+//               t=t.getTime();
+//               console.log(t,date);
+//               if(t > dateLastWeek && t < date){
+//                 if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+//                   MapSingelton.getMap().setMarker(new Marker
+//                       (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'curiosity_'+color)) 
+//                 }
+//               }
+//             //}
+//           });
+//           break;
+//       }   
+//       case 'AVOIDANCE':{
+//           $.each(user_obj.events.data,function(i,val){
+//               //if(val.rsvp_status=="attending"){
+//           var t =new Date(val.start_time.toString())
+//           t=t.getTime();
+//           console.log(t,date);
+//           if(t > dateLastWeek && t < date){             
+//               if(val.place.location && val.place.location.latitude != 0 && val.place.location.longitude != 0){
+//                 MapSingelton.getMap().setMarker(new Marker
+//                     (val.start_time,new google.maps.LatLng(val.place.location.latitude,val.place.location.longitude),val.name,'avoidance_'+color)) 
+//               }
+//             }
+//             //}
+//           });     break;
+//       }  
+//     }
+// }
 function displayCommonPlaces( user_obj, method,color){
   switch (method) {
       case 'TRACKING':{
+        if (user_obj.hometown.latitude!=0 && user_obj.hometown.longitude !=0)
             MapSingelton.getMap().setMarker(new Marker
             (new Date(),new google.maps.LatLng(user_obj.hometown.latitude,user_obj.hometown.longitude),user_obj.hometown.name,'tracking_'+color))
+         if (user_obj.work_place.latitude!=0 && user_obj.work_place.longitude !=0)
          MapSingelton.getMap().setMarker(new Marker
             (new Date(),new google.maps.LatLng(user_obj.work_place.latitude,user_obj.work_place.longitude),user_obj.work_place.name,'tracking_'+color))
          
           break;
         }
       case 'CURIOSITY':{
+        if (user_obj.hometown.latitude!=0 && user_obj.hometown.longitude !=0)
            MapSingelton.getMap().setMarker(new Marker
             (new Date(),new google.maps.LatLng(user_obj.hometown.latitude,user_obj.hometown.longitude),user_obj.hometown.name,'curiosity_'+color))
+         if (user_obj.work_place.latitude!=0 && user_obj.work_place.longitude !=0)
          MapSingelton.getMap().setMarker(new Marker
             (new Date(),new google.maps.LatLng(user_obj.work_place.latitude,user_obj.work_place.longitude),user_obj.work_place.name,'curiosity_'+color))
           break;
       }   
       case 'AVOIDANCE':{
+        if (user_obj.hometown.latitude!=0 && user_obj.hometown.longitude !=0)
            MapSingelton.getMap().setMarker(new Marker
             (new Date(),new google.maps.LatLng(user_obj.hometown.latitude,user_obj.hometown.longitude),user_obj.hometown.name,'avoidance_'+color))
+       if (user_obj.work_place.latitude!=0 && user_obj.work_place.longitude !=0)
          MapSingelton.getMap().setMarker(new Marker
             (new Date(),new google.maps.LatLng(user_obj.work_place.latitude,user_obj.work_place.longitude),user_obj.work_place.name,'avoidance_'+color))
           break;

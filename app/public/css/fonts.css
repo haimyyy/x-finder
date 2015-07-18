@@ -16,9 +16,12 @@
 }
 @font-face {
     font-family: 'ds_digital - numbers';
-    src: url('Fonts/ds_digital - numbers/DS-DIGI.ttf'), 
+/*    src: url('Fonts/ds_digital - numbers/DS-DIGI.ttf'), 
     url('Fonts/ds_digital - numbers/DS-DIGI.ttf') format('truetype'), 
-    url('Fonts/ds_digital - numbers/DS-DIGI.ttf') format('svg');
+    url('Fonts/ds_digital - numbers/DS-DIGI.ttf') format('svg');*/
+    src: url('Fonts/ds_digital/digital-7.ttf'), 
+    url('Fonts/ds_digital/digital-7.ttf') format('truetype'), 
+    url('Fonts/ds_digital/digital-7.ttf') format('svg');
     font-weight: normal;
     font-style: normal;
 }

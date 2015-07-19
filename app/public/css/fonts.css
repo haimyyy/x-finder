@@ -25,3 +25,11 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Arble';
+    src: url('Fonts/HebrewFont_popup/ArbelHagildaRegular.otf'), 
+    url('Fonts/HebrewFont_popup/ArbelHagildaRegular.otf') format('truetype'), 
+    url('Fonts/HebrewFont_popup/ArbelHagildaRegular.otf') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

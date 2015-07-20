@@ -259,7 +259,7 @@ html head+body .ui-btn.ui-btn-a:after{
 	opacity: 1 !important;
 }
 /* wired case */
-#mapPage [data-role=navbar] li a:hover{
+#mapPage [data-role=navbar] li a:hover,#findFriendPage [data-role=navbar] li a:hover,#targetPage [data-role=navbar] li a:hover{
 	/*font-family: 'Orator';*/
     color: #aab6a6;
   	/*font-size: 13px;*/
